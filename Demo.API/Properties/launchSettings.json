@@ -1,5 +1,4 @@
-﻿{
-  "$schema": "http://json.schemastore.org/launchsettings.json",
+{
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -8,12 +7,18 @@
       "sslPort": 44395
     }
   },
+  "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
+		"LOGFILE_DIAG": "D:\\Ashley\\Desktop\\HippoAPI\\api_diag.txt",
+        "LOGFILE_USAGE": "D:\\Ashley\\Desktop\\HippoAPI\\api_usage.txt",
+        "LOGFILE_ERROR": "D:\\Ashley\\Desktop\\HippoAPI\\api_error.txt",
+        "LOGFILE_PERF": "D:\\Ashley\\Desktop\\HippoAPI\\api_perf.txt",
+		
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
@@ -21,10 +26,10 @@
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
     }
   }
 }
