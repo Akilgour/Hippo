@@ -12,10 +12,10 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-	   "LOGFILE_DIAG": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_diag.txt",
-	  "LOGFILE_USAGE": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_usage.txt",
-     
-        
+        "Key": "Value",
+        "LOGFILE_DIAG": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_diag.txt",
+        "DIAGNOSTICS_ON": "true",
+        "LOGFILE_USAGE": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_usage.txt",
         "LOGFILE_ERROR": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_error.txt",
         "LOGFILE_PERF": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_perf.txt",
         "ASPNETCORE_ENVIRONMENT": "Development"

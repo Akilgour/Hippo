@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Demo.MVC.Models;
+using Hippo;
 
 namespace Demo.MVC.Controllers
 {
@@ -18,11 +19,14 @@ namespace Demo.MVC.Controllers
             _logger = logger;
         }
 
+        [TrackUsage("Demo", "MVC", "View Home")]
         public IActionResult Index()
         {
+            WebHelper.LogWebDiagnostic("Demo", "MVC", "Just checking in....", HttpContext, new Dictionary<string, object> { { "Very", "Important" } });
             return View();
         }
 
+        [TrackUsage("Demo", "MVC", "View Privacy")]
         public IActionResult Privacy()
         {
             return View();

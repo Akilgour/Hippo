@@ -53,8 +53,7 @@ namespace Hippo
         }
         public static void WriteDiagnostic(HippoLogDetail infoToLog)
         {
-            var writeDiagnostics =
-                Convert.ToBoolean(Environment.GetEnvironmentVariable("DIAGNOSTICS_ON"));
+            var writeDiagnostics = Convert.ToBoolean(Environment.GetEnvironmentVariable("DIAGNOSTICS_ON"));
             if (!writeDiagnostics)
             {
                 return;

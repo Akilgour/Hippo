@@ -83,13 +83,19 @@ namespace Hippo
                 var i = 1; // i included in dictionary key to ensure uniqueness
                 foreach (var claim in user.Claims)
                 {
-                    if (claim.Type == ClaimTypes.NameIdentifier)
-                        userId = claim.Value;
-                    else if (claim.Type == "name")
-                        userName = claim.Value;
-                    else
-                        // example dictionary key: UserClaim-4-role
-                        hippoLogDetail.AdditionalInfo.Add($"UserClaim-{i++}-{claim.Type}", claim.Value);
+                    switch (claim.Type)
+                    {
+                        case ClaimTypes.NameIdentifier:
+                            userId = claim.Value;
+                            break;
+                        case "name":
+                            userName = claim.Value;
+                            break;
+                        default:
+                            // example dictionary key: UserClaim-4-role
+                            hippoLogDetail.AdditionalInfo.Add($"UserClaim-{i++}-{claim.Type}", claim.Value);
+                            break;
+                    }
                 }
             }
             hippoLogDetail.UserId = userId;
