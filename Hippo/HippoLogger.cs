@@ -1,11 +1,7 @@
 ﻿using Serilog;
 using Serilog.Events;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hippo
 {
@@ -60,7 +56,9 @@ namespace Hippo
             var writeDiagnostics =
                 Convert.ToBoolean(Environment.GetEnvironmentVariable("DIAGNOSTICS_ON"));
             if (!writeDiagnostics)
+            {
                 return;
+            }
 
             _diagnosticLogger.Write(LogEventLevel.Information, "{@HippoLogDetail}", infoToLog);
         }
@@ -68,7 +66,9 @@ namespace Hippo
         private static string GetMessageFromException(Exception ex)
         {
             if (ex.InnerException != null)
+            {
                 return GetMessageFromException(ex.InnerException);
+            }
 
             return ex.Message;
         }
@@ -80,7 +80,9 @@ namespace Hippo
             {
                 var procName = sqlEx.Procedure;
                 if (!string.IsNullOrEmpty(procName))
+                {
                     return procName;
+                }
             }
 
             if (!string.IsNullOrEmpty((string)ex.Data["Procedure"]))
@@ -89,7 +91,9 @@ namespace Hippo
             }
 
             if (ex.InnerException != null)
+            {
                 return FindProcName(ex.InnerException);
+            }
 
             return null;
         }
