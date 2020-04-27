@@ -1,0 +1,33 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:59807",
+      "sslPort": 44316
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+	   "LOGFILE_DIAG": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_diag.txt",
+	  "LOGFILE_USAGE": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_usage.txt",
+     
+        
+        "LOGFILE_ERROR": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_error.txt",
+        "LOGFILE_PERF": "D:\\Ashley\\Desktop\\HippoAPI\\mvc_perf.txt",
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    },
+    "Demo.MVC": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:5001;http://localhost:5000"
+    }
+  }
+}
