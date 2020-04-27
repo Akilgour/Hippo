@@ -5,6 +5,12 @@ VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippo", "Hippo\Hippo.csproj", "{FCDE29A9-D5A5-4D18-94FE-9B0733616E7E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{F93BA110-01D0-4AD2-865F-8892C916DFD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger", "Logger", "{6BEBDCD2-1344-4D54-8093-E9B7E89F7DBD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hippologamus", "Hippologamus", "{126C25B1-C102-46FD-AC9E-79E46D8F9F8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,6 +24,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FCDE29A9-D5A5-4D18-94FE-9B0733616E7E} = {6BEBDCD2-1344-4D54-8093-E9B7E89F7DBD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB8672B4-A3D6-4093-9412-B698EA6E81EF}
