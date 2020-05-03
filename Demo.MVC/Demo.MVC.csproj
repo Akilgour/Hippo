@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Hippo\Hippo.csproj" />
+    <ProjectReference Include="..\Hippo.Serilog\Hippo.Serilog.csproj" />
   </ItemGroup>
 
 </Project>

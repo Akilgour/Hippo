@@ -1,6 +1,7 @@
 ﻿using Demo.API.Manager;
 using Demo.API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 using System.Collections.Generic;
 
 namespace Demo.API.Controllers
@@ -20,6 +21,7 @@ namespace Demo.API.Controllers
         [HttpGet]
         public IEnumerable<Beatle> Get()
         {
+            Log.Debug("Got into Beatle - GET");
             return _beatleManager.GetAll();
         }
 

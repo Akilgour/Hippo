@@ -1,4 +1,6 @@
 using Hippo;
+using Hippo.Serilog.Filters;
+using Hippo.Serilog.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -26,42 +28,22 @@ namespace Demo.API
         {
             services.AddControllers();
 
-            services.AddMvc(options => options.Filters.Add(new TrackPerformanceFilter("Demo", "API")));
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new TrackPerformanceFilter());
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseExceptionHandler(eApp =>
-            {
-                eApp.Run(async context =>
-                {
-                    context.Response.StatusCode = 500;
-                    context.Response.ContentType = "application/json";
-
-                    var errorCtx = context.Features.Get<IExceptionHandlerFeature>();
-                    if (errorCtx != null)
-                    {
-                        var ex = errorCtx.Error;
-                        WebHelper.LogWebError("Demo", "API", ex, context);
-
-                        var errorId = Activity.Current?.Id ?? context.TraceIdentifier;
-                        var jsonResponse = JsonConvert.SerializeObject(new CustomErrorResponse
-                        {
-                            ErrorId = errorId,
-                            Message = "Some kind of error happened in the API."
-                        });
-                        await context.Response.WriteAsync(jsonResponse, Encoding.UTF8);
-                    }
-                });
-            });
-
+            app.UseHsts();
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
+            app.UseApiExceptionHandler();
+            //app.UseApiExceptionHandler(opts => { opts.AddResponseDetails = AddCustomErrorInfo; });   
             app.UseRouting();
-
-            app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

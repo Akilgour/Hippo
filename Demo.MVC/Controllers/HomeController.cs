@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Demo.MVC.Models;
-using Hippo;
+using Hippo.Serilog.Attributes;
+using Serilog;
 
 namespace Demo.MVC.Controllers
 {
@@ -19,14 +20,14 @@ namespace Demo.MVC.Controllers
             _logger = logger;
         }
 
-        [TrackUsage("Demo", "MVC", "View Home")]
+        [LogUsage("View Home")]
         public IActionResult Index()
         {
-            WebHelper.LogWebDiagnostic("Demo", "MVC", "Just checking in....", HttpContext, new Dictionary<string, object> { { "Very", "Important" } });
+            Log.Debug("We got here....");
             return View();
         }
 
-        [TrackUsage("Demo", "MVC", "View Privacy")]
+        [LogUsage("View Privacy")]
         public IActionResult Privacy()
         {
             return View();

@@ -14,10 +14,6 @@
       "launchBrowser": true,
       "launchUrl": "weatherforecast",
       "environmentVariables": {
-        "LOGFILE_DIAG": "D:\\Ashley\\Desktop\\HippoAPI\\api_diag.txt",
-        "LOGFILE_USAGE": "D:\\Ashley\\Desktop\\HippoAPI\\api_usage.txt",
-        "LOGFILE_ERROR": "D:\\Ashley\\Desktop\\HippoAPI\\api_error.txt",
-        "LOGFILE_PERF": "D:\\Ashley\\Desktop\\HippoAPI\\api_perf.txt",
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
