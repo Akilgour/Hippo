@@ -37,15 +37,15 @@ namespace Hippo.Serilog
                 .Enrich.WithMachineName()
                 .Enrich.WithProperty("Assembly", $"{name.Name}")
                 .Enrich.WithProperty("Version", $"{name.Version}")
-                .WriteTo.File(new CompactJsonFormatter(),
-                    $@"C:\temp\Logs\{applicationName}.json");
-            //.WriteTo.Logger(lc => lc
-            //    .Filter.ByIncludingOnly(Matching.WithProperty("ElapsedMilliseconds"))
-            //    .WriteTo.MSSqlServer(
-            //        connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
-            //        tableName: "PerfLogNew",
-            //        autoCreateSqlTable: true,
-            //        columnOptions: GetSqlColumnOptions()))
+            //.WriteTo.File(new CompactJsonFormatter(),
+            //    $@"C:\temp\Logs\{applicationName}.json");
+            .WriteTo.Logger(lc => lc
+                .Filter.ByIncludingOnly(Matching.WithProperty("ElapsedMilliseconds"))
+                .WriteTo.MSSqlServer(
+                    connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
+                    tableName: "PerfLogNew",
+                    autoCreateSqlTable: true,
+                    columnOptions: GetSqlColumnOptions()));
             //.WriteTo.Logger(lc => lc
             //    .Filter.ByIncludingOnly(Matching.WithProperty("UsageName"))
             //    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))

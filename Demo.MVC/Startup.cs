@@ -1,4 +1,5 @@
- 
+
+using Hippo.Serilog.Filters;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,12 @@ namespace Demo.MVC
         {
             services.AddControllersWithViews();
 
-          
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new TrackPerformanceFilter());
+
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
