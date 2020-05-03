@@ -13,12 +13,7 @@ namespace Demo.MVC.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+     
 
         [LogUsage("View Home")]
         public IActionResult Index()
@@ -30,7 +25,8 @@ namespace Demo.MVC.Controllers
         [LogUsage("View Privacy")]
         public IActionResult Privacy()
         {
-            return View();
+            //   return View();
+            throw new NotFiniteNumberException();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

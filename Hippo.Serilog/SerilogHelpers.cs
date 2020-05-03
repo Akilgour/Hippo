@@ -39,11 +39,12 @@ namespace Hippo.Serilog
                 .Enrich.WithProperty("Version", $"{name.Version}")
             //.WriteTo.File(new CompactJsonFormatter(),
             //    $@"C:\temp\Logs\{applicationName}.json");
+
             .WriteTo.Logger(lc => lc
                 .Filter.ByIncludingOnly(Matching.WithProperty("ElapsedMilliseconds"))
                 .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
-                    tableName: "PerfLogNew",
+                    tableName: "PerfLog",
                     autoCreateSqlTable: true,
                     columnOptions: GetSqlPerfColumnOptions()))
 
@@ -53,16 +54,16 @@ namespace Hippo.Serilog
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
                     tableName: "Usage",
                     autoCreateSqlTable: true,
-                    columnOptions: GetSqlColumnOptions()))
-
-
+                    columnOptions: GetSqlUsssageColumnOptions()))
+            
             .WriteTo.Logger(lc => lc
                  .Filter.ByExcluding(Matching.WithProperty("ElapsedMilliseconds"))
-                 .Filter.ByExcluding(Matching.WithProperty("UsageName")) .WriteTo.MSSqlServer(
+                 .Filter.ByExcluding(Matching.WithProperty("UsageName")) 
+                 .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
                     tableName: "Error",
                     autoCreateSqlTable: true,
-                    columnOptions: GetSqlColumnOptions()));
+                    columnOptions: GetSqlErrorColumnOptions()));
 
             //.WriteTo.Logger(lc => lc
             //    .Filter.ByIncludingOnly(Matching.WithProperty("UsageName"))
@@ -96,13 +97,10 @@ namespace Hippo.Serilog
             var options = new ColumnOptions();
             options.Store.Remove(StandardColumn.Message);
             options.Store.Remove(StandardColumn.MessageTemplate);
-            options.Store.Remove(StandardColumn.Level);
             options.Store.Remove(StandardColumn.Exception);
-
-            options.Store.Remove(StandardColumn.Properties);
             options.Store.Add(StandardColumn.LogEvent);
             options.LogEvent.ExcludeStandardColumns = true;
-            options.LogEvent.ExcludeAdditionalProperties = true;
+            options.LogEvent.ExcludeAdditionalProperties = false;
 
             options.AdditionalColumns = new Collection<SqlColumn>
             {
@@ -122,6 +120,60 @@ namespace Hippo.Serilog
                 new SqlColumn
                 {
                     ColumnName = "MachineName", AllowNull = false
+                },
+                new SqlColumn
+                {
+                    ColumnName = "Assembly", AllowNull = false
+                }
+            };
+
+            return options;
+        }
+
+        private static ColumnOptions GetSqlErrorColumnOptions()
+        {
+            var options = new ColumnOptions();
+            options.Store.Remove(StandardColumn.Message);
+            options.Store.Remove(StandardColumn.MessageTemplate);
+            options.Store.Remove(StandardColumn.Exception);
+            options.Store.Add(StandardColumn.LogEvent);
+            options.LogEvent.ExcludeStandardColumns = true;
+            options.LogEvent.ExcludeAdditionalProperties = false;
+
+            options.AdditionalColumns = new Collection<SqlColumn>
+            {
+                new SqlColumn
+                {
+                    ColumnName = "MachineName", AllowNull = false
+                },
+                new SqlColumn
+                {
+                    ColumnName = "Assembly", AllowNull = false
+                }
+            };
+
+            return options;
+        }
+
+        private static ColumnOptions GetSqlUsssageColumnOptions()
+        {
+            var options = new ColumnOptions();
+            options.Store.Remove(StandardColumn.Message);
+            options.Store.Remove(StandardColumn.MessageTemplate);
+            options.Store.Remove(StandardColumn.Exception);
+            options.Store.Add(StandardColumn.LogEvent);
+            options.LogEvent.ExcludeStandardColumns = true;
+            options.LogEvent.ExcludeAdditionalProperties = false;
+
+            options.AdditionalColumns = new Collection<SqlColumn>
+            {
+                new SqlColumn
+                {
+                    ColumnName = "MachineName", AllowNull = false
+                },
+                new SqlColumn
+                {
+                    ColumnName = "Assembly", AllowNull = false
                 }
             };
 
