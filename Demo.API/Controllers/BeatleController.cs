@@ -13,7 +13,6 @@ namespace Demo.API.Controllers
     {
         private readonly BeatleManager _beatleManager;
 
-
         public BeatleController()
         {
             _beatleManager = new BeatleManager();
@@ -30,7 +29,7 @@ namespace Demo.API.Controllers
 
         // GET: api/Beatle/5
         [HttpGet("{id}", Name = "Get")]
-        [LogUsage("GetById")]
+        [LogUsage("Get")]
         public Beatle Get(int id)
         {
             return _beatleManager.GetById(id);
