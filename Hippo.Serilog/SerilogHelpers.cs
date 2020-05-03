@@ -45,7 +45,25 @@ namespace Hippo.Serilog
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
                     tableName: "PerfLogNew",
                     autoCreateSqlTable: true,
+                    columnOptions: GetSqlPerfColumnOptions()))
+
+            .WriteTo.Logger(lc => lc
+                .Filter.ByIncludingOnly(Matching.WithProperty("UsageName"))
+                .WriteTo.MSSqlServer(
+                    connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
+                    tableName: "Usage",
+                    autoCreateSqlTable: true,
+                    columnOptions: GetSqlColumnOptions()))
+
+
+            .WriteTo.Logger(lc => lc
+                 .Filter.ByExcluding(Matching.WithProperty("ElapsedMilliseconds"))
+                 .Filter.ByExcluding(Matching.WithProperty("UsageName")) .WriteTo.MSSqlServer(
+                    connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
+                    tableName: "Error",
+                    autoCreateSqlTable: true,
                     columnOptions: GetSqlColumnOptions()));
+
             //.WriteTo.Logger(lc => lc
             //    .Filter.ByIncludingOnly(Matching.WithProperty("UsageName"))
             //    .WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:9200"))
@@ -68,6 +86,12 @@ namespace Hippo.Serilog
         }
 
         private static ColumnOptions GetSqlColumnOptions()
+        {
+            var options = new ColumnOptions();
+            return options;
+        }
+
+        private static ColumnOptions GetSqlPerfColumnOptions()
         {
             var options = new ColumnOptions();
             options.Store.Remove(StandardColumn.Message);
