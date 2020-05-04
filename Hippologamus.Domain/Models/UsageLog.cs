@@ -2,7 +2,7 @@
 
 namespace Hippologamus.Domain.Models
 {
-    internal class UsageLog
+    public class UsageLog
     {
         public int Id { get; set; }
         public string Level { get; set; }

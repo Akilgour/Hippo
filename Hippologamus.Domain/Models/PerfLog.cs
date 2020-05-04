@@ -2,7 +2,7 @@
 
 namespace Hippologamus.Domain.Models
 {
-    public class Perflog
+    public class PerfLog
     {
         public int Id { get; set; }
         public string Level { get; set; }
