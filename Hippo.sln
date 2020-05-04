@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.MVC", "Demo.MVC\Demo.M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippo.Serilog", "Hippo.Serilog\Hippo.Serilog.csproj", "{4739144E-0A71-4F9F-8F4D-215DECC22970}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.Domain", "Hippologamus.Domain\Hippologamus.Domain.csproj", "{E61A2100-66FF-42BE-9000-F9828F005AC4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{4739144E-0A71-4F9F-8F4D-215DECC22970}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4739144E-0A71-4F9F-8F4D-215DECC22970}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4739144E-0A71-4F9F-8F4D-215DECC22970}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E61A2100-66FF-42BE-9000-F9828F005AC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E61A2100-66FF-42BE-9000-F9828F005AC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E61A2100-66FF-42BE-9000-F9828F005AC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E61A2100-66FF-42BE-9000-F9828F005AC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +47,7 @@ Global
 		{3D32C276-D079-4EF0-B6F3-A45FAF565D62} = {F93BA110-01D0-4AD2-865F-8892C916DFD7}
 		{F5CF2585-247F-44DD-9B64-701F4B987413} = {F93BA110-01D0-4AD2-865F-8892C916DFD7}
 		{4739144E-0A71-4F9F-8F4D-215DECC22970} = {6BEBDCD2-1344-4D54-8093-E9B7E89F7DBD}
+		{E61A2100-66FF-42BE-9000-F9828F005AC4} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB8672B4-A3D6-4093-9412-B698EA6E81EF}
