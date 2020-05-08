@@ -5,7 +5,7 @@ namespace Hippologamus.Domain.Models
 {
     public class DetailLog
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string Level { get; set; }
         public DateTime TimeStamp { get; set; }
         public string Properties { get; set; }

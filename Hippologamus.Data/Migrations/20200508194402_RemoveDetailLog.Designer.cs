@@ -4,50 +4,22 @@ using Hippologamus.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hippologamus.Data.Migrations
 {
     [DbContext(typeof(HippologamusContext))]
-    partial class HippologamusContextModelSnapshot : ModelSnapshot
+    [Migration("20200508194402_RemoveDetailLog")]
+    partial class RemoveDetailLog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.3")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Hippologamus.Domain.Models.DetailLog", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Assembly")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Level")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LogEvent")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("MachineName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Properties")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("TimeStamp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DetailLogs");
-                });
 
             modelBuilder.Entity("Hippologamus.Domain.Models.DetailLogComment", b =>
                 {
@@ -63,8 +35,6 @@ namespace Hippologamus.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DetailLogId");
 
                     b.ToTable("DetailLogComments");
                 });
@@ -136,15 +106,6 @@ namespace Hippologamus.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("UsageLogs");
-                });
-
-            modelBuilder.Entity("Hippologamus.Domain.Models.DetailLogComment", b =>
-                {
-                    b.HasOne("Hippologamus.Domain.Models.DetailLog", null)
-                        .WithMany("DetailLogComments")
-                        .HasForeignKey("DetailLogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }
