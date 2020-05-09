@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Data", "Hippol
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.ConsoleApp", "Hippologamus.Console\Hippologamus.ConsoleApp.csproj", "{A3ACCD1E-E89B-46D5-9C46-C5782EE8FA9F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.API", "Hippologamus.API\Hippologamus.API.csproj", "{BB1BB26D-F715-49BA-B458-41AD1F83B457}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.API", "Hippologamus.API\Hippologamus.API.csproj", "{BB1BB26D-F715-49BA-B458-41AD1F83B457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.API.Service", "Hippologamus.API.Service\Hippologamus.API.Service.csproj", "{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{BB1BB26D-F715-49BA-B458-41AD1F83B457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB1BB26D-F715-49BA-B458-41AD1F83B457}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB1BB26D-F715-49BA-B458-41AD1F83B457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{27C22F1C-83F9-4BA6-A6E5-BEF8CD06D603} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 		{A3ACCD1E-E89B-46D5-9C46-C5782EE8FA9F} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 		{BB1BB26D-F715-49BA-B458-41AD1F83B457} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
+		{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB8672B4-A3D6-4093-9412-B698EA6E81EF}
