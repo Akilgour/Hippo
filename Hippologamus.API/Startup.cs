@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+using AutoMapper.Contrib.Autofac.DependencyInjection;
 using Hippologamus.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +34,19 @@ namespace Hippologamus.API
                 opt.UseSqlServer(Configuration.GetConnectionString("HippologamusContext"))
            .EnableSensitiveDataLogging()
         );
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            // Add any Autofac modules or registrations.
+            // This is called AFTER ConfigureServices so things you
+            // register here OVERRIDE things registered in ConfigureServices.
+            //
+            // You must have the call to `UseServiceProviderFactory(new AutofacServiceProviderFactory())`
+            // when building the host or this won't be called.
+
+            builder.RegisterModule(new Autofac.AutofacConfiguration());
+            builder.AddAutoMapper(typeof(Startup).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

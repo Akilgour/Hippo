@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Hippologamus.Data.Context;
 using Hippologamus.Domain.Models;
+using Hippologamus.API.Manager.Interface;
+using Hippologamus.DTO.DTO;
 
 namespace Hippologamus.API.Controllers
 {
@@ -15,96 +17,104 @@ namespace Hippologamus.API.Controllers
     public class DetailLogsController : ControllerBase
     {
         private readonly HippologamusContext _context;
+        private readonly IPerflogManager _perfLogManager;
 
-        public DetailLogsController(HippologamusContext context)
+        public DetailLogsController(IPerflogManager perfLogManager)
         {
-            _context = context;
+            _perfLogManager = perfLogManager ?? throw new ArgumentNullException(nameof(perfLogManager));
         }
-
+ 
         // GET: api/DetailLogs
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<DetailLog>>> GetDetailLogs()
+        public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> GetDetailLogs()
         {
-            return await _context.DetailLogs.ToListAsync();
+            return await _perfLogManager.GetAll();
         }
 
-        // GET: api/DetailLogs/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<DetailLog>> GetDetailLog(int id)
-        {
-            var detailLog = await _context.DetailLogs.FindAsync(id);
 
-            if (detailLog == null)
-            {
-                return NotFound();
-            }
+        //public async Task<ActionResult<IEnumerable<DetailLog>>> GetDetailLogs()
+        //{
+        //    return await _context.DetailLogs.ToListAsync();
+        //}
 
-            return detailLog;
-        }
 
-        // PUT: api/DetailLogs/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDetailLog(int id, DetailLog detailLog)
-        {
-            if (id != detailLog.Id)
-            {
-                return BadRequest();
-            }
+        //// GET: api/DetailLogs/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<DetailLog>> GetDetailLog(int id)
+        //{
+        //    var detailLog = await _context.DetailLogs.FindAsync(id);
 
-            _context.Entry(detailLog).State = EntityState.Modified;
+        //    if (detailLog == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DetailLogExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+        //    return detailLog;
+        //}
 
-            return NoContent();
-        }
+        //// PUT: api/DetailLogs/5
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> PutDetailLog(int id, DetailLog detailLog)
+        //{
+        //    if (id != detailLog.Id)
+        //    {
+        //        return BadRequest();
+        //    }
 
-        // POST: api/DetailLogs
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [HttpPost]
-        public async Task<ActionResult<DetailLog>> PostDetailLog(DetailLog detailLog)
-        {
-            _context.DetailLogs.Add(detailLog);
-            await _context.SaveChangesAsync();
+        //    _context.Entry(detailLog).State = EntityState.Modified;
 
-            return CreatedAtAction("GetDetailLog", new { id = detailLog.Id }, detailLog);
-        }
+        //    try
+        //    {
+        //        await _context.SaveChangesAsync();
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!DetailLogExists(id))
+        //        {
+        //            return NotFound();
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
 
-        // DELETE: api/DetailLogs/5
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<DetailLog>> DeleteDetailLog(int id)
-        {
-            var detailLog = await _context.DetailLogs.FindAsync(id);
-            if (detailLog == null)
-            {
-                return NotFound();
-            }
+        //    return NoContent();
+        //}
 
-            _context.DetailLogs.Remove(detailLog);
-            await _context.SaveChangesAsync();
+        //// POST: api/DetailLogs
+        //// To protect from overposting attacks, enable the specific properties you want to bind to, for
+        //// more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        //[HttpPost]
+        //public async Task<ActionResult<DetailLog>> PostDetailLog(DetailLog detailLog)
+        //{
+        //    _context.DetailLogs.Add(detailLog);
+        //    await _context.SaveChangesAsync();
 
-            return detailLog;
-        }
+        //    return CreatedAtAction("GetDetailLog", new { id = detailLog.Id }, detailLog);
+        //}
 
-        private bool DetailLogExists(int id)
-        {
-            return _context.DetailLogs.Any(e => e.Id == id);
-        }
+        //// DELETE: api/DetailLogs/5
+        //[HttpDelete("{id}")]
+        //public async Task<ActionResult<DetailLog>> DeleteDetailLog(int id)
+        //{
+        //    var detailLog = await _context.DetailLogs.FindAsync(id);
+        //    if (detailLog == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    _context.DetailLogs.Remove(detailLog);
+        //    await _context.SaveChangesAsync();
+
+        //    return detailLog;
+        //}
+
+        //private bool DetailLogExists(int id)
+        //{
+        //    return _context.DetailLogs.Any(e => e.Id == id);
+        //}
     }
 }
