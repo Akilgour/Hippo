@@ -33,6 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{0810C625-1CF
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.Data.Test", "Hippologamus.Data.Test\Hippologamus.Data.Test.csproj", "{E33CBD6E-15E7-4EE1-B25C-518BCED193DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.API.Service.Test", "Hippologamus.API.Service.Test\Hippologamus.API.Service.Test.csproj", "{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{E33CBD6E-15E7-4EE1-B25C-518BCED193DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E33CBD6E-15E7-4EE1-B25C-518BCED193DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E33CBD6E-15E7-4EE1-B25C-518BCED193DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{BB1BB26D-F715-49BA-B458-41AD1F83B457} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 		{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 		{E33CBD6E-15E7-4EE1-B25C-518BCED193DA} = {79908600-34B8-4AC1-802C-F0F418F8AC07}
+		{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751} = {79908600-34B8-4AC1-802C-F0F418F8AC07}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB8672B4-A3D6-4093-9412-B698EA6E81EF}
