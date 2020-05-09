@@ -5,11 +5,11 @@ namespace Hippologamus.Data.Context
 {
     public class HippologamusContext : DbContext
     {
-        //   public HippologamusContext(DbContextOptions<HippologamusContext> options)
-        //:  base(options)
-        //   {
-        //       ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
-        //   }
+        public HippologamusContext(DbContextOptions<HippologamusContext> options)
+            : base(options)
+        {
+            ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+        }
 
         public HippologamusContext()
         {
@@ -22,9 +22,9 @@ namespace Hippologamus.Data.Context
         public DbSet<UsageLog> UsageLogs { get; set; }
 
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = Logging");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = Logging");
+        //}
     }
 }
