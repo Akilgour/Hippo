@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hippo.Serilog\Hippo.Serilog.csproj" />
     <ProjectReference Include="..\Hippologamus.API.Service\Hippologamus.API.Service.csproj" />
     <ProjectReference Include="..\Hippologamus.Data\Hippologamus.Data.csproj" />
     <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.DTO.csproj" />

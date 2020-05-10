@@ -14,6 +14,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Hippo;
+using Hippo.Serilog.Filters;
+using Hippo.Serilog.Middleware;
 
 namespace Hippologamus.API
 {
@@ -32,8 +35,15 @@ namespace Hippologamus.API
             services.AddControllers();
             services.AddDbContext<HippologamusContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("HippologamusContext"))
-           .EnableSensitiveDataLogging()
-        );
+           .EnableSensitiveDataLogging());
+
+            //This add the Hippo Performance Tracker
+            services.AddMvc(options =>
+             {
+                 options.Filters.Add(new TrackPerformanceFilter());
+
+             });
+    
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -52,12 +62,11 @@ namespace Hippologamus.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
 
             app.UseHttpsRedirection();
+
+            //This add HIPPO exeption handling
+            app.UseApiExceptionHandler();
 
             app.UseRouting();
 

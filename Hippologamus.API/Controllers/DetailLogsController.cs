@@ -9,6 +9,7 @@ using Hippologamus.Data.Context;
 using Hippologamus.Domain.Models;
 using Hippologamus.API.Manager.Interface;
 using Hippologamus.DTO.DTO;
+using Hippo.Serilog.Attributes;
 
 namespace Hippologamus.API.Controllers
 {
@@ -26,6 +27,7 @@ namespace Hippologamus.API.Controllers
  
         // GET: api/DetailLogs
         [HttpGet]
+        [LogUsage("Get")]
         public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> GetDetailLogs()
         {
             return await _perfLogManager.GetAll();
