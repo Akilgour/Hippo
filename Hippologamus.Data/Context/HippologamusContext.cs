@@ -24,7 +24,10 @@ namespace Hippologamus.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = Logging");
+            if (optionsBuilder.IsConfigured == false)
+            {
+                optionsBuilder.UseSqlServer(@"Data Source = (localdb)\MSSQLLocalDB;Initial Catalog = Logging");
+            }
         }
     }
 }

@@ -35,9 +35,8 @@ namespace Hippologamus.Data.Test.Factorys
             //act
             await retyPolicy.ExecuteAsync(async () =>
              {
-                 await Task.Delay(1);
+                 await Task.Delay(1); // This is here so there is something to await 
                  i++;
-
              });
 
             //assert
