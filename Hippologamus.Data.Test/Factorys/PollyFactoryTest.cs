@@ -8,7 +8,7 @@ namespace Hippologamus.Data.Test.Factorys
     public class PollyFactoryTest
     {
         [Fact]
-        public async Task CreateAsyncRetryPolicy()
+        public async Task CreateAsyncRetryPolicy_Exception()
         {
             //arrange
             var retyPolicy = PollyFactory.CreateAsyncRetryPolicy();
@@ -23,6 +23,25 @@ namespace Hippologamus.Data.Test.Factorys
 
             //assert
             Assert.Equal("Run number 6", ex.Message);
+        }
+
+        [Fact]
+        public async Task CreateAsyncRetryPolicy_NoException()
+        {
+            //arrange
+            var retyPolicy = PollyFactory.CreateAsyncRetryPolicy();
+            int i = 0;
+
+            //act
+            await retyPolicy.ExecuteAsync(async () =>
+             {
+                 await Task.Delay(1);
+                 i++;
+
+             });
+
+            //assert
+            Assert.Equal(1, i);
         }
     }
 }
