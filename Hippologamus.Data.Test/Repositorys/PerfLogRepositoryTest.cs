@@ -24,7 +24,7 @@ namespace Hippologamus.Data.Test.Repositorys
             arrangeContext.SaveChanges();
 
             var context = new HippologamusContext(option);
-            var perfLogRepository = new PerfLogRepository(context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogRepository = new PerfLogRepository(context);
             //act
             var value = await perfLogRepository.GetAll();
             //assert
