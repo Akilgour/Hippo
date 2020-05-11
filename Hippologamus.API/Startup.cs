@@ -1,22 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Autofac;
 using AutoMapper.Contrib.Autofac.DependencyInjection;
+using Hippo.Serilog.Filters;
+using Hippo.Serilog.Middleware;
 using Hippologamus.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using Hippo;
-using Hippo.Serilog.Filters;
-using Hippo.Serilog.Middleware;
+using Microsoft.OpenApi.Models;
+using System;
+using System.IO;
+using System.Reflection;
 
 namespace Hippologamus.API
 {
@@ -41,9 +36,18 @@ namespace Hippologamus.API
             services.AddMvc(options =>
              {
                  options.Filters.Add(new TrackPerformanceFilter());
-
              });
-    
+
+            //Added Swagger
+            services.AddSwaggerGen(setUpAction =>
+            {
+                setUpAction.SwaggerDoc("HippologamusAPI", new OpenApiInfo { Title = "Hippologamus API", Version = "1" });
+
+                //Add comments, to get this to work you need to go into project properties, build tab, then select "XML Documentation file"
+                var xmlCommentFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCommentFullPath = Path.Combine(AppContext.BaseDirectory, xmlCommentFile);
+                setUpAction.IncludeXmlComments(xmlCommentFullPath);
+            });
         }
 
         public void ConfigureContainer(ContainerBuilder builder)
@@ -62,11 +66,17 @@ namespace Hippologamus.API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseHttpsRedirection();
 
             //This add HIPPO exeption handling
             app.UseApiExceptionHandler();
+
+            //Added Swagger
+            app.UseSwagger();
+            app.UseSwaggerUI(setupAction =>
+                {
+                    setupAction.SwaggerEndpoint("/swagger/HippologamusAPI/swagger.json", "Hippologamus API");
+                });
 
             app.UseRouting();
 

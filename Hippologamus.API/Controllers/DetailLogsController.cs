@@ -25,7 +25,10 @@ namespace Hippologamus.API.Controllers
             _perfLogManager = perfLogManager ?? throw new ArgumentNullException(nameof(perfLogManager));
         }
  
-        // GET: api/DetailLogs
+        /// <summary>
+        /// Gets all the perfomance logs in the database.        
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         [LogUsage("Get")]
         public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> GetDetailLogs()

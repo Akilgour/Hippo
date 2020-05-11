@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Hippologamus.API</name>
+    </assembly>
+    <members>
+        <member name="M:Hippologamus.API.Controllers.DetailLogsController.GetDetailLogs">
+            <summary>
+            Gets all the perfomance logs in the database.        
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
