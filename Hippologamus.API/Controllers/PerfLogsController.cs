@@ -15,12 +15,12 @@ namespace Hippologamus.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DetailLogsController : ControllerBase
+    public class PerfLogsController : ControllerBase
     {
         private readonly HippologamusContext _context;
         private readonly IPerflogManager _perfLogManager;
 
-        public DetailLogsController(IPerflogManager perfLogManager)
+        public PerfLogsController(IPerflogManager perfLogManager)
         {
             _perfLogManager = perfLogManager ?? throw new ArgumentNullException(nameof(perfLogManager));
         }
@@ -31,7 +31,7 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [LogUsage("Get")]
-        public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> GetDetailLogs()
+        public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get()
         {
             return await _perfLogManager.GetAll();
         }

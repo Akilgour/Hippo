@@ -4,7 +4,7 @@
         <name>Hippologamus.API</name>
     </assembly>
     <members>
-        <member name="M:Hippologamus.API.Controllers.DetailLogsController.GetDetailLogs">
+        <member name="M:Hippologamus.API.Controllers.PerfLogsController.Get">
             <summary>
             Gets all the perfomance logs in the database.        
             </summary>
