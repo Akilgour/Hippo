@@ -25,5 +25,15 @@ namespace Hippologamus.Data.Repositorys
             });
             return result;
         }
+
+        public async  Task<PerfLog> GetById(int perfLogId)
+        {
+            PerfLog result = null;
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                result = await _context.PerfLogs.FirstAsync(x => x.Id == perfLogId);
+            });
+            return result;
+        }
     }
 }

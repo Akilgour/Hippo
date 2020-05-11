@@ -6,8 +6,15 @@
     <members>
         <member name="M:Hippologamus.API.Controllers.PerfLogsController.Get">
             <summary>
-            Gets all the perfomance logs in the database.        
+            Gets all the perfomance logs
             </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Hippologamus.API.Controllers.PerfLogsController.GetById(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="perfLogId"></param>
             <returns></returns>
         </member>
     </members>

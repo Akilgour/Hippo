@@ -10,5 +10,6 @@ namespace Hippologamus.API.Service.Service.Interface
     public interface IPerfLogService
     {
         Task<List<PerfLog>> GetAll();
+        Task<PerfLog> GetById(int perfLogId);
     }
 }

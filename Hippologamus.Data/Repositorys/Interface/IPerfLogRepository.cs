@@ -7,5 +7,6 @@ namespace Hippologamus.Data.Repositorys.Interface
     public interface IPerfLogRepository
     {
         Task<List<PerfLog>> GetAll();
+        Task<PerfLog> GetById(int perfLogId);
     }
 }
