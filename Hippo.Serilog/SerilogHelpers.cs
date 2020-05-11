@@ -40,7 +40,7 @@ namespace Hippo.Serilog
                 .Filter.ByIncludingOnly(Matching.WithProperty("ElapsedMilliseconds"))
                 .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
-                    tableName: "PerfLog",
+                    tableName: "PerfLogs",
                     autoCreateSqlTable: true,
                     columnOptions: SqlPerfColumnOptions.Create()))
 
@@ -48,7 +48,7 @@ namespace Hippo.Serilog
                 .Filter.ByIncludingOnly(Matching.WithProperty("UsageName"))
                 .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
-                    tableName: "Usage",
+                    tableName: "UsageLogs",
                     autoCreateSqlTable: true,
                     columnOptions: SqlUsageColumnOptions.Create()))
 
@@ -57,7 +57,7 @@ namespace Hippo.Serilog
                  .Filter.ByExcluding(Matching.WithProperty("UsageName"))
                  .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
-                    tableName: "Detail",
+                    tableName: "DetailLogs",
                     autoCreateSqlTable: true,
                     columnOptions: SqlDetailColumnOptions.Create()));
         }
