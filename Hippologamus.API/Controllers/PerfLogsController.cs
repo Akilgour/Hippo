@@ -1,7 +1,7 @@
 ﻿using Hippo.Serilog.Attributes;
 using Hippologamus.API.Manager.Interface;
-using Hippologamus.Data.Context;
 using Hippologamus.DTO.DTO;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -32,15 +32,23 @@ namespace Hippologamus.API.Controllers
         }
 
         /// <summary>
-        /// Get details of 
+        /// Get Perof log by Id
         /// </summary>
-        /// <param name="perfLogId"> The id of the items you you want</param>
+        /// <param name="perfLogId">The Id of the item you want</param>
         /// <returns></returns>
         [HttpGet("{perfLogId}", Name = "GetById")]
         [LogUsage("GetById")]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<PerfLogDetails>> GetById(int perfLogId)
         {
-            return await _perfLogManager.GetById(perfLogId);
+            var perfLog = await _perfLogManager.GetById(perfLogId);
+            if (perfLog == null)
+            {
+                return NotFound();
+            }
+            return Ok(perfLog);
         }
     }
 }

@@ -12,9 +12,9 @@
         </member>
         <member name="M:Hippologamus.API.Controllers.PerfLogsController.GetById(System.Int32)">
             <summary>
-            
+            Get Perof log by Id
             </summary>
-            <param name="perfLogId"></param>
+            <param name="perfLogId">The Id of the item you want</param>
             <returns></returns>
         </member>
     </members>

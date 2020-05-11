@@ -31,7 +31,7 @@ namespace Hippologamus.Data.Repositorys
             PerfLog result = null;
             await _retryPolicy.ExecuteAsync(async () =>
             {
-                result = await _context.PerfLogs.FirstAsync(x => x.Id == perfLogId);
+                result = await _context.PerfLogs.FirstOrDefaultAsync(x => x.Id == perfLogId);
             });
             return result;
         }
