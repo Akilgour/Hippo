@@ -5,6 +5,8 @@ using Hippo.Serilog.Middleware;
 using Hippologamus.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +15,8 @@ using System;
 using System.IO;
 using System.Reflection;
 
+//For comments in Swagger
+[assembly: ApiConventionType(typeof(DefaultApiConventions))]
 namespace Hippologamus.API
 {
     public class Startup
@@ -35,6 +39,8 @@ namespace Hippologamus.API
             //This add the Hippo Performance Tracker
             services.AddMvc(options =>
              {
+
+                 //To track Performance with HIPPO
                  options.Filters.Add(new TrackPerformanceFilter());
              });
 

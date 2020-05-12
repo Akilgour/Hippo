@@ -26,7 +26,6 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [LogUsage("Get")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get()
         {
             var perfLogs = await _perfLogManager.GetAll();
@@ -40,9 +39,6 @@ namespace Hippologamus.API.Controllers
         /// <param name="perfLogId">The Id of the item you want</param>
         /// <returns></returns>
         [HttpGet("{perfLogId}", Name = "GetById")]
-        [ProducesResponseType(StatusCodes.Status200OK)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesDefaultResponseType]
         public async Task<ActionResult<PerfLogDetails>> GetById(int perfLogId)
         {
             var perfLog = await _perfLogManager.GetById(perfLogId);
