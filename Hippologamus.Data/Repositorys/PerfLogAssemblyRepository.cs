@@ -22,8 +22,9 @@ namespace Hippologamus.Data.Repositorys
             await _retryPolicy.ExecuteAsync(async () =>
             {
                 result = await _context.PerfLogs
-                                   .Select(x => new PerfLogAssembly() { Assembly = x.Assembly })
-                                   .ToListAsync();
+                  .Select(c => c.Assembly).Distinct()
+                  .Select(m => new PerfLogAssembly { Assembly = m }).OrderBy(x => x.Assembly)
+                  .ToListAsync();
             });
             return result;
         }
