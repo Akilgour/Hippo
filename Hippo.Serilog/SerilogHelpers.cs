@@ -38,6 +38,7 @@ namespace Hippo.Serilog
 
             .WriteTo.Logger(lc => lc
                 .Filter.ByIncludingOnly(Matching.WithProperty("ElapsedMilliseconds"))
+                .Filter.ByIncludingOnly(Matching.WithProperty("PerfItem"))
                 .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
                     tableName: "PerfLogs",

@@ -9,19 +9,17 @@ namespace Hippo.Serilog.Builders
         public static ColumnOptions Create()
         {
             var options = new ColumnOptions();
-            options.Store.Remove(StandardColumn.Message);
             options.Store.Remove(StandardColumn.MessageTemplate);
             options.Store.Remove(StandardColumn.Exception);
-            options.Store.Add(StandardColumn.LogEvent);
-            options.LogEvent.ExcludeStandardColumns = true;
-            options.LogEvent.ExcludeAdditionalProperties = false;
 
             options.AdditionalColumns = new Collection<SqlColumn>
             {
                 new SqlColumn
-                { ColumnName = "PerfItem", AllowNull = false,
+                { 
+                    ColumnName = "PerfItem", AllowNull = false,
                     DataType = SqlDbType.NVarChar, DataLength = 100,
-                    NonClusteredIndex = true },
+                    NonClusteredIndex = true
+                },
                 new SqlColumn
                 {
                     ColumnName = "ElapsedMilliseconds", AllowNull = false,

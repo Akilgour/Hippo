@@ -6,7 +6,7 @@
     <members>
         <member name="M:Hippologamus.API.Controllers.DetailLogsController.Get">
             <summary>
-            Gets all the perfomance logs
+            Gets all the details logs
             </summary>
             <returns></returns>
         </member>
