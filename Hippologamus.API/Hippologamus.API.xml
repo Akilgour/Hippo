@@ -10,6 +10,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Hippologamus.API.Controllers.PerfLogAssemblyController.Get">
+            <summary>
+            Gets all the assemblys perfomance logs
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Hippologamus.API.Controllers.PerfLogsController.Get">
             <summary>
             Gets all the perfomance logs
