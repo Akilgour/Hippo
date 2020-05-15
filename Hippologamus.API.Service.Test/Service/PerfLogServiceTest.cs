@@ -1,6 +1,7 @@
 ﻿using Hippologamus.API.Service.Service;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
+using Hippologamus.DTO.DTO;
 using Moq;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,10 +25,10 @@ namespace Hippologamus.API.Service.Test.Service
                 new PerfLog(),
                 new PerfLog()
             };
-            repository.Setup(x => x.GetAll()).Returns(Task.FromResult(perfLogs));
+            repository.Setup(x => x.GetAll(It.IsAny<PerfLogDisplaySearch>())).Returns(Task.FromResult(perfLogs));
             var perfLogService = new PerfLogService(repository.Object);
             //act
-            var actual = await perfLogService.GetAll();
+            var actual = await perfLogService.GetAll(new PerfLogDisplaySearch());
             //assert
             Assert.Equal(5, actual.Count());
         }

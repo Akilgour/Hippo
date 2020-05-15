@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hippologamus.Data\Hippologamus.Data.csproj" />
+    <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.DTO.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿using Hippologamus.API.Service.Service.Interface;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
+using Hippologamus.DTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,9 +19,9 @@ namespace Hippologamus.API.Service.Service
             _perfLogRepository = perfLogRepository;
         }
 
-        public async Task<List<PerfLog>> GetAll()
+        public async Task<List<PerfLog>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
         {
-            return await _perfLogRepository.GetAll();
+            return await _perfLogRepository.GetAll(perfLogDisplaySearch);
         }
 
         public async Task<PerfLog> GetById(int perfLogId)

@@ -1,10 +1,12 @@
 ﻿using Hippologamus.Data.Context;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
+using Hippologamus.DTO.DTO;
 using Microsoft.EntityFrameworkCore;
 using Polly;
 using Polly.Retry;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hippologamus.Data.Repositorys
@@ -16,12 +18,33 @@ namespace Hippologamus.Data.Repositorys
         {
         }
 
-        public async Task<List<PerfLog>> GetAll()
+        public async Task<List<PerfLog>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
         {
+            var query = _context.PerfLogs.AsQueryable();
             List<PerfLog> result = null;
+
+            if (!string.IsNullOrEmpty(perfLogDisplaySearch.Assembly))
+            {
+                query = query.Where(x => x.Assembly == perfLogDisplaySearch.Assembly);
+            }
+            if (!string.IsNullOrEmpty(perfLogDisplaySearch.PerfItem))
+            {
+                query = query.Where(x => x.PerfItem == perfLogDisplaySearch.PerfItem);
+            }
+
+            if (perfLogDisplaySearch.DateFrom != null)
+            {
+                query = query.Where(x => x.TimeStamp >= perfLogDisplaySearch.DateFrom);
+            }
+
+            if (perfLogDisplaySearch.DateTo != null)
+            {
+                query = query.Where(x => x.TimeStamp <= perfLogDisplaySearch.DateTo);
+            }
+
             await _retryPolicy.ExecuteAsync(async () =>
             {
-                result = await _context.PerfLogs.ToListAsync();
+                result = await query.ToListAsync();
             });
             return result;
         }

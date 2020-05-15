@@ -7,7 +7,7 @@ namespace Hippologamus.API.Manager.Interface
 {
     public interface IPerflogManager
     {
-        Task<List<PerfLogDisplay>> GetAll();
+        Task<List<PerfLogDisplay>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch);
         Task<PerfLogDetails> GetById(int perfLogId);
     }
 }
