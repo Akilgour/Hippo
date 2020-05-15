@@ -16,6 +16,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Hippologamus.API.Controllers.PerfLogPerformanceItemController.Get(System.String)">
+            <summary>
+            Gets all the perfomance logs performanceItem
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Hippologamus.API.Controllers.PerfLogsController.Get">
             <summary>
             Gets all the perfomance logs
