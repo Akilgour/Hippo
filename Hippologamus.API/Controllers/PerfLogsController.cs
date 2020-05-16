@@ -1,7 +1,7 @@
 ﻿using Hippo.Serilog.Attributes;
+using Hippologamus.API.Factorys;
 using Hippologamus.API.Manager.Interface;
 using Hippologamus.DTO.DTO;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,7 +25,7 @@ namespace Hippologamus.API.Controllers
         /// Gets all the perfomance logs
         /// </summary>
         /// <returns></returns>
-        [HttpGet]
+        [HttpGet(Name = "GetPerfLogs")]
         [LogUsage("Get")]
         public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
         {
@@ -39,9 +39,16 @@ namespace Hippologamus.API.Controllers
                 totalPages = perfLogs.TotalPages
             };
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
-            return Ok(perfLogs);
-        }
+            var createLinksForPerfLogs = new CreateLinksForPerfLogs();
+            var links = createLinksForPerfLogs.Create(perfLogDisplaySearch, perfLogs.HasNext, perfLogs.HasPrevious);
+            var perfLogsToReturn = new
+            {
+                value = perfLogs,
+                links
+            };
 
+            return Ok(perfLogsToReturn);
+        }
 
         /// <summary>
         /// Get Perof log by Id
