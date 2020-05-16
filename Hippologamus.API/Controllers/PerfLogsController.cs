@@ -1,5 +1,4 @@
 ﻿using Hippo.Serilog.Attributes;
-using Hippologamus.API.Factorys;
 using Hippologamus.API.Manager.Interface;
 using Hippologamus.DTO.DTO;
 using Microsoft.AspNetCore.Mvc;
@@ -39,8 +38,7 @@ namespace Hippologamus.API.Controllers
                 totalPages = perfLogs.TotalPages
             };
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
-            var createLinksForPerfLogs = new CreateLinksForPerfLogs();
-            var links = createLinksForPerfLogs.Create(perfLogDisplaySearch, perfLogs.HasNext, perfLogs.HasPrevious);
+            var links = CreateGetLinks(perfLogDisplaySearch, perfLogs.HasNext, perfLogs.HasPrevious);
             var perfLogsToReturn = new
             {
                 value = perfLogs,
@@ -49,6 +47,40 @@ namespace Hippologamus.API.Controllers
 
             return Ok(perfLogsToReturn);
         }
+
+
+        private IEnumerable<LinkDto> CreateGetLinks(PerfLogDisplaySearch perfLogDisplaySearch, bool hasNext, bool hasPrevious)
+        {
+            var links = new List<LinkDto>
+            {
+                new LinkDto(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber), "self", "GET")
+            };
+
+            if (hasNext)
+            {
+                links.Add(new LinkDto(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber + 1), "nextPage", "GET"));
+            }
+
+            if (hasPrevious)
+            {
+                links.Add(new LinkDto(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber - 1), "previousPage", "GET"));
+            }
+
+            return links;
+        }
+
+        private string CreateGetLink(PerfLogDisplaySearch perfLogDisplaySearch, int pageNumber)
+        {
+            return Url.Link("GetPerfLogs",
+                new
+                {
+                    pageNumber = pageNumber,
+                    pageSize = perfLogDisplaySearch.PageSize,
+                    assembly = perfLogDisplaySearch.Assembly,
+                    perfItem = perfLogDisplaySearch.PerfItem
+                });
+        }
+
 
         /// <summary>
         /// Get Perof log by Id
