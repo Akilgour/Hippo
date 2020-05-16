@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
- 
 
 namespace Hippologamus.API.Controllers
 {
@@ -27,7 +26,7 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [LogUsage("Get")]
-        public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get([System.Web.Http.FromUri]  PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
         {
             var perfLogs = await _perfLogManager.GetAll(perfLogDisplaySearch);
             return Ok(perfLogs);
