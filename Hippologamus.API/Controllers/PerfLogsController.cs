@@ -72,12 +72,12 @@ namespace Hippologamus.API.Controllers
         private string CreateGetLink(PerfLogDisplaySearch perfLogDisplaySearch, int pageNumber)
         {
             return Url.Link("GetPerfLogs",
-                new
+                new PerfLogDisplaySearch()
                 {
-                    pageNumber = pageNumber,
-                    pageSize = perfLogDisplaySearch.PageSize,
-                    assembly = perfLogDisplaySearch.Assembly,
-                    perfItem = perfLogDisplaySearch.PerfItem
+                    PageNumber = pageNumber,
+                    PageSize = perfLogDisplaySearch.PageSize,
+                    Assembly = perfLogDisplaySearch.Assembly,
+                    PerfItem = perfLogDisplaySearch.PerfItem
                 });
         }
 
