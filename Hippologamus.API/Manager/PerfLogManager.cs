@@ -2,6 +2,7 @@
 using Hippologamus.API.Manager.Interface;
 using Hippologamus.API.Service.Service.Interface;
 using Hippologamus.DTO.DTO;
+using Hippologamus.DTO.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -17,9 +18,12 @@ namespace Hippologamus.API.Manager
             _perfLogService = perfLogService;
         }
 
-        public async Task<List<PerfLogDisplay>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<PagedList<PerfLogDisplay>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
         {
-            return _mapper.Map<List<PerfLogDisplay>>(await _perfLogService.GetAll(perfLogDisplaySearch));
+            var perfLogFromRepo = await _perfLogService.GetAll(perfLogDisplaySearch);
+            var teams = _mapper.Map<List<PerfLogDisplay>>(perfLogFromRepo);
+            var result = PagedList<PerfLogDisplay>.Create(teams, perfLogDisplaySearch.PageNumber, perfLogDisplaySearch.PageSize);
+            return result;
         }
 
         public async Task<PerfLogDetails> GetById(int perfLogId)

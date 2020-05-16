@@ -1,13 +1,13 @@
 ﻿using Hippologamus.DTO.DTO;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+using Hippologamus.DTO.Helpers;
 using System.Threading.Tasks;
 
 namespace Hippologamus.API.Manager.Interface
 {
     public interface IPerflogManager
     {
-        Task<List<PerfLogDisplay>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch);
+        Task<PagedList<PerfLogDisplay>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch);
+
         Task<PerfLogDetails> GetById(int perfLogId);
     }
 }

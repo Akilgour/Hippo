@@ -2,7 +2,7 @@
 
 namespace Hippologamus.DTO.DTO
 {
-    public class PerfLogDisplaySearch
+    public class PerfLogDisplaySearch : BaseDisplaySearch
     {
         /// <summary>
         /// The Assembly that will get returned, this is not a wild search it must be a exact match.

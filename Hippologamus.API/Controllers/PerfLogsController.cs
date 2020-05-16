@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace Hippologamus.API.Controllers
@@ -29,6 +30,15 @@ namespace Hippologamus.API.Controllers
         public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
         {
             var perfLogs = await _perfLogManager.GetAll(perfLogDisplaySearch);
+
+            var paginationMetadata = new
+            {
+                totalCount = perfLogs.TotalCount,
+                pageSize = perfLogs.PageSize,
+                currentPage = perfLogs.CurrentPage,
+                totalPages = perfLogs.TotalPages
+            };
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
             return Ok(perfLogs);
         }
 
