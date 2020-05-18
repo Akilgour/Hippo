@@ -9,6 +9,9 @@ namespace Hippologamus.API.Profiles
         public DetailLogProfile()
         {
             CreateMap<DetailLog, DetailLogDisplay>();
+
+            CreateMap<DetailLog, ErrorLogDisplay>()
+                 .ForMember(dest => dest.ExceptionMessage, opt => opt.MapFrom(src => src.Exception));
         }
     }
 }
