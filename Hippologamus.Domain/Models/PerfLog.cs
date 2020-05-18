@@ -15,5 +15,6 @@ namespace Hippologamus.Domain.Models
         public string ActionName { get; set; }
         public string MachineName { get; set; }
         public string Assembly { get; set; }
+        public string RequestPath { get; set; }
     }
 }

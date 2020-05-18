@@ -4,14 +4,16 @@ using Hippologamus.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hippologamus.Data.Migrations
 {
     [DbContext(typeof(HippologamusContext))]
-    partial class HippologamusContextModelSnapshot : ModelSnapshot
+    [Migration("20200518142025_PerfLog_AddRequestPath")]
+    partial class PerfLog_AddRequestPath
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

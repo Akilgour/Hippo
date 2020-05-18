@@ -36,6 +36,10 @@ namespace Hippo.Serilog.Builders
                 new SqlColumn
                 {
                     ColumnName = "Assembly", AllowNull = false
+                },
+                new SqlColumn
+                {
+                    ColumnName = "RequestPath", AllowNull = false
                 }
             };
 
