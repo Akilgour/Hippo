@@ -14,5 +14,7 @@ namespace Hippologamus.Domain.Models
         public string MachineName { get; set; }
         public string Assembly { get; set; }
         public List<DetailLogComment> DetailLogComments { get; set; }
+        public string Exception { get; set; }
+        public string RequestPath { get; set; }
     }
 }

@@ -8,9 +8,7 @@ namespace Hippo.Serilog.Builders
         public static ColumnOptions Create()
         {
             var options = new ColumnOptions();
-            options.Store.Remove(StandardColumn.Message);
             options.Store.Remove(StandardColumn.MessageTemplate);
-            options.Store.Remove(StandardColumn.Exception);
             options.Store.Add(StandardColumn.LogEvent);
             options.LogEvent.ExcludeStandardColumns = true;
             options.LogEvent.ExcludeAdditionalProperties = false;
@@ -24,6 +22,10 @@ namespace Hippo.Serilog.Builders
                 new SqlColumn
                 {
                     ColumnName = "Assembly", AllowNull = false
+                },
+                 new SqlColumn
+                {
+                    ColumnName = "RequestPath", AllowNull = false
                 }
             };
 
