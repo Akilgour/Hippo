@@ -56,6 +56,7 @@ namespace Hippo.Serilog
             .WriteTo.Logger(lc => lc
                  .Filter.ByExcluding(Matching.WithProperty("ElapsedMilliseconds"))
                  .Filter.ByExcluding(Matching.WithProperty("UsageName"))
+                .Filter.ByIncludingOnly(Matching.WithProperty("RequestPath"))
                  .WriteTo.MSSqlServer(
                     connectionString: @"Server=(localdb)\MSSQLLocalDB;Database=Logging;Trusted_Connection=True;",
                     tableName: "DetailLogs",
