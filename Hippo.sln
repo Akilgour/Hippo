@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.ConsoleApp", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.API", "Hippologamus.API\Hippologamus.API.csproj", "{BB1BB26D-F715-49BA-B458-41AD1F83B457}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.API.Service", "Hippologamus.API.Service\Hippologamus.API.Service.csproj", "{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.API.Service", "Hippologamus.API.Service\Hippologamus.API.Service.csproj", "{4A3F7569-FEB9-408E-8A5C-2F1D78A5AD24}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{1CA14E82-D23F-425A-AEF6-434D61BDDB7D}"
 EndProject
@@ -31,13 +31,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{79908600-3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "doc", "doc", "{0810C625-1CFF-465D-AD86-2FD190127FFB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.Data.Test", "Hippologamus.Data.Test\Hippologamus.Data.Test.csproj", "{E33CBD6E-15E7-4EE1-B25C-518BCED193DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Data.Test", "Hippologamus.Data.Test\Hippologamus.Data.Test.csproj", "{E33CBD6E-15E7-4EE1-B25C-518BCED193DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.API.Service.Test", "Hippologamus.API.Service.Test\Hippologamus.API.Service.Test.csproj", "{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.API.Service.Test", "Hippologamus.API.Service.Test\Hippologamus.API.Service.Test.csproj", "{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hippologamus", "Hippologamus", "{3DE237A1-9CD0-47C2-9D73-ECC120F43EBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.DTO", "Hippologamus.DTO\Hippologamus.DTO.csproj", "{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.DTO", "Hippologamus.DTO\Hippologamus.DTO.csproj", "{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.MVCSignalR", "Demo.MVCSignalR\Demo.MVCSignalR.csproj", "{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +91,10 @@ Global
 		{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -109,6 +115,7 @@ Global
 		{B0FDC35E-EC54-41B2-90C8-A4ACCA89E751} = {3DE237A1-9CD0-47C2-9D73-ECC120F43EBB}
 		{3DE237A1-9CD0-47C2-9D73-ECC120F43EBB} = {79908600-34B8-4AC1-802C-F0F418F8AC07}
 		{3FE28C3A-33C4-48E5-83DF-A3066A6889A2} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
+		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E} = {F93BA110-01D0-4AD2-865F-8892C916DFD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB8672B4-A3D6-4093-9412-B698EA6E81EF}
