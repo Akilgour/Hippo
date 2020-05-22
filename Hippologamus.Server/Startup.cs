@@ -9,7 +9,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Hippologamus.Server.Data;
+using Hippologamus.Server.Services.Interface;
+using Hippologamus.Server.Services;
 
 namespace Hippologamus.Server
 {
@@ -28,7 +29,11 @@ namespace Hippologamus.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
+          
+            services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:5001/");
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
