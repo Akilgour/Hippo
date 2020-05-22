@@ -39,7 +39,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hippologamus", "Hippologamu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.DTO", "Hippologamus.DTO\Hippologamus.DTO.csproj", "{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo.MVCSignalR", "Demo.MVCSignalR\Demo.MVCSignalR.csproj", "{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.MVCSignalR", "Demo.MVCSignalR\Demo.MVCSignalR.csproj", "{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.Server", "Hippologamus.Server\Hippologamus.Server.csproj", "{4539EEDB-0444-4285-BA82-B2EFD726B1EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -95,6 +97,10 @@ Global
 		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4539EEDB-0444-4285-BA82-B2EFD726B1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4539EEDB-0444-4285-BA82-B2EFD726B1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4539EEDB-0444-4285-BA82-B2EFD726B1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4539EEDB-0444-4285-BA82-B2EFD726B1EB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -116,6 +122,7 @@ Global
 		{3DE237A1-9CD0-47C2-9D73-ECC120F43EBB} = {79908600-34B8-4AC1-802C-F0F418F8AC07}
 		{3FE28C3A-33C4-48E5-83DF-A3066A6889A2} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 		{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E} = {F93BA110-01D0-4AD2-865F-8892C916DFD7}
+		{4539EEDB-0444-4285-BA82-B2EFD726B1EB} = {126C25B1-C102-46FD-AC9E-79E46D8F9F8E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB8672B4-A3D6-4093-9412-B698EA6E81EF}
