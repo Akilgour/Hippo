@@ -1,5 +1,20 @@
 ﻿@inherits PerfLogAssemblyRowBase
 
 <tr>
-    <td>@PerssssfLogAssembly.Assembly</td>
+    <td>@PerfLogAssembly.Assembly</td>
+
+    <td>
+        <button class="btn btn-primary" @onclick="ToggleShowRequestPath">
+            <i class="far fa-arrow-alt-circle-down"></i>
+        </button>
+    </td>
 </tr>
+
+@if (PerfLogAssembly.ShowRequestPath)
+{
+    <tr>
+        <td colspan="2">
+            <PerfLogsRequestPathSelector PerfLogAssembly="PerfLogAssembly" OnRequestPathToggle="RequestPathToggle"></PerfLogsRequestPathSelector>
+        </td>
+    </tr>
+}

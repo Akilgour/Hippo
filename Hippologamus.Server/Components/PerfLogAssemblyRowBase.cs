@@ -5,9 +5,17 @@ namespace Hippologamus.Server.Components
 {
     public class PerfLogAssemblyRowBase : ComponentBase
     {
-        private PerfLogAssemblyDisplay perfLogAssemblyDisplay;
-
         [Parameter]
-        public PerfLogAssemblyDisplay PerssssfLogAssembly { get; set; }
+        public PerfLogAssemblyDisplay PerfLogAssembly { get; set; }
+
+        public void RequestPathToggle(bool requestPath)
+        {
+            PerfLogAssembly.HasRequestPath = requestPath;
+        }
+
+      public void  ToggleShowRequestPath()
+        {
+            PerfLogAssembly.ShowRequestPath = !PerfLogAssembly.ShowRequestPath;
+        }
     }
 }
