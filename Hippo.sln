@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.DTO", "Hippolo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.MVCSignalR", "Demo.MVCSignalR\Demo.MVCSignalR.csproj", "{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.Server", "Hippologamus.Server\Hippologamus.Server.csproj", "{4539EEDB-0444-4285-BA82-B2EFD726B1EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Server", "Hippologamus.Server\Hippologamus.Server.csproj", "{4539EEDB-0444-4285-BA82-B2EFD726B1EB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

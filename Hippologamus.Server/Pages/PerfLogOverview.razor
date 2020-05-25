@@ -1,5 +1,6 @@
 ﻿@page "/perflogoverview"
 @inherits PerfLogOverviewBase
+@using Hippologamus.Server.Components
 
 <h3>PerfLogOverview</h3>
 
@@ -18,10 +19,9 @@ else
         <tbody>
             @foreach (var perfLogAssembly in PerfLogAssemblyDisplays)
             {
-                <tr>
-                    <td>@perfLogAssembly.Assembly</td>
-                </tr>
+                <PerfLogAssemblyRow @key="perfLogAssembly" PerssssfLogAssembly="perfLogAssembly"></PerfLogAssemblyRow>
             }
         </tbody>
     </table>
+
 }
