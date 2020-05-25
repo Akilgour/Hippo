@@ -22,6 +22,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:Hippologamus.API.Controllers.PerfLogRequestPathController.GetByAssembly(System.String)">
+            <summary>
+            Gets all the perfomance logs performanceItem for a assembly 
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Hippologamus.API.Controllers.PerfLogsController.Get(Hippologamus.DTO.DTO.PerfLogDisplaySearch)">
             <summary>
             Gets all the perfomance logs
