@@ -3,3 +3,33 @@
 
 <h3>PerfLogList</h3>
 
+@if (PerfLogs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>TimeStamp</th>
+                <th>PerfItem</th>
+                <th>ElapsedMilliseconds</th>
+                <th>Message</th>
+                <th>MachineName</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in PerfLogs)
+            {
+                <tr>
+                    <td>@item.TimeStamp</td>
+                    <td>@item.PerfItem</td>
+                    <td>@item.ElapsedMilliseconds</td>
+                    <td>@item.Message</td>
+                    <td>@item.MachineName</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

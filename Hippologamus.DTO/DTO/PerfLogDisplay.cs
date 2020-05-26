@@ -18,5 +18,6 @@ namespace Hippologamus.DTO.DTO
         public string ActionName { get; set; }
         public string MachineName { get; set; }
         public string Assembly { get; set; }
+        public string Message { get; set; }
     }
 }
