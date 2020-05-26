@@ -26,30 +26,26 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet(Name = "GetPerfLogs")]
         [LogUsage("Get")]
-        public async Task<ActionResult<IEnumerable<PerfLogDisplay>>> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<ActionResult> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
         {
             //PUT THIS BACK IN
-            //var perfLogs = await _perfLogManager.GetAll(perfLogDisplaySearch);
-
-            //var paginationMetadata = new
-            //{
-            //    totalCount = perfLogs.TotalCount,
-            //    pageSize = perfLogs.PageSize,
-            //    currentPage = perfLogs.CurrentPage,
-            //    totalPages = perfLogs.TotalPages
-            //};
-            //Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
-            //var links = CreateGetLinks(perfLogDisplaySearch, perfLogs.HasNext, perfLogs.HasPrevious);
-            //var perfLogsToReturn = new PerfLogDisplayDTO()
-            //{
-            //    Value = perfLogs,
-            //    Links = links
-            //};
-
-            //return Ok(perfLogsToReturn);
-
             var perfLogs = await _perfLogManager.GetAll(perfLogDisplaySearch);
-            return Ok(perfLogs);
+
+            var paginationMetadata = new
+            {
+                totalCount = perfLogs.TotalCount,
+                pageSize = perfLogs.PageSize,
+                currentPage = perfLogs.CurrentPage,
+                totalPages = perfLogs.TotalPages
+            };
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
+            var links = CreateGetLinks(perfLogDisplaySearch, perfLogs.HasNext, perfLogs.HasPrevious);
+            var perfLogsToReturn =  new 
+            {
+                Value = perfLogs,
+                Links = links
+            };
+            return Ok(perfLogsToReturn);
         }
 
 

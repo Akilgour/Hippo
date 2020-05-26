@@ -29,9 +29,7 @@ namespace Hippologamus.Server.Pages
                 RequestPath = RequestPath
             };
 
-            PerfLogs = (await PerfLogDisplayService.PerfLogDisplaySearch(foo)).ToList();
-
-
+            PerfLogs = (await PerfLogDisplayService.PerfLogDisplaySearch(foo)).Value.ToList();
         }
     }
 }
