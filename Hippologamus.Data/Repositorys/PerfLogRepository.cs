@@ -31,7 +31,10 @@ namespace Hippologamus.Data.Repositorys
             {
                 query = query.Where(x => x.PerfItem == perfLogDisplaySearch.PerfItem);
             }
-
+            if (!string.IsNullOrEmpty(perfLogDisplaySearch.RequestPath))
+            {
+                query = query.Where(x => x.RequestPath == perfLogDisplaySearch.RequestPath);
+            }
             if (perfLogDisplaySearch.DateFrom != null)
             {
                 query = query.Where(x => x.TimeStamp >= perfLogDisplaySearch.DateFrom);

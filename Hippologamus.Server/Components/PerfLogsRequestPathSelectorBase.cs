@@ -21,10 +21,14 @@ namespace Hippologamus.Server.Components
 
         protected async override Task OnInitializedAsync()
         {
-            //  RequestPaths = await PerfLogRequestPathService.GetPerfLogRequestPaths(PerfLogAssembly.Assembly);
-            var foo  = await PerfLogRequestPathService.GetPerfLogRequestPaths(PerfLogAssembly.Assembly);
-            RequestPaths = foo;
-          //  PerfLogAssembly.HasRequestPath = true;
+            var collection = await PerfLogRequestPathService.GetPerfLogRequestPaths(PerfLogAssembly.Assembly);
+
+            //TODO take this out and replace with automapper
+            foreach (var item in collection)
+            {
+                item.RequestPathLink = string.IsNullOrEmpty(item.RequestPath) ? "":  item.RequestPath.Replace("/", "%");
+            }
+            RequestPaths = collection;
         }
     }
 }

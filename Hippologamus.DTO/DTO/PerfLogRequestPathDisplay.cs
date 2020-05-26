@@ -4,5 +4,6 @@
     {
         public string Assembly { get; set; }
         public string RequestPath { get; set; }
+        public string RequestPathLink { get; set; }
     }
 }
