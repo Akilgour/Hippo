@@ -28,7 +28,8 @@ namespace Hippologamus.API.Controllers
         [LogUsage("Get")]
         public async Task<ActionResult> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
         {
-            //PUT THIS BACK IN
+            perfLogDisplaySearch.RequestPath = perfLogDisplaySearch.RequestPath.Replace("%", "/");
+
             var perfLogs = await _perfLogManager.GetAll(perfLogDisplaySearch);
 
             var paginationMetadata = new
