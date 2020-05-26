@@ -28,7 +28,7 @@ namespace Hippologamus.Server.Services
             var result = await _httpClient.GetAsync($"api/PerfLogs?Assembly=Hippologamus.API&RequestPath=%2Fapi%2FPerfLogAssembly");
 
 
-            var pagination = result.Headers.GetValues("X-Pagination").First();
+            var pagination = result.Headers.GetValues("X-Pagination").First(); 
             
 
             var rootPaginationHeader =   JsonSerializer.Deserialize<RootPaginationHeader>
@@ -38,7 +38,7 @@ namespace Hippologamus.Server.Services
             var bar = await JsonSerializer.DeserializeAsync<PerfLogDisplayRoot>
                             (await result.Content.ReadAsStreamAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
-
+            bar.PaginationHeader = rootPaginationHeader;
             return bar;
         }
     }
