@@ -27,12 +27,12 @@ namespace Hippologamus.Server.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            var foo = new PerfLogCollectionSearch()
+            var search = new PerfLogCollectionSearch()
             {
                 Assembly = Assembly,
                 RequestPath = RequestPath
             };
-            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(foo)));
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
         }
 
         public async Task NextPage()
@@ -46,5 +46,17 @@ namespace Hippologamus.Server.Pages
             var link = PerfLogPagedList.Links.First(x => x.Rel == "previousPage").Href;
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.GetByLink(link)));
         }
+
+        public async Task LastPage()
+        {
+            var search = new PerfLogCollectionSearch()
+            {
+                Assembly = Assembly,
+                RequestPath = RequestPath,
+                PageNumber = PerfLogPagedList.PaginationTotalPages
+            };
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
+        }
+
     }
 }
