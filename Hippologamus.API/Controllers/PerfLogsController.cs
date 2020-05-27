@@ -28,7 +28,7 @@ namespace Hippologamus.API.Controllers
         [LogUsage("Get")]
         public async Task<ActionResult> Get([FromQuery]  PerfLogCollectionSearch perfLogDisplaySearch)
         {
-            perfLogDisplaySearch.RequestPath = perfLogDisplaySearch.RequestPath.Replace("%", "/");
+            perfLogDisplaySearch.RequestPath = string.IsNullOrEmpty(perfLogDisplaySearch.RequestPath) ? "" : perfLogDisplaySearch.RequestPath.Replace("%", "/");
 
             var perfLogs = await _perfLogManager.GetAll(perfLogDisplaySearch);
 
@@ -78,7 +78,8 @@ namespace Hippologamus.API.Controllers
                     PageNumber = pageNumber,
                     PageSize = perfLogDisplaySearch.PageSize,
                     Assembly = perfLogDisplaySearch.Assembly,
-                    PerfItem = perfLogDisplaySearch.PerfItem
+                    PerfItem = perfLogDisplaySearch.PerfItem,
+                    RequestPath = perfLogDisplaySearch.RequestPath
                 });
         }
 
