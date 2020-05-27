@@ -47,6 +47,16 @@ namespace Hippologamus.Server.Pages
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.GetByLink(link)));
         }
 
+        public async Task FirstPage()
+        {
+            var search = new PerfLogCollectionSearch()
+            {
+                Assembly = Assembly,
+                RequestPath = RequestPath,
+            };
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
+        }
+
         public async Task LastPage()
         {
             var search = new PerfLogCollectionSearch()
