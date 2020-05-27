@@ -11,13 +11,10 @@ namespace Hippologamus.Server.Factorys
 
         public static string Create(object obj)
         {
-            var step1 = JsonConvert.SerializeObject(obj);
-
-            var step2 = JsonConvert.DeserializeObject<IDictionary<string, string>>(step1);
-
-            var step3 = step2.Select(x => HttpUtility.UrlEncode(x.Key) + "=" + HttpUtility.UrlEncode(x.Value));
-
-            var result = string.Join("&", step3);
+            var jsonString = JsonConvert.SerializeObject(obj);
+            var jsonDictionary = JsonConvert.DeserializeObject<IDictionary<string, string>>(jsonString);
+            var resultList = jsonDictionary.Select(x => HttpUtility.UrlEncode(x.Key) + "=" + HttpUtility.UrlEncode(x.Value));
+            var result = string.Join("&", resultList);
             return result;
         }
     }
