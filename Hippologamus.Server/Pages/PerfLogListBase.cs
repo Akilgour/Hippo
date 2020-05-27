@@ -23,11 +23,11 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IMapper Mapper { get; set; }
 
-        public List<PerfLogDisplay> PerfLogs { get; set; }
+        public List<PerfLogCollection> PerfLogs { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            var foo = new PerfLogDisplaySearch()
+            var foo = new PerfLogCollectionSearch()
             {
                 Assembly = Assembly,
                 RequestPath = RequestPath
@@ -40,4 +40,5 @@ namespace Hippologamus.Server.Pages
             PerfLogs = responce.Value.ToList();
         }
     }
+}
 }

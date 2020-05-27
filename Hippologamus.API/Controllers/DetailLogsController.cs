@@ -25,7 +25,7 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [LogUsage("Get")]
-        public async Task<ActionResult<IEnumerable<DetailLogDisplay>>> Get()
+        public async Task<ActionResult<IEnumerable<DetailLogCollection>>> Get()
         {
             var perfLogs = await _detailLogManager.GetAll();
             return Ok(perfLogs);

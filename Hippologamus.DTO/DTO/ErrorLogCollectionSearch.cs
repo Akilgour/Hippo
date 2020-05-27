@@ -2,7 +2,7 @@
 
 namespace Hippologamus.DTO.DTO
 {
-    public class ErrorLogDisplaySearch : BaseDisplaySearch
+    public class ErrorLogCollectionSearch : BaseCollectionSearch
     {
         public string RequestPath { get; set; }
 

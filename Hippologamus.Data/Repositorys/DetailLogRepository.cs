@@ -27,7 +27,7 @@ namespace Hippologamus.Data.Repositorys
             return result;
         }
 
-        public async Task<List<DetailLog>> GetAllErrors(ErrorLogDisplaySearch errorLogDisplaySearch)
+        public async Task<List<DetailLog>> GetAllErrors(ErrorLogCollectionSearch errorLogDisplaySearch)
         {
             var query = _context.DetailLogs.AsQueryable();
             List<DetailLog> result = null;

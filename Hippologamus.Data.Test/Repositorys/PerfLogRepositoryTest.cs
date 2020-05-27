@@ -34,7 +34,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch();
+            var perfLogDisplaySearch = new PerfLogCollectionSearch();
             //act
             var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
             //assert
@@ -49,7 +49,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch()
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
             {
                 Assembly = assembly
             };
@@ -67,7 +67,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch()
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
             {
                 PerfItem = perfItem
             };
@@ -91,7 +91,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch()
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
             {
                 PerfItem = perfItem,
                 Assembly = assembly
@@ -115,7 +115,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch()
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
             {
                 DateFrom = DateTime.Parse(dateFrom)
             };
@@ -137,7 +137,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch()
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
             {
                 DateTo = DateTime.Parse(dateTo)
             };
@@ -152,7 +152,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var perfLogDisplaySearch = new PerfLogDisplaySearch()
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
             {
                 Assembly = "Hippologamus.API",
                 DateFrom = new DateTime(2020, 1, 3),

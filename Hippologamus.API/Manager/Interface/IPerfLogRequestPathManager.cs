@@ -6,6 +6,6 @@ namespace Hippologamus.API.Manager.Interface
 {
     public interface IPerfLogRequestPathManager
     {
-        Task<List<PerfLogRequestPathDisplay>> GetByAssembly(string perfLogAssembly);
+        Task<List<PerfLogRequestPathCollection>> GetByAssembly(string perfLogAssembly);
     }
 }

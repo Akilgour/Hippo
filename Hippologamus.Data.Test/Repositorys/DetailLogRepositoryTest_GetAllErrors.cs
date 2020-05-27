@@ -36,7 +36,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch();
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch();
             //act
             var value = await DetailLogRepository.GetAllErrors(errorLogDisplaySearch);
             //assert
@@ -52,7 +52,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch()
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch()
             {
                 RequestPath = requestPath
             };
@@ -70,7 +70,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch()
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch()
             {
                 Assembly = assembly
             };
@@ -89,7 +89,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch()
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch()
             {
                 Assembly = assembly ,
                 RequestPath = requestPath
@@ -113,7 +113,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch()
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch()
             {
                 DateFrom = DateTime.Parse(dateFrom)
             };
@@ -135,7 +135,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch()
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch()
             {
                 DateTo = DateTime.Parse(dateTo)
             };
@@ -150,7 +150,7 @@ namespace Hippologamus.Data.Test.Repositorys
         {
             //arrange
             var DetailLogRepository = new DetailLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
-            var errorLogDisplaySearch = new ErrorLogDisplaySearch()
+            var errorLogDisplaySearch = new ErrorLogCollectionSearch()
             {
                 Assembly = "Hippologamus.API",
                 DateFrom = new DateTime(2020, 1, 2),

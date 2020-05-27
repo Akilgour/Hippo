@@ -6,7 +6,7 @@ namespace Hippologamus.Server.Components
     public class PerfLogAssemblyRowBase : ComponentBase
     {
         [Parameter]
-        public PerfLogAssemblyDisplay PerfLogAssembly { get; set; }
+        public PerfLogAssemblyCollection PerfLogAssembly { get; set; }
 
         public void RequestPathToggle(bool requestPath)
         {

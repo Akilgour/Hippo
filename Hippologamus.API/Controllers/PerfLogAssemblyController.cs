@@ -18,14 +18,13 @@ namespace Hippologamus.API.Controllers
             _perfLogAssemblyManager = perfLogAssemblyManager;
         }
 
-
         /// <summary>
         /// Gets all the assemblys perfomance logs
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         [LogUsage("Get")]
-        public async Task<ActionResult<IEnumerable<PerfLogAssemblyDisplay>>> Get()
+        public async Task<ActionResult<IEnumerable<PerfLogAssemblyCollection>>> Get()
         {
             var perfLogs = await _perfLogAssemblyManager.GetAll();
             return Ok(perfLogs);

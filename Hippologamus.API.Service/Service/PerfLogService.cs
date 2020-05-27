@@ -2,10 +2,7 @@
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
 using Hippologamus.DTO.DTO;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Hippologamus.API.Service.Service
@@ -19,7 +16,7 @@ namespace Hippologamus.API.Service.Service
             _perfLogRepository = perfLogRepository;
         }
 
-        public async Task<List<PerfLog>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<List<PerfLog>> GetAll(PerfLogCollectionSearch perfLogDisplaySearch)
         {
             return await _perfLogRepository.GetAll(perfLogDisplaySearch);
         }

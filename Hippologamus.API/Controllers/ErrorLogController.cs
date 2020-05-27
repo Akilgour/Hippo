@@ -20,10 +20,9 @@ namespace Hippologamus.API.Controllers
             _errorLogManager = perfLogManager ?? throw new ArgumentNullException(nameof(perfLogManager));
         }
 
-
         [HttpGet(Name = "GetErrorLogs")]
         [LogUsage("Get")]
-        public async Task<IActionResult> Get([FromQuery]  ErrorLogDisplaySearch errorLogDisplaySearch)
+        public async Task<IActionResult> Get([FromQuery]  ErrorLogCollectionSearch errorLogDisplaySearch)
         {
             var perfLogs = await _errorLogManager.GetAllError(errorLogDisplaySearch);
 
@@ -45,31 +44,30 @@ namespace Hippologamus.API.Controllers
             return Ok(perfLogsToReturn);
         }
 
-
-        private IEnumerable<LinkDto> CreateGetLinks(ErrorLogDisplaySearch errorLogDisplaySearch, bool hasNext, bool hasPrevious)
+        private IEnumerable<RootLink> CreateGetLinks(ErrorLogCollectionSearch errorLogDisplaySearch, bool hasNext, bool hasPrevious)
         {
-            var links = new List<LinkDto>
+            var links = new List<RootLink>
             {
-                new LinkDto(CreateGetLink(errorLogDisplaySearch, errorLogDisplaySearch.PageNumber), "self", "GET")
+                new RootLink(CreateGetLink(errorLogDisplaySearch, errorLogDisplaySearch.PageNumber), "self", "GET")
             };
 
             if (hasNext)
             {
-                links.Add(new LinkDto(CreateGetLink(errorLogDisplaySearch, errorLogDisplaySearch.PageNumber + 1), "nextPage", "GET"));
+                links.Add(new RootLink(CreateGetLink(errorLogDisplaySearch, errorLogDisplaySearch.PageNumber + 1), "nextPage", "GET"));
             }
 
             if (hasPrevious)
             {
-                links.Add(new LinkDto(CreateGetLink(errorLogDisplaySearch, errorLogDisplaySearch.PageNumber - 1), "previousPage", "GET"));
+                links.Add(new RootLink(CreateGetLink(errorLogDisplaySearch, errorLogDisplaySearch.PageNumber - 1), "previousPage", "GET"));
             }
 
             return links;
         }
 
-        private string CreateGetLink(ErrorLogDisplaySearch errorLogDisplaySearch, int pageNumber)
+        private string CreateGetLink(ErrorLogCollectionSearch errorLogDisplaySearch, int pageNumber)
         {
             return Url.Link("GetErrorLogs",
-                new ErrorLogDisplaySearch()
+                new ErrorLogCollectionSearch()
                 {
                     PageNumber = pageNumber,
                     PageSize = errorLogDisplaySearch.PageSize,

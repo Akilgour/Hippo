@@ -18,11 +18,11 @@ namespace Hippologamus.API.Manager
             _detailLogService = detailLogService;
         }
 
-        public async Task<PagedList<ErrorLogDisplay>> GetAllError(ErrorLogDisplaySearch errorLogDisplaySearch)
+        public async Task<PagedList<ErrorLogCollection>> GetAllError(ErrorLogCollectionSearch errorLogDisplaySearch)
         {
             var perfLogFromRepo = await _detailLogService.GetAllErrors(errorLogDisplaySearch);
-            var errorLogs = _mapper.Map<List<ErrorLogDisplay>>(perfLogFromRepo);
-            var result = PagedList<ErrorLogDisplay>.Create(errorLogs, errorLogDisplaySearch.PageNumber, errorLogDisplaySearch.PageSize);
+            var errorLogs = _mapper.Map<List<ErrorLogCollection>>(perfLogFromRepo);
+            var result = PagedList<ErrorLogCollection>.Create(errorLogs, errorLogDisplaySearch.PageNumber, errorLogDisplaySearch.PageSize);
             return result;
         }
     }

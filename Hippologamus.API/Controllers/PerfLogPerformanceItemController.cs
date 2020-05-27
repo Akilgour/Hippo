@@ -25,7 +25,7 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [LogUsage("GetByAssembly")]
-        public async Task<ActionResult<IEnumerable<PerfLogPerformanceItemDisplay>>> GetByAssembly(string perfLogAssembly)
+        public async Task<ActionResult<IEnumerable<PerfLogPerformanceItemCollection>>> GetByAssembly(string perfLogAssembly)
         {
             var perfLogPerformanceItemDisplays = await _perfLogPerformanceItemManager.GetByAssembly(perfLogAssembly);
             return Ok(perfLogPerformanceItemDisplays);

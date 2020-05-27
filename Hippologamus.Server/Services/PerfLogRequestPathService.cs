@@ -14,9 +14,9 @@ namespace Hippologamus.Server.Services
         {
         }
 
-        public async Task<IEnumerable<PerfLogRequestPathDisplay>> GetPerfLogRequestPaths(string perfLogAssembly)
+        public async Task<IEnumerable<PerfLogRequestPathCollection>> GetPerfLogRequestPaths(string perfLogAssembly)
         {
-            return await JsonSerializer.DeserializeAsync<IEnumerable<PerfLogRequestPathDisplay>>
+            return await JsonSerializer.DeserializeAsync<IEnumerable<PerfLogRequestPathCollection>>
                 (await _httpClient.GetStreamAsync($"api/PerfLogRequestPath?perfLogAssembly={perfLogAssembly}"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }

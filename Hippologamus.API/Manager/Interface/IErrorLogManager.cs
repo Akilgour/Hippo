@@ -6,6 +6,6 @@ namespace Hippologamus.API.Manager.Interface
 {
     public interface IErrorLogManager
     {
-        Task<PagedList<ErrorLogDisplay>> GetAllError(ErrorLogDisplaySearch errorLogDisplaySearch);
+        Task<PagedList<ErrorLogCollection>> GetAllError(ErrorLogCollectionSearch errorLogDisplaySearch);
     }
 }

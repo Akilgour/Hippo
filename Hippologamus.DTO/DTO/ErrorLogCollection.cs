@@ -2,7 +2,7 @@
 
 namespace Hippologamus.DTO.DTO
 {
-    public class DetailLogDisplay
+    public class ErrorLogCollection
     {
         public int Id { get; set; }
         public string Level { get; set; }
@@ -11,5 +11,8 @@ namespace Hippologamus.DTO.DTO
         public string LogEvent { get; set; }
         public string MachineName { get; set; }
         public string Assembly { get; set; }
+        public string Message { get; set; }
+        public string ExceptionMessage { get; set; }
+        public string RequestPath { get; set; }
     }
 }

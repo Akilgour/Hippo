@@ -1,6 +1,6 @@
 ﻿namespace Hippologamus.DTO.DTO
 {
-    public abstract class BaseDisplaySearch
+    public abstract class BaseCollectionSearch
     {
         private const int maxPageSize = 10;
         public int PageNumber { get; set; } = 1;

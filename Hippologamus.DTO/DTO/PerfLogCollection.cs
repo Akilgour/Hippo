@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Hippologamus.DTO.DTO
 {
-    public class PerfLogDisplay
+    public class PerfLogCollection
     {
         public int Id { get; set; }
         public string Level { get; set; }

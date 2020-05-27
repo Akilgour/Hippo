@@ -18,7 +18,7 @@ namespace Hippologamus.Data.Repositorys
         {
         }
 
-        public async Task<List<PerfLog>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<List<PerfLog>> GetAll(PerfLogCollectionSearch perfLogDisplaySearch)
         {
             var query = _context.PerfLogs.AsQueryable();
             List<PerfLog> result = null;

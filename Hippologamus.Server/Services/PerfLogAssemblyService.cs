@@ -12,12 +12,11 @@ namespace Hippologamus.Server.Services
         public PerfLogAssemblyService(HttpClient httpClient)
             : base(httpClient)
         {
-
         }
 
-        public async Task<IEnumerable<PerfLogAssemblyDisplay>> GetAll()
+        public async Task<IEnumerable<PerfLogAssemblyCollection>> GetAll()
         {
-            return await JsonSerializer.DeserializeAsync<IEnumerable<PerfLogAssemblyDisplay>>
+            return await JsonSerializer.DeserializeAsync<IEnumerable<PerfLogAssemblyCollection>>
                 (await _httpClient.GetStreamAsync($"api/PerfLogAssembly"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }

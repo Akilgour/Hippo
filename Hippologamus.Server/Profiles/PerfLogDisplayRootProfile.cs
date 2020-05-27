@@ -8,9 +8,10 @@ namespace Hippologamus.Server.Profiles
     {
         public PerfLogDisplayRootProfile()
         {
-            CreateMap<PerfLogDisplayRoot, PerfLogDisplayCollection>();
-            CreateMap<PerfLogDisplay, PerfLog>();
+            CreateMap<PerfLogCollectionResponce, PerfLogDisplayCollection>();
+            CreateMap<PerfLogCollection, PerfLog>();
             CreateMap<RootLink, Links>();
+            CreateMap<DTO.DTO.PaginationHeader, Models.PaginationHeader>();
         }
     }
 }

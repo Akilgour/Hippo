@@ -14,10 +14,10 @@ namespace Hippologamus.Server.Services
         {
         }
 
-        public async Task<PerfLogDisplayRoot> PerfLogDisplaySearch(PerfLogDisplaySearch search)
+        public async Task<PerfLogCollectionResponce> PerfLogDisplaySearch(PerfLogCollectionSearch search)
         {
             var response = await _httpClient.GetAsync($"api/PerfLogs?{ObjectToURLString.Create(search)}");
-            var result = await JsonSerializer.DeserializeAsync<PerfLogDisplayRoot>
+            var result = await JsonSerializer.DeserializeAsync<PerfLogCollectionResponce>
                             (await response.Content.ReadAsStreamAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
             result.PaginationHeader = PaginationFromHeaders.Get(response);
             return result;

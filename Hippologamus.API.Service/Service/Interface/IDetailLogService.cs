@@ -8,6 +8,6 @@ namespace Hippologamus.API.Service.Service.Interface
     public interface IDetailLogService
     {
         Task<List<DetailLog>> GetAll();
-        Task<List<DetailLog>> GetAllErrors(ErrorLogDisplaySearch errorLogDisplaySearch);
+        Task<List<DetailLog>> GetAllErrors(ErrorLogCollectionSearch errorLogDisplaySearch);
     }
 }

@@ -6,6 +6,6 @@ namespace Hippologamus.API.Manager.Interface
 {
     public interface IPerfLogAssemblyManager
     {
-        Task<List<PerfLogAssemblyDisplay>> GetAll();
+        Task<List<PerfLogAssemblyCollection>> GetAll();
     }
 }

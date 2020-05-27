@@ -17,9 +17,9 @@ namespace Hippologamus.API.Manager
             _perfLogAssemblyService = perfLogAssemblyService;
         }
 
-        public async Task<List<PerfLogAssemblyDisplay>> GetAll()
+        public async Task<List<PerfLogAssemblyCollection>> GetAll()
         {
-            return _mapper.Map<List<PerfLogAssemblyDisplay>>(await _perfLogAssemblyService.GetAll());
+            return _mapper.Map<List<PerfLogAssemblyCollection>>(await _perfLogAssemblyService.GetAll());
         }
     }
 }

@@ -8,7 +8,7 @@ namespace Hippologamus.API.Profiles
     {
         public PerfLogPerformanceItemProfile()
         {
-            CreateMap<PerfLogPerformanceItem, PerfLogPerformanceItemDisplay>();
+            CreateMap<PerfLogPerformanceItem, PerfLogPerformanceItemCollection>();
         }
     }
 }

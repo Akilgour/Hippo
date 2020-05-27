@@ -18,11 +18,11 @@ namespace Hippologamus.API.Manager
             _perfLogService = perfLogService;
         }
 
-        public async Task<PagedList<PerfLogDisplay>> GetAll(PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<PagedList<PerfLogCollection>> GetAll(PerfLogCollectionSearch perfLogDisplaySearch)
         {
             var perfLogFromRepo = await _perfLogService.GetAll(perfLogDisplaySearch);
-            var teams = _mapper.Map<List<PerfLogDisplay>>(perfLogFromRepo);
-            var result = PagedList<PerfLogDisplay>.Create(teams, perfLogDisplaySearch.PageNumber, perfLogDisplaySearch.PageSize);
+            var teams = _mapper.Map<List<PerfLogCollection>>(perfLogFromRepo);
+            var result = PagedList<PerfLogCollection>.Create(teams, perfLogDisplaySearch.PageNumber, perfLogDisplaySearch.PageSize);
             return result;
         }
 

@@ -26,7 +26,7 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet(Name = "GetPerfLogs")]
         [LogUsage("Get")]
-        public async Task<ActionResult> Get([FromQuery]  PerfLogDisplaySearch perfLogDisplaySearch)
+        public async Task<ActionResult> Get([FromQuery]  PerfLogCollectionSearch perfLogDisplaySearch)
         {
             perfLogDisplaySearch.RequestPath = perfLogDisplaySearch.RequestPath.Replace("%", "/");
 
@@ -50,30 +50,30 @@ namespace Hippologamus.API.Controllers
         }
 
 
-        private IEnumerable<LinkDto> CreateGetLinks(PerfLogDisplaySearch perfLogDisplaySearch, bool hasNext, bool hasPrevious)
+        private IEnumerable<RootLink> CreateGetLinks(PerfLogCollectionSearch perfLogDisplaySearch, bool hasNext, bool hasPrevious)
         {
-            var links = new List<LinkDto>
+            var links = new List<RootLink>
             {
-                new LinkDto(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber), "self", "GET")
+                new RootLink(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber), "self", "GET")
             };
 
             if (hasNext)
             {
-                links.Add(new LinkDto(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber + 1), "nextPage", "GET"));
+                links.Add(new RootLink(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber + 1), "nextPage", "GET"));
             }
 
             if (hasPrevious)
             {
-                links.Add(new LinkDto(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber - 1), "previousPage", "GET"));
+                links.Add(new RootLink(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber - 1), "previousPage", "GET"));
             }
 
             return links;
         }
 
-        private string CreateGetLink(PerfLogDisplaySearch perfLogDisplaySearch, int pageNumber)
+        private string CreateGetLink(PerfLogCollectionSearch perfLogDisplaySearch, int pageNumber)
         {
             return Url.Link("GetPerfLogs",
-                new PerfLogDisplaySearch()
+                new PerfLogCollectionSearch()
                 {
                     PageNumber = pageNumber,
                     PageSize = perfLogDisplaySearch.PageSize,

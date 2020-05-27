@@ -8,13 +8,13 @@ namespace Hippologamus.Server.Components
 {
     public class PerfLogsRequestPathSelectorBase : ComponentBase
     {
-        protected IEnumerable<PerfLogRequestPathDisplay> RequestPaths { get; set; }
+        protected IEnumerable<PerfLogRequestPathCollection> RequestPaths { get; set; }
 
         [Inject]
         public IPerfLogRequestPathService PerfLogRequestPathService { get; set; }
 
         [Parameter]
-        public PerfLogAssemblyDisplay PerfLogAssembly { get; set; }
+        public PerfLogAssemblyCollection PerfLogAssembly { get; set; }
 
         [Parameter]
         public EventCallback<bool> OnRequestPathToggle { get; set; }

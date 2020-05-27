@@ -12,7 +12,7 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IPerfLogAssemblyService PerfLogAssemblyService { get; set; }
 
-        public IEnumerable<PerfLogAssemblyDisplay> PerfLogAssemblyDisplays { get; set; }
+        public IEnumerable<PerfLogAssemblyCollection> PerfLogAssemblyDisplays { get; set; }
 
         protected override async Task OnInitializedAsync()
         {

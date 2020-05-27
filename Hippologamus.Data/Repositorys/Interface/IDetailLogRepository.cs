@@ -8,6 +8,6 @@ namespace Hippologamus.Data.Repositorys.Interface
     public interface IDetailLogRepository
     {
         Task<List<DetailLog>> GetAll();
-        Task<List<DetailLog>> GetAllErrors(ErrorLogDisplaySearch errorLogDisplaySearch);
+        Task<List<DetailLog>> GetAllErrors(ErrorLogCollectionSearch errorLogDisplaySearch);
     }
 }

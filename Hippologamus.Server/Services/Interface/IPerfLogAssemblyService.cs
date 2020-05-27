@@ -6,6 +6,6 @@ namespace Hippologamus.Server.Services.Interface
 {
     public interface IPerfLogAssemblyService
     {
-        Task<IEnumerable<PerfLogAssemblyDisplay>> GetAll();
+        Task<IEnumerable<PerfLogAssemblyCollection>> GetAll();
     }
 }

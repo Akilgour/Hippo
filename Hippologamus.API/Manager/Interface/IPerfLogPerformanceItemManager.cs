@@ -6,6 +6,6 @@ namespace Hippologamus.API.Manager.Interface
 {
     public interface IPerfLogPerformanceItemManager
     {
-        Task<List<PerfLogPerformanceItemDisplay>> GetByAssembly(string perfLogAssembly);
+        Task<List<PerfLogPerformanceItemCollection>> GetByAssembly(string perfLogAssembly);
     }
 }

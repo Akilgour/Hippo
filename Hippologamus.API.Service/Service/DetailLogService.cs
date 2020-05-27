@@ -21,7 +21,7 @@ namespace Hippologamus.API.Service.Service
             return _detailLogRepository.GetAll();
         }
 
-        public async Task<List<DetailLog>> GetAllErrors(ErrorLogDisplaySearch errorLogDisplaySearch)
+        public async Task<List<DetailLog>> GetAllErrors(ErrorLogCollectionSearch errorLogDisplaySearch)
         {
             return await _detailLogRepository.GetAllErrors(errorLogDisplaySearch);
         }

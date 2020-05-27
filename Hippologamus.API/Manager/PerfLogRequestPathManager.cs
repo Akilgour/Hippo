@@ -17,9 +17,9 @@ namespace Hippologamus.API.Manager
             _perfLogRequestPathService = perfLogRequestPathService;
         }
 
-        public async Task<List<PerfLogRequestPathDisplay>> GetByAssembly(string perfLogAssembly)
+        public async Task<List<PerfLogRequestPathCollection>> GetByAssembly(string perfLogAssembly)
         {
-            return _mapper.Map<List<PerfLogRequestPathDisplay>>(await _perfLogRequestPathService.GetByAssembly(perfLogAssembly));
+            return _mapper.Map<List<PerfLogRequestPathCollection>>(await _perfLogRequestPathService.GetByAssembly(perfLogAssembly));
         }
     }
 }

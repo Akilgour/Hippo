@@ -6,6 +6,6 @@ namespace Hippologamus.Server.Services.Interface
 {
     public interface IPerfLogDisplayService
     {
-        Task<PerfLogDisplayRoot> PerfLogDisplaySearch(PerfLogDisplaySearch search);
+        Task<PerfLogCollectionResponce> PerfLogDisplaySearch(PerfLogCollectionSearch search);
     }
 }

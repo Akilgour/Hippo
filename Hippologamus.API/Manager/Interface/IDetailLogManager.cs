@@ -6,6 +6,6 @@ namespace Hippologamus.API.Manager.Interface
 {
     public interface IDetailLogManager
     {
-        Task<List<DetailLogDisplay>> GetAll();
+        Task<List<DetailLogCollection>> GetAll();
     }
 }
