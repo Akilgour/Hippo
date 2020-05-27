@@ -23,7 +23,7 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IMapper Mapper { get; set; }
 
-        public List<PerfLogCollection> PerfLogs { get; set; }
+        public PerfLogPagedList PerfLogPagedList { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
@@ -32,13 +32,7 @@ namespace Hippologamus.Server.Pages
                 Assembly = Assembly,
                 RequestPath = RequestPath
             };
-
-            var responce = (await PerfLogDisplayService.PerfLogDisplaySearch(foo));
-
-            var asdf = Mapper.Map<PerfLogDisplayCollection>(responce);
-
-            PerfLogs = responce.Value.ToList();
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(foo)));
         }
     }
-}
 }

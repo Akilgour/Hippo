@@ -19,7 +19,7 @@ namespace Hippologamus.Server.Services
             var response = await _httpClient.GetAsync($"api/PerfLogs?{ObjectToURLString.Create(search)}");
             var result = await JsonSerializer.DeserializeAsync<PerfLogCollectionResponce>
                             (await response.Content.ReadAsStreamAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            result.PaginationHeader = PaginationFromHeaders.Get(response);
+            result.Pagination = PaginationFromHeaders.Get(response);
             return result;
         }
     }

@@ -1,6 +1,6 @@
-﻿namespace Hippologamus.Server.Models
+﻿namespace Hippologamus.DTO.DTO
 {
-    public class PaginationHeader
+    public class Pagination
     {
         public int TotalCount { get; set; }
         public int PageSize { get; set; }

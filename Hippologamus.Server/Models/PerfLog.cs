@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Models
 {
-    public class PerfLog
+    public class PerfLogList
     {
         public int Id { get; set; }
         public string Level { get; set; }

@@ -3,7 +3,7 @@
 
 <h3>PerfLogList</h3>
 
-@if (PerfLogs == null)
+@if (PerfLogPagedList == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -20,7 +20,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in PerfLogs)
+            @foreach (var item in PerfLogPagedList.PerfLogs)
             {
                 <tr>
                     <td>@item.TimeStamp</td>

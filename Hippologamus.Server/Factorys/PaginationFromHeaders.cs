@@ -7,11 +7,11 @@ namespace Hippologamus.Server.Factorys
 {
     public static class PaginationFromHeaders
     {
-        public static PaginationHeader Get(HttpResponseMessage response)
+        public static Pagination Get(HttpResponseMessage response)
         {
             var pagination = response.Headers.GetValues("X-Pagination").First();
 
-            return JsonSerializer.Deserialize<PaginationHeader>
+            return JsonSerializer.Deserialize<Pagination>
                             (pagination, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
         }
     }
