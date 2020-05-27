@@ -9,6 +9,36 @@
 }
 else
 {
+    <div class="col-12 row">
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label"> Current Page</label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationCurrentPage</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Pagination Page Size</label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationPageSize</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Pagination Total Count</label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalCount.</label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Pagination Total Pages </label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalPages..</label>
+            </div>
+        </div>
+    </div>
+
     <table class="table">
         <thead>
             <tr>
