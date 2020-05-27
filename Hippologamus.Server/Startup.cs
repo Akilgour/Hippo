@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Hippologamus.Server.Services.Interface;
 using Hippologamus.Server.Services;
+using AutoMapper;
 
 namespace Hippologamus.Server
 {
@@ -44,6 +45,9 @@ namespace Hippologamus.Server
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });
+
+            //Adds Automapper
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -1,4 +1,6 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using AutoMapper;
+using Hippologamus.DTO.DTO;
+using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
 using System.Collections.Generic;
@@ -18,8 +20,10 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IPerfLogDisplayService PerfLogDisplayService { get; set; }
 
+        [Inject]
+        public IMapper Mapper { get; set; }
+
         public List<PerfLogDisplay> PerfLogs { get; set; }
-     
 
         protected override async Task OnInitializedAsync()
         {
@@ -29,7 +33,11 @@ namespace Hippologamus.Server.Pages
                 RequestPath = RequestPath
             };
 
-            PerfLogs = (await PerfLogDisplayService.PerfLogDisplaySearch(foo)).Value.ToList();
+            var responce = (await PerfLogDisplayService.PerfLogDisplaySearch(foo));
+
+            var asdf = Mapper.Map<PerfLogDisplayCollection>(responce);
+
+            PerfLogs = responce.Value.ToList();
         }
     }
 }
