@@ -34,5 +34,11 @@ namespace Hippologamus.Server.Pages
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(foo)));
         }
+
+        public async Task NextPage()
+        {
+            var link = PerfLogPagedList.Links.First(x => x.Rel == "nextPage").Href;
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.GetByLink(link)));
+        }
     }
 }
