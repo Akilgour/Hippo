@@ -56,6 +56,7 @@ namespace Hippologamus.Server.Pages
             {
                 Assembly = Assembly,
                 RequestPath = RequestPath,
+                PageSize = ShowPageSize
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
         }
@@ -66,24 +67,24 @@ namespace Hippologamus.Server.Pages
             {
                 Assembly = Assembly,
                 RequestPath = RequestPath,
-                PageNumber = PerfLogPagedList.PaginationTotalPages
+                PageNumber = PerfLogPagedList.PaginationTotalPages,
+                 PageSize = ShowPageSize
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
         }
 
-      public async Task PageSize_Change(ChangeEventArgs e)
+        public async Task PageSize_Change(ChangeEventArgs e)
         {
-            int selectedString = int.Parse(e.Value.ToString());
-                     
+            ShowPageSize = int.Parse(e.Value.ToString());
             var search = new PerfLogCollectionSearch()
             {
                 Assembly = Assembly,
                 RequestPath = RequestPath,
-                 PageSize = selectedString
+                PageSize = ShowPageSize
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
         }
-        
+
         public int ShowPageSize { get; set; }
         public List<PageSize> PageSizes { get; set; } = new List<PageSize>();
     }
