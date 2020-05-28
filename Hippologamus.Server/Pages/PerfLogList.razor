@@ -82,6 +82,9 @@ else
         <button type="button" class="btn btn-secondary">2</button>
         <button type="button" class="btn btn-secondary">4</button>
         <button type="button" class="btn btn-secondary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
-        <button type="button" class="btn btn-outline-primary" @onclick="NextPage">Next</button>
-    </div>
+        @if (PerfLogPagedList.ShowNextPageButton)
+        {
+            <button type="button" class="btn btn-outline-primary" @onclick="NextPage">Next</button>
+        }
+        </div>
 }
