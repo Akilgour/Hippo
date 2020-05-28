@@ -13,6 +13,7 @@ namespace Hippologamus.Server.Profiles
                  .ForMember(dest => dest.PerfLogs, opt => opt.MapFrom(src => src.Value))
                  .ForMember(dest => dest.ShowPerviousPageButton, opt => opt.MapFrom(src => SetShowPerviousPageButton.Resolve(src.Pagination.CurrentPage)))
                  .ForMember(dest => dest.ShowNextPageButton, opt => opt.MapFrom(src => SetShowNextPageButton.Resolve(src.Pagination)))
+                 .ForMember(dest => dest.ShowFirstPageButton, opt => opt.MapFrom(src => SetShowFirstPageButton.Resolve(src.Pagination)))
                  .ForMember(dest => dest.PaginationCurrentPagePlusOne, opt => opt.MapFrom(src => SetPaginationCurrentPagePlusOne.Resolve(src.Pagination)))
                  .ForMember(dest => dest.PaginationCurrentPageMinusOne, opt => opt.MapFrom(src => SetPaginationCurrentPageMinusOne.Resolve(src.Pagination)));
 

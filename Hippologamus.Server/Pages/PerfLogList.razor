@@ -77,19 +77,19 @@ else
         {
             <button type="button" class="btn btn-outline-primary" @onclick="PerviousPage">Pervious</button>
         }
+        @if (PerfLogPagedList.ShowFirstPageButton)
+        {
+            <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
+        }
 
-
-        <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
-        
-        
         <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
         <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
         <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
-       
+
         <button type="button" class="btn btn-secondary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
         @if (PerfLogPagedList.ShowNextPageButton)
         {
             <button type="button" class="btn btn-outline-primary" @onclick="NextPage">Next</button>
         }
-        </div>
+    </div>
 }
