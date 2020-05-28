@@ -9,43 +9,42 @@
 }
 else
 {
-<div class="col-12 row">
-    <div class="form-group row">
-        <label class="col-sm-4 col-form-label"> Current Page</label>
-        <div class="col-sm-8">
-            <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationCurrentPage</label>
+    <div class="col-12 row">
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label"> Current Page</label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationCurrentPage</label>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-sm-4 col-form-label">Pagination Page Size</label>
-        <div class="col-sm-8">
-            <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationPageSize</label>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Pagination Page Size</label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationPageSize</label>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-sm-4 col-form-label">Pagination Total Count</label>
-        <div class="col-sm-8">
-            <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalCount</label>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Pagination Total Count</label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalCount</label>
+            </div>
         </div>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-sm-4 col-form-label">Pagination Total Pages </label>
-        <div class="col-sm-8">
-            <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalPages</label>
+        <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Pagination Total Pages </label>
+            <div class="col-sm-8">
+                <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalPages</label>
+            </div>
         </div>
-    </div>
-    
-        <select @onchange=@PageSize_Change >
+
+        <select @onchange=@PageSize_Change>
             @foreach (var pageSize in PageSizes)
             {
                 <option value=@pageSize.ShowPageSizeValue>@pageSize.ShowPageSizeDescription</option>
             }
         </select>
-    
-</div>
+    </div>
 
     <table class="table">
         <thead>
@@ -61,20 +60,23 @@ else
         <tbody>
             @foreach (var item in PerfLogPagedList.PerfLogs)
             {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.TimeStamp</td>
-                <td>@item.PerfItem</td>
-                <td>@item.ElapsedMilliseconds</td>
-                <td>@item.Message</td>
-                <td>@item.MachineName</td>
-            </tr>
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.TimeStamp</td>
+                    <td>@item.PerfItem</td>
+                    <td>@item.ElapsedMilliseconds</td>
+                    <td>@item.Message</td>
+                    <td>@item.MachineName</td>
+                </tr>
             }
         </tbody>
     </table>
 
     <div>
-        <button type="button" class="btn btn-outline-primary" @onclick="PerviousPage">Pervious</button>
+        @if (PerfLogPagedList.ShowPerviousPageButton)
+        {
+            <button type="button" class="btn btn-outline-primary" @onclick="PerviousPage">Pervious</button>
+        }
         <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
         <button type="button" class="btn btn-secondary">2</button>
         <button type="button" class="btn btn-secondary">2</button>
