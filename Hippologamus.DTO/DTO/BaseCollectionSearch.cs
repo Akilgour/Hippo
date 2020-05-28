@@ -2,7 +2,7 @@
 {
     public abstract class BaseCollectionSearch
     {
-        private const int maxPageSize = 10;
+        private const int maxPageSize = 100;
         public int PageNumber { get; set; } = 1;
 
         private int _pageSize = 10;

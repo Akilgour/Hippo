@@ -33,6 +33,9 @@ namespace Hippologamus.Server.Pages
                 RequestPath = RequestPath
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
+
+            PageSizes = Factorys.PageSizes.Create();
+            ShowPageSize = 10;
         }
 
         public async Task NextPage()
@@ -68,5 +71,20 @@ namespace Hippologamus.Server.Pages
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
         }
 
+      public async Task PageSize_Change(ChangeEventArgs e)
+        {
+            int selectedString = int.Parse(e.Value.ToString());
+                     
+            var search = new PerfLogCollectionSearch()
+            {
+                Assembly = Assembly,
+                RequestPath = RequestPath,
+                 PageSize = selectedString
+            };
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
+        }
+        
+        public int ShowPageSize { get; set; }
+        public List<PageSize> PageSizes { get; set; } = new List<PageSize>();
     }
 }
