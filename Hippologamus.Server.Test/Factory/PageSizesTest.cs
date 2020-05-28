@@ -13,14 +13,13 @@ namespace Hippologamus.Server.Test.Factory
             //act
             var value = PageSizes.Create();
             //assert
-            Assert.Equal(4, value.Count);
+            Assert.Equal(3, value.Count);
         }
 
         [Theory]
         [InlineData(10, "Show 10")]
         [InlineData(50, "Show 50")]
         [InlineData(100, "Show 100")]
-        [InlineData(-1, "Show All")]
         public void Create_Contains(int? showPageSizeValue, string showPageSizeDescription)
         {
             //arrange
