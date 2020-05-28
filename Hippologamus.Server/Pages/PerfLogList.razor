@@ -81,8 +81,10 @@ else
         {
             <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
         }
-
-        <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
+        @if (PerfLogPagedList.ShowSecondPageButton)
+        {
+            <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
+        }
         <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
         <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
 
