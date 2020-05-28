@@ -84,14 +84,14 @@ else
         }
         @if (PerfLogPagedList.ShowSecondPageButton)
         {
-            <button type="button" class="btn btn-primary">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
+            <button type="button" class="btn btn-primary" @onclick="PerviousPage">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
         }
 
         <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
 
         @if (PerfLogPagedList.ShowPagePlusOneButton)
         {
-            <button type="button" class="btn btn-primary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
+            <button type="button" class="btn btn-primary" @onclick="NextPage">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
         }
 
         @if (PerfLogPagedList.ShowSecondEllipsis)
