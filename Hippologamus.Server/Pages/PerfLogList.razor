@@ -77,10 +77,15 @@ else
         {
             <button type="button" class="btn btn-outline-primary" @onclick="PerviousPage">Pervious</button>
         }
+
+
         <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
-        <button type="button" class="btn btn-secondary">2</button>
-        <button type="button" class="btn btn-secondary">2</button>
-        <button type="button" class="btn btn-secondary">4</button>
+        
+        
+        <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
+        <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
+        <button type="button" class="btn btn-secondary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
+       
         <button type="button" class="btn btn-secondary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
         @if (PerfLogPagedList.ShowNextPageButton)
         {

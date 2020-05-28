@@ -11,5 +11,7 @@ namespace Hippologamus.Server.Models
         public int PaginationTotalPages { get; set; }
         public bool ShowPerviousPageButton { get; internal set; }
         public bool ShowNextPageButton { get; internal set; }
+        public int PaginationCurrentPagePlusOne { get; internal set; }
+        public int PaginationCurrentPageMinusOne { get; internal set; }
     }
 }
