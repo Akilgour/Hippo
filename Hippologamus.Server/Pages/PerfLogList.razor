@@ -80,6 +80,7 @@ else
         @if (PerfLogPagedList.ShowFirstPageButton)
         {
             <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
+            <span>...</span>
         }
         @if (PerfLogPagedList.ShowSecondPageButton)
         {
@@ -87,7 +88,7 @@ else
         }
         <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
         <button type="button" class="btn btn-primary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
-
+        <span>...</span>
         <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
         @if (PerfLogPagedList.ShowNextPageButton)
         {
