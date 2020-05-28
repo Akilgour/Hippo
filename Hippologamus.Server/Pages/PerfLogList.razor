@@ -98,9 +98,9 @@ else
         {
             <span>...</span>
         }
-        <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
         @if (PerfLogPagedList.ShowNextPageButton)
         {
+            <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
             <button type="button" class="btn btn-primary" @onclick="NextPage">Next</button>
         }
     </div>
