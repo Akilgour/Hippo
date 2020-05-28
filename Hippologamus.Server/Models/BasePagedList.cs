@@ -16,5 +16,6 @@ namespace Hippologamus.Server.Models
         public bool ShowFirstPageButton { get; internal set; }
         public bool ShowSecondPageButton { get; internal set; }
         public bool ShowSecondEllipsis { get; internal set; }
+        public bool ShowPagePlusOneButton { get; internal set; }
     }
 }

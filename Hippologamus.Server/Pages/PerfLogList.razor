@@ -86,17 +86,22 @@ else
         {
             <button type="button" class="btn btn-primary">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
         }
+
         <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
-        <button type="button" class="btn btn-primary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
+
+        @if (PerfLogPagedList.ShowPagePlusOneButton)
+        {
+            <button type="button" class="btn btn-primary">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
+        }
 
         @if (PerfLogPagedList.ShowSecondEllipsis)
         {
             <span>...</span>
         }
-            <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
-            @if (PerfLogPagedList.ShowNextPageButton)
-            {
-                <button type="button" class="btn btn-primary" @onclick="NextPage">Next</button>
-            }
-        </div>
+        <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
+        @if (PerfLogPagedList.ShowNextPageButton)
+        {
+            <button type="button" class="btn btn-primary" @onclick="NextPage">Next</button>
+        }
+    </div>
 }
