@@ -104,4 +104,18 @@ else
             <button type="button" class="btn btn-primary" @onclick="NextPage">Next</button>
         }
     </div>
+
+
+    <div class="row">
+        @foreach (var item in PerfLogPagedList.PerfLogs)
+        {
+            <div class="col-md-4">
+                <div>@item.Id</div>
+                <div>@item.TimeStamp</div>
+                <div>@item.ElapsedMilliseconds</div>
+                <div>@item.Message</div>
+                <div> @item.MachineName</div>
+            </div>
+        }
+    </div>
 }
