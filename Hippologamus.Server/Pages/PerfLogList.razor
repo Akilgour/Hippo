@@ -1,11 +1,12 @@
 ﻿@page "/perflogList/{Assembly}/{RequestPath}"
 @inherits PerfLogListBase
+@using  Hippologamus.Server.Components
 
 <h3>PerfLogList</h3>
 
 @if (PerfLogPagedList == null)
 {
-    <p><em>Loading...</em></p>
+    <Loading />
 }
 else
 {
@@ -124,6 +125,7 @@ else
                 @foreach (var item in PerfLogPagedList.PerfLogs)
                 {
                     <tr>
+                        <td>@item.Id</td>
                         <td>@item.Id</td>
                         <td>@item.TimeStamp</td>
                         <td>@item.PerfItem</td>

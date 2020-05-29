@@ -1,8 +1,9 @@
 ﻿@inherits PerfLogsRequestPathSelectorBase
+@using  Hippologamus.Server.Components
 
- @if (RequestPaths == null)
+@if (RequestPaths == null)
 {
-    <p><em>Loading...</em></p>
+    <Loading/>
 }
 else
 {
@@ -17,7 +18,7 @@ else
                 @foreach (var requestPath in RequestPaths)
                 {
                     <tr @key="requestPath">
-                        <td>@requestPath.RequestPath</td> 
+                        <td>@requestPath.RequestPath</td>
                         <td>
 
                             <a href="@($"perflogList/{requestPath.Assembly}/{requestPath.RequestPathLink}")"

@@ -1,12 +1,13 @@
 ﻿@page "/perflogoverview"
 @inherits PerfLogOverviewBase
 @using Hippologamus.Server.Components
+@using  Hippologamus.Server.Components
 
 <h3>PerfLogOverview</h3>
 
 @if (PerfLogAssemblyDisplays == null)
 {
-    <p><em>Loading...</em></p>
+    <Loading />
 }
 else
 {
