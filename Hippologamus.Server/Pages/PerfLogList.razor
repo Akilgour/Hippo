@@ -110,32 +110,7 @@ else
 
     @if (ShowDataAsAList)
     {
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>TimeStamp</th>
-                    <th>PerfItem</th>
-                    <th>Elapsed Time</th>
-                    <th>Message</th>
-                    <th>MachineName</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in PerfLogPagedList.PerfLogs)
-                {
-                    <tr>
-                        <td>@item.Id</td>
-                        <td>@item.Id</td>
-                        <td>@item.TimeStamp</td>
-                        <td>@item.PerfItem</td>
-                        <td class="text-right">@item.ElapsedMilliseconds</td">
-                        <td>@item.Message</td>
-                        <td>@item.MachineName</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+        <PerfLogPagedListTable PerfLogPagedList="PerfLogPagedList"/>
     }
     else
     {
