@@ -2,6 +2,7 @@
 using Hippologamus.DTO.DTO;
 using Hippologamus.Server.Models;
 using Hippologamus.Server.Profiles.PerfLogCollectionResponceProfileMapper;
+using Hippologamus.Server.Profiles.Shared;
 
 namespace Hippologamus.Server.Profiles
 {
@@ -20,8 +21,9 @@ namespace Hippologamus.Server.Profiles
                  .ForMember(dest => dest.PaginationCurrentPagePlusOne, opt => opt.MapFrom(src => SetPaginationCurrentPagePlusOne.Resolve(src.Pagination)))
                  .ForMember(dest => dest.PaginationCurrentPageMinusOne, opt => opt.MapFrom(src => SetPaginationCurrentPageMinusOne.Resolve(src.Pagination)));
 
-            CreateMap<PerfLogCollection, PerfLogList>();
-
+            CreateMap<PerfLogCollection, PerfLogList>()
+                 .ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(src => DateTimeDisplay.Resolve(src.TimeStamp)))
+                 .ForMember(dest => dest.ElapsedMilliseconds, opt => opt.MapFrom(src => ElapsedMillisecondsDisplay.Resolve(src.ElapsedMilliseconds)));
 
             CreateMap<RootLink, Links>();
         }

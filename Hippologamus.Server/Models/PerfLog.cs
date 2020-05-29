@@ -10,7 +10,7 @@ namespace Hippologamus.Server.Models
     {
         public int Id { get; set; }
         public string Level { get; set; }
-        public DateTime TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
         public string Properties { get; set; }
         public string LogEvent { get; set; }
         public string PerfItem { get; set; }
