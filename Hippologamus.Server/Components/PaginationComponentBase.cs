@@ -9,7 +9,7 @@ namespace Hippologamus.Server.Components
     public class PaginationComponentBase : ComponentBase
     {
         [Parameter]
-        public PerfLogPagedList PerfLogPagedList { get; set; }
+        public BasePagedList PagedList { get; set; }
 
         [Parameter]
         public bool ShowDataAsAList { get; set; }

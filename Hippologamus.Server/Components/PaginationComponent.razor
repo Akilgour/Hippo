@@ -32,34 +32,34 @@
     </div>
 
     <div class="col-md-4">
-        @if (PerfLogPagedList.ShowPerviousPageButton)
+        @if (PagedList.ShowPerviousPageButton)
         {
             <button type="button" class="btn btn-primary" @onclick="PerviousPageCallback">Pervious</button>
         }
-        @if (PerfLogPagedList.ShowFirstPageButton)
+        @if (PagedList.ShowFirstPageButton)
         {
             <button type="button" class="btn btn-primary" @onclick="FirstPageCallback"> 1 </button>
             <span>...</span>
         }
-        @if (PerfLogPagedList.ShowSecondPageButton)
+        @if (PagedList.ShowSecondPageButton)
         {
-            <button type="button" class="btn btn-primary" @onclick="PerviousPageCallback">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
+            <button type="button" class="btn btn-primary" @onclick="PerviousPageCallback">@PagedList.PaginationCurrentPageMinusOne</button>
         }
 
-        <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
+        <button type="button" class="btn btn-outline-primary">@PagedList.PaginationCurrentPage</button>
 
-        @if (PerfLogPagedList.ShowPagePlusOneButton)
+        @if (PagedList.ShowPagePlusOneButton)
         {
-            <button type="button" class="btn btn-primary" @onclick="NextPageCallback">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
+            <button type="button" class="btn btn-primary" @onclick="NextPageCallback">@PagedList.PaginationCurrentPagePlusOne</button>
         }
 
-        @if (PerfLogPagedList.ShowSecondEllipsis)
+        @if (PagedList.ShowSecondEllipsis)
         {
             <span>...</span>
         }
-        @if (PerfLogPagedList.ShowNextPageButton)
+        @if (PagedList.ShowNextPageButton)
         {
-            <button type="button" class="btn btn-primary" @onclick="LastPageCallback">@PerfLogPagedList.PaginationTotalPages</button>
+            <button type="button" class="btn btn-primary" @onclick="LastPageCallback">@PagedList.PaginationTotalPages</button>
             <button type="button" class="btn btn-primary" @onclick="NextPageCallback">Next</button>
         }
     </div>
