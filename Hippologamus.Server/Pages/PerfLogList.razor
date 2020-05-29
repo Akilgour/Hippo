@@ -46,40 +46,62 @@ else
         </select>
     </div>
 
-    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a grid">
-        <i class="fas fa-th"></i>
-    </button>
+    @if (ShowDataAsAList)
+    {
+        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a grid" @onclick="ShowDataAs_Click">
+            <i class="fas fa-th"></i>
+        </button>
+    }
+    else
+    {
+        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a table" @onclick="ShowDataAs_Click">
+            <i class="fas fa-table"></i>
+        </button>
+    }
 
-    <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a table">
-        <i class="fas fa-table"></i>
-    </button>
-
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>TimeStamp</th>
-                <th>PerfItem</th>
-                <th>Elapsed Time</th>
-                <th>Message</th>
-                <th>MachineName</th>
-            </tr>
-        </thead>
-        <tbody>
+    @if (ShowDataAsAList)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>TimeStamp</th>
+                    <th>PerfItem</th>
+                    <th>Elapsed Time</th>
+                    <th>Message</th>
+                    <th>MachineName</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in PerfLogPagedList.PerfLogs)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.TimeStamp</td>
+                        <td>@item.PerfItem</td>
+                        <td class="text-right">@item.ElapsedMilliseconds</td">
+                        <td>@item.Message</td>
+                        <td>@item.MachineName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="row">
             @foreach (var item in PerfLogPagedList.PerfLogs)
             {
-                <tr>
-                    <td>@item.Id</td>
-                    <td>@item.TimeStamp</td>
-                    <td>@item.PerfItem</td>
-                    <td class="text-right">@item.ElapsedMilliseconds</td">
-                    <td>@item.Message</td>
-                    <td>@item.MachineName</td>
-                </tr>
+                <div class="col-md-4 btn btn-primary">
+                    <div class="text-left">Id : @item.Id</div>
+                    <div class="text-left">Time Stamp : @item.TimeStamp</div>
+                    <div class="text-left">Elapsed Milliseconds : @item.ElapsedMilliseconds</div>
+                    <div class="text-left">Message : @item.Message</div>
+                    <div class="text-left">Machine Name : @item.MachineName</div>
+                </div>
             }
-        </tbody>
-    </table>
+        </div>
+    }
 
     <div>
         @if (PerfLogPagedList.ShowPerviousPageButton)
@@ -114,17 +136,4 @@ else
         }
     </div>
 
-
-    <div class="row">
-        @foreach (var item in PerfLogPagedList.PerfLogs)
-        {
-            <div class="col-md-4 btn btn-primary">
-                <div class="text-left">Id : @item.Id</div>
-                <div class="text-left">Time Stamp : @item.TimeStamp</div>
-                <div class="text-left">Elapsed Milliseconds : @item.ElapsedMilliseconds</div>
-                <div class="text-left">Message : @item.Message</div>
-                <div class="text-left">Machine Name : @item.MachineName</div>
-            </div>
-        }
-    </div>
 }

@@ -87,5 +87,12 @@ namespace Hippologamus.Server.Pages
 
         public int ShowPageSize { get; set; }
         public List<PageSize> PageSizes { get; set; } = new List<PageSize>();
+
+        public bool ShowDataAsAList { get; set; }
+
+        public void ShowDataAs_Click()
+        {
+            ShowDataAsAList = !ShowDataAsAList;
+        }
     }
 }
