@@ -37,27 +37,75 @@ else
                 <label type="text" class="form-control-plaintext">@PerfLogPagedList.PaginationTotalPages</label>
             </div>
         </div>
-
-        <select @onchange=@PageSize_Change>
-            @foreach (var pageSize in PageSizes)
-            {
-                <option value=@pageSize.ShowPageSizeValue>@pageSize.ShowPageSizeDescription</option>
-            }
-        </select>
     </div>
 
-    @if (ShowDataAsAList)
-    {
-        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a grid" @onclick="ShowDataAs_Click">
-            <i class="fas fa-th"></i>
-        </button>
-    }
-    else
-    {
-        <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a table" @onclick="ShowDataAs_Click">
-            <i class="fas fa-table"></i>
-        </button>
-    }
+
+
+    <div class="row">
+
+        <div class="col-md-4">
+
+            @if (ShowDataAsAList)
+            {
+                <label type="text">Display performance as a grid</label>
+                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a grid" @onclick="ShowDataAs_Click">
+                    <i class="fas fa-th"></i>
+                </button>
+            }
+            else
+            {
+                <label type="text">Display performance as a table</label>
+                <button type="button" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Display performance as a table" @onclick="ShowDataAs_Click">
+                    <i class="fas fa-table"></i>
+                </button>
+            }
+        </div>
+
+        <div class="col-md-4">
+            <select @onchange=@PageSize_Change>
+                @foreach (var pageSize in PageSizes)
+                {
+                    <option value=@pageSize.ShowPageSizeValue>@pageSize.ShowPageSizeDescription</option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            @if (PerfLogPagedList.ShowPerviousPageButton)
+            {
+                <button type="button" class="btn btn-primary" @onclick="PerviousPage">Pervious</button>
+            }
+            @if (PerfLogPagedList.ShowFirstPageButton)
+            {
+                <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
+                <span>...</span>
+            }
+            @if (PerfLogPagedList.ShowSecondPageButton)
+            {
+                <button type="button" class="btn btn-primary" @onclick="PerviousPage">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
+            }
+
+            <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
+
+            @if (PerfLogPagedList.ShowPagePlusOneButton)
+            {
+                <button type="button" class="btn btn-primary" @onclick="NextPage">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
+            }
+
+            @if (PerfLogPagedList.ShowSecondEllipsis)
+            {
+                <span>...</span>
+            }
+            @if (PerfLogPagedList.ShowNextPageButton)
+            {
+                <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
+                <button type="button" class="btn btn-primary" @onclick="NextPage">Next</button>
+            }
+        </div>
+
+    </div>
+
+
 
     @if (ShowDataAsAList)
     {
@@ -103,37 +151,6 @@ else
         </div>
     }
 
-    <div>
-        @if (PerfLogPagedList.ShowPerviousPageButton)
-        {
-            <button type="button" class="btn btn-primary" @onclick="PerviousPage">Pervious</button>
-        }
-        @if (PerfLogPagedList.ShowFirstPageButton)
-        {
-            <button type="button" class="btn btn-primary" @onclick="FirstPage"> 1 </button>
-            <span>...</span>
-        }
-        @if (PerfLogPagedList.ShowSecondPageButton)
-        {
-            <button type="button" class="btn btn-primary" @onclick="PerviousPage">@PerfLogPagedList.PaginationCurrentPageMinusOne</button>
-        }
 
-        <button type="button" class="btn btn-outline-primary">@PerfLogPagedList.PaginationCurrentPage</button>
-
-        @if (PerfLogPagedList.ShowPagePlusOneButton)
-        {
-            <button type="button" class="btn btn-primary" @onclick="NextPage">@PerfLogPagedList.PaginationCurrentPagePlusOne</button>
-        }
-
-        @if (PerfLogPagedList.ShowSecondEllipsis)
-        {
-            <span>...</span>
-        }
-        @if (PerfLogPagedList.ShowNextPageButton)
-        {
-            <button type="button" class="btn btn-primary" @onclick="LastPage">@PerfLogPagedList.PaginationTotalPages</button>
-            <button type="button" class="btn btn-primary" @onclick="NextPage">Next</button>
-        }
-    </div>
 
 }
