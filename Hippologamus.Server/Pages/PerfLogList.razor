@@ -43,14 +43,13 @@ else
     <PaginationComponent PerfLogPagedList="PerfLogPagedList"
                          ShowDataAsAList="ShowDataAsAList"
                          ShowDataAsAListCallback="ShowDataAsAList"
-                         PageSize_ChangeCallback="PageSize_Change"
+                         PageSize_ChangeCallback="PageSize_Change" 
                          PerviousPageCallback ="PerviousPage"
                          FirstPageCallback ="FirstPage"
                          NextPageCallback="NextPage"
                          LastPageCallback="LastPage"
                          ShowDataAs_ClickCallback ="ShowDataAs_Click"
-                         @bind-ShowPageSizeValue=ShowPageSize
-                         />
+                         @bind-ShowPageSizeValue=ShowPageSize/>
 
     @if (ShowDataAsAList)
     {

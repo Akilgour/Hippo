@@ -3,7 +3,6 @@ using Hippologamus.DTO.DTO;
 using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -34,7 +33,6 @@ namespace Hippologamus.Server.Pages
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
 
-           
             ShowPageSize = 10;
         }
 
@@ -68,7 +66,7 @@ namespace Hippologamus.Server.Pages
                 Assembly = Assembly,
                 RequestPath = RequestPath,
                 PageNumber = PerfLogPagedList.PaginationTotalPages,
-                 PageSize = ShowPageSize
+                PageSize = ShowPageSize
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
         }
@@ -84,10 +82,8 @@ namespace Hippologamus.Server.Pages
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
         }
 
-        
 
         public int ShowPageSize { get; set; }
-      
         public bool ShowDataAsAList { get; set; }
 
         public void ShowDataAs_Click()

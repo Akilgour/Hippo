@@ -19,7 +19,6 @@ namespace Hippologamus.Server.Components
 
         [Parameter]
         public EventCallback PageSize_ChangeCallback { get; set; }
-
         [Parameter]
         public EventCallback<MouseEventArgs> PerviousPageCallback { get; set; }
 
@@ -34,14 +33,6 @@ namespace Hippologamus.Server.Components
 
         [Parameter]
         public EventCallback<MouseEventArgs> ShowDataAs_ClickCallback { get; set; }
-
-        //[Parameter]
-        //public EventCallback ShowPageSizeCallback { get; set; }
-
-        //[Parameter]
-        //public EventCallback<int> ShowPageSize { get; set; }
-
-
 
 
         [Parameter]
@@ -59,14 +50,11 @@ namespace Hippologamus.Server.Components
             PageSizes = Factorys.PageSizes.Create();
         }
 
-        public async Task PageSize_Change(ChangeEventArgs e)
+        public async Task PageSize_OnChange(ChangeEventArgs e)
         {
             ShowPageSizeValue = int.Parse(e.Value.ToString());
-       
             await ShowPageSizeValueChanged.InvokeAsync(ShowPageSizeValue);
-          
-
-
+            await PageSize_ChangeCallback.InvokeAsync(ShowPageSizeValue);
         }
     }
 }

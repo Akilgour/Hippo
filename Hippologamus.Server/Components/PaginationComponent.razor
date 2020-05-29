@@ -23,7 +23,7 @@
     </div>
 
     <div class="col-md-4">
-        <select @onchange=@PageSize_Change>
+        <select @onchange=@PageSize_OnChange>
             @foreach (var pageSize in PageSizes)
             {
                 <option value=@pageSize.ShowPageSizeValue>@pageSize.ShowPageSizeDescription</option>
