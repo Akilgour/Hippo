@@ -4,11 +4,26 @@
     <thead>
         <tr>
             <th>Id</th>
-            <th>TimeStamp</th>
+            <th>
+                TimeStamp
+                <button class="btn btn-primary" @onclick="ToggleOrderTimeStamp">
+                    <i class="fas fa-sort"></i>
+                </button>
+            </th>
             <th>PerfItem</th>
-            <th>Elapsed Time</th>
+            <th>
+                Elapsed Time
+                <button class="btn btn-primary" @onclick="ToggleOrderElapsedTime">
+                    <i class="fas fa-sort"></i>
+                </button>
+            </th>
             <th>Message</th>
-            <th>MachineName</th>
+            <th>
+                Machine Name
+                <button class="btn btn-primary" @onclick="ToggleOrderMachineName">
+                    <i class="fas fa-sort"></i>
+                </button>
+            </th>
         </tr>
     </thead>
     <tbody>

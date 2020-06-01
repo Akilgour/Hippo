@@ -57,7 +57,9 @@ else
 
     @if (ShowDataAsAList)
     {
-        <PerfLogPagedListTable PerfLogPagedList="PerfLogPagedList" />
+        <PerfLogPagedListTable PerfLogPagedList="PerfLogPagedList"
+                               OrderBy_ClickCallback="OrderBy_Click"
+                               @bind-OrderByValue=OrderBy/>
     }
     else
     {
