@@ -4,14 +4,16 @@ using Hippologamus.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Hippologamus.Data.Migrations
 {
     [DbContext(typeof(HippologamusContext))]
-    partial class HippologamusContextModelSnapshot : ModelSnapshot
+    [Migration("20200601112518_PerLog-RemoveElapsedMilliseconds")]
+    partial class PerLogRemoveElapsedMilliseconds
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,9 +92,6 @@ namespace Hippologamus.Data.Migrations
 
                     b.Property<string>("Assembly")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ElapsedMilliseconds")
-                        .HasColumnType("int");
 
                     b.Property<string>("Level")
                         .HasColumnType("nvarchar(max)");
