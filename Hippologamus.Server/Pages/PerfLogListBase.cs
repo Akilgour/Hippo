@@ -5,6 +5,8 @@ using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Hippologamus.Server.Factorys;
 
 namespace Hippologamus.Server.Pages
 {
@@ -32,6 +34,8 @@ namespace Hippologamus.Server.Pages
                 RequestPath = RequestPath
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
+
+            OrderByList = PerfLogsOrderByListFactory.Create();
 
             ShowPageSize = 10;
             ShowDataAsAList = true;
@@ -87,7 +91,9 @@ namespace Hippologamus.Server.Pages
         public int ShowPageSize { get; set; }
         public bool ShowDataAsAList { get; set; }
 
-        public void ShowDataAs_Click()
+        public Dictionary<string, string> OrderByList{ get; set; }
+
+    public void ShowDataAs_Click()
         {
             ShowDataAsAList = !ShowDataAsAList;
         }

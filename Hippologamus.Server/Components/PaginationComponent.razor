@@ -4,7 +4,7 @@
 
 <div class="row">
 
-    <div class="col-md-4">
+    <div class="col-md-3">
 
         @if (ShowDataAsAListCallback)
         {
@@ -22,7 +22,7 @@
         }
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
         <select @onchange=@PageSize_OnChange>
             @foreach (var pageSize in PageSizes)
             {
@@ -31,7 +31,16 @@
         </select>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-3">
+        <select>
+            @foreach (var item in OrderByList)
+            {
+                <option value=@item.Key>@item.Value</option>
+            }
+        </select>
+    </div>
+
+    <div class="col-md-3">
         @if (PagedList.ShowPerviousPageButton)
         {
             <button type="button" class="btn btn-primary" @onclick="PerviousPageCallback">Pervious</button>

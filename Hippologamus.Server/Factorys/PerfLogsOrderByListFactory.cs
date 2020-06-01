@@ -4,7 +4,7 @@ namespace Hippologamus.Server.Factorys
 {
     public static class PerfLogsOrderByListFactory
     {
-        public static IDictionary<string, string> Create()
+        public static Dictionary<string, string> Create()
         {
             return new Dictionary<string, string>
             {
