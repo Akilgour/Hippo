@@ -12,6 +12,8 @@ namespace Hippologamus.Server.Pages
 {
     public class PerfLogListBase : ComponentBase
     {
+        private string orderBy;
+
         [Parameter]
         public string Assembly { get; set; }
 
@@ -105,11 +107,28 @@ namespace Hippologamus.Server.Pages
                 Assembly = Assembly,
                 RequestPath = RequestPath,
                 PageSize = ShowPageSize,
-                OrderBy = OrderBy
+                OrderBy = OrderBy,
+                OrderAscending = OrderAscending
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
         }
 
-        public string OrderBy { get; set; }
+        public string OrderBy
+        {
+            get
+            {
+                return orderBy;
+            }
+            set
+            {
+                if (orderBy == value)
+                {
+                    OrderAscending = !OrderAscending;
+                }
+                orderBy = value;
+            }
+        }
+
+        public bool OrderAscending { get; set; } = true;
     }
 }

@@ -26,7 +26,7 @@ namespace Hippologamus.Server.Components
 
         public async Task ToggleOrderElapsedTime()
         {
-            await ToggleOrder("ElapsedTime");
+            await ToggleOrder("ElapsedMilliseconds");
         }
 
         public async Task ToggleOrderMachineName()
