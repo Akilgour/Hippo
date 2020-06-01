@@ -18,13 +18,13 @@ namespace Hippologamus.Data.Test.Repositorys
             var option = DbContextOptionsBuilderFactory.Create();
             var arrangeContext = new HippologamusContext(option);
 
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 1), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 2), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 3), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 4), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 5), PerfItem = "PerfLogs-Get", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 6), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
-            arrangeContext.Add(new PerfLog() { TimeStamp = new DateTime(2020, 1, 7), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
+            arrangeContext.Add(new PerfLog() {Id = 1, ElapsedMilliseconds = "50", MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 1), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
+            arrangeContext.Add(new PerfLog() {Id = 2, ElapsedMilliseconds = "60", MachineName = "PC-B", TimeStamp = new DateTime(2020, 1, 2), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 3, ElapsedMilliseconds = "51", MachineName = "PC-C", TimeStamp = new DateTime(2020, 1, 3), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 4, ElapsedMilliseconds = "61", MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 4), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 5, ElapsedMilliseconds = "52", MachineName = "PC-B", TimeStamp = new DateTime(2020, 1, 5), PerfItem = "PerfLogs-Get", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 6, ElapsedMilliseconds = "62", MachineName = "PC-C", TimeStamp = new DateTime(2020, 1, 6), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
+            arrangeContext.Add(new PerfLog() {Id = 7, ElapsedMilliseconds = "53", MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 7), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
             arrangeContext.SaveChanges();
             _context = new HippologamusContext(option);
         }
@@ -164,6 +164,144 @@ namespace Hippologamus.Data.Test.Repositorys
             var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
             //assert
             Assert.Equal(2, value.Count());
+        }
+
+        [Fact]
+        public async Task GetAll_Search_OrderByTimeStampOrderAscending()
+        {
+            //arrange
+            var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
+            {
+               OrderBy = "TimeStamp",
+               OrderAscending = true
+            };
+            //act
+            var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
+            //assert
+            Assert.Equal(1, value[0].Id);
+            Assert.Equal(2, value[1].Id);
+            Assert.Equal(3, value[2].Id);
+            Assert.Equal(4, value[3].Id);
+            Assert.Equal(5, value[4].Id);
+            Assert.Equal(6, value[5].Id);
+            Assert.Equal(7, value[6].Id);
+        }
+
+        [Fact]
+        public async Task GetAll_Search_OrderByTimeStampOrderDescending()
+        {
+            //arrange
+            var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
+            {
+                OrderBy = "TimeStamp",
+                OrderAscending = false
+
+            };
+            //act
+            var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
+            //assert
+            Assert.Equal(7, value[0].Id);
+            Assert.Equal(6, value[1].Id);
+            Assert.Equal(5, value[2].Id);
+            Assert.Equal(4, value[3].Id);
+            Assert.Equal(3, value[4].Id);
+            Assert.Equal(2, value[5].Id);
+            Assert.Equal(1, value[6].Id);
+        }
+
+
+        [Fact]
+        public async Task GetAll_Search_OrderByMachineNameOrderAscending()
+        {
+            //arrange
+            var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
+            {
+                OrderBy = "MachineName",
+                OrderAscending = true
+
+            };
+            //act
+            var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
+            //assert
+            Assert.Equal(1, value[0].Id);
+            Assert.Equal(4, value[1].Id);
+            Assert.Equal(7, value[2].Id);
+            Assert.Equal(2, value[3].Id);
+            Assert.Equal(5, value[4].Id);
+            Assert.Equal(3, value[5].Id);
+            Assert.Equal(6, value[6].Id);
+        }
+
+        [Fact]
+        public async Task GetAll_Search_OrderByMachineNameOrderDescending()
+        {
+            //arrange
+            var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
+            {
+                OrderBy = "MachineName",
+                OrderAscending = false
+
+            };
+            //act
+            var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
+            //assert
+            Assert.Equal(3, value[0].Id);
+            Assert.Equal(6, value[1].Id);
+            Assert.Equal(2, value[2].Id);
+            Assert.Equal(5, value[3].Id);
+            Assert.Equal(1, value[4].Id);
+            Assert.Equal(4, value[5].Id);
+            Assert.Equal(7, value[6].Id);
+        }
+
+        [Fact]
+        public async Task GetAll_Search_OrderByElapsedMillisecondsOrderAscending()
+        {
+            //arrange
+            var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
+            {
+                OrderBy = "ElapsedMilliseconds",
+                OrderAscending = true
+
+            };
+            //act
+            var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
+            //assert
+            Assert.Equal(1, value[0].Id);
+            Assert.Equal(3, value[1].Id);
+            Assert.Equal(5, value[2].Id);
+            Assert.Equal(7, value[3].Id);
+            Assert.Equal(2, value[4].Id);
+            Assert.Equal(4, value[5].Id);
+            Assert.Equal(6, value[6].Id);
+        }
+
+        [Fact]
+        public async Task GetAll_Search_OrderByElapsedMillisecondsOrderDescending()
+        {
+            //arrange
+            var perfLogRepository = new PerfLogRepository(_context, PollyTestFactory.CreateAsyncRetryPolicy());
+            var perfLogDisplaySearch = new PerfLogCollectionSearch()
+            {
+                OrderBy = "ElapsedMilliseconds",
+                OrderAscending = false
+
+            };
+            //act
+            var value = await perfLogRepository.GetAll(perfLogDisplaySearch);
+            //assert
+            Assert.Equal(6, value[0].Id);
+            Assert.Equal(4, value[1].Id);
+            Assert.Equal(2, value[2].Id);
+            Assert.Equal(7, value[3].Id);
+            Assert.Equal(5, value[4].Id);
+            Assert.Equal(3, value[5].Id);
+            Assert.Equal(1, value[6].Id);
         }
     }
 }

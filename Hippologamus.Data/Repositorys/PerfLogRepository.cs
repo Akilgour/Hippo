@@ -39,10 +39,45 @@ namespace Hippologamus.Data.Repositorys
             {
                 query = query.Where(x => x.TimeStamp >= perfLogDisplaySearch.DateFrom);
             }
-
             if (perfLogDisplaySearch.DateTo != null)
             {
                 query = query.Where(x => x.TimeStamp <= perfLogDisplaySearch.DateTo);
+            }
+
+            if(perfLogDisplaySearch.OrderBy == "TimeStamp")
+            {
+                if (perfLogDisplaySearch.OrderAscending)
+                {
+                    query = query.OrderBy(x => x.TimeStamp);
+                }
+                else
+                {
+                    query = query.OrderByDescending(x => x.TimeStamp);
+                }
+            }
+
+            if (perfLogDisplaySearch.OrderBy == "MachineName")
+            {
+                if (perfLogDisplaySearch.OrderAscending)
+                {
+                    query = query.OrderBy(x => x.MachineName);
+                }
+                else
+                {
+                    query = query.OrderByDescending(x => x.MachineName);
+                }
+            }
+
+            if (perfLogDisplaySearch.OrderBy == "ElapsedMilliseconds")
+            {
+                if (perfLogDisplaySearch.OrderAscending)
+                {
+                    query = query.OrderBy(x => x.ElapsedMilliseconds);
+                }
+                else
+                {
+                    query = query.OrderByDescending(x => x.ElapsedMilliseconds);
+                }
             }
 
             await _retryPolicy.ExecuteAsync(async () =>
