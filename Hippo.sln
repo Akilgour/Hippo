@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Server", "Hipp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Server.Test", "Hippologamus.Server.Test\Hippologamus.Server.Test.csproj", "{E5FD20E1-39FC-428F-B718-9D19190AC246}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hippologamus.DTO.Test", "Hippologamus.DTO.Test\Hippologamus.DTO.Test.csproj", "{BCA565C1-77CC-4C91-9A74-AE81A8F63CA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.DTO.Test", "Hippologamus.DTO.Test\Hippologamus.DTO.Test.csproj", "{BCA565C1-77CC-4C91-9A74-AE81A8F63CA2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

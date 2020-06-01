@@ -40,5 +40,17 @@ namespace Hippologamus.Server.Components
             await OrderByValueChanged.InvokeAsync(OrderByValue);
             await OrderBy_ClickCallback.InvokeAsync(OrderByValue);
         }
+
+        protected DeleteDialog DeleteDialog { get; set; }
+
+        public void DeletePerfLog()
+        {
+            DeleteDialog.Show();
+        }
+
+        public   void DeletePefLogDialog_OnDialogClose()
+        {
+          
+        }
     }
 }
