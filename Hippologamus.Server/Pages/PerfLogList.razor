@@ -1,12 +1,13 @@
-﻿@page "/perflogList/{Assembly}/{RequestPath}"
+﻿@using Hippologamus.Server.Components
+@page "/perflogList/{Assembly}/{RequestPath}"
 @inherits PerfLogListBase
-@using  Hippologamus.Server.Components
+
 
 <h3>PerfLogList</h3>
 
 @if (PerfLogPagedList == null)
 {
-    <Loading/>
+    <WaitLoading/>
 }
 else
 {
@@ -44,16 +45,15 @@ else
                          ShowDataAsAList="ShowDataAsAList"
                          OrderByList="OrderByList"
                          ShowDataAsAListCallback="ShowDataAsAList"
-                         PageSize_ChangeCallback="PageSize_Change" 
-                         PerviousPageCallback ="PerviousPage"
-                         FirstPageCallback ="FirstPage"
+                         PageSize_ChangeCallback="PageSize_Change"
+                         PerviousPageCallback="PerviousPage"
+                         FirstPageCallback="FirstPage"
                          NextPageCallback="NextPage"
                          LastPageCallback="LastPage"
-                         ShowDataAs_ClickCallback ="ShowDataAs_Click"
-                         @bind-ShowPageSizeValue=ShowPageSize                         
-                         OrderBy_ClickCallback ="OrderBy_Click"
-                         @bind-OrderByValue=OrderBy
-                         />
+                         ShowDataAs_ClickCallback="ShowDataAs_Click"
+                         @bind-ShowPageSizeValue=ShowPageSize
+                         OrderBy_ClickCallback="OrderBy_Click"
+                         @bind-OrderByValue=OrderBy />
 
     @if (ShowDataAsAList)
     {
