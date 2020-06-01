@@ -18,13 +18,13 @@ namespace Hippologamus.Data.Test.Repositorys
             var option = DbContextOptionsBuilderFactory.Create();
             var arrangeContext = new HippologamusContext(option);
 
-            arrangeContext.Add(new PerfLog() {Id = 1, ElapsedMilliseconds = "50", MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 1), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
-            arrangeContext.Add(new PerfLog() {Id = 2, ElapsedMilliseconds = "60", MachineName = "PC-B", TimeStamp = new DateTime(2020, 1, 2), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() {Id = 3, ElapsedMilliseconds = "51", MachineName = "PC-C", TimeStamp = new DateTime(2020, 1, 3), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() {Id = 4, ElapsedMilliseconds = "61", MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 4), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() {Id = 5, ElapsedMilliseconds = "52", MachineName = "PC-B", TimeStamp = new DateTime(2020, 1, 5), PerfItem = "PerfLogs-Get", Assembly = "Hippologamus.API" });
-            arrangeContext.Add(new PerfLog() {Id = 6, ElapsedMilliseconds = "62", MachineName = "PC-C", TimeStamp = new DateTime(2020, 1, 6), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
-            arrangeContext.Add(new PerfLog() {Id = 7, ElapsedMilliseconds = "53", MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 7), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
+            arrangeContext.Add(new PerfLog() {Id = 1, ElapsedMilliseconds = 50, MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 1), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
+            arrangeContext.Add(new PerfLog() {Id = 2, ElapsedMilliseconds = 60, MachineName = "PC-B", TimeStamp = new DateTime(2020, 1, 2), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 3, ElapsedMilliseconds = 51, MachineName = "PC-C", TimeStamp = new DateTime(2020, 1, 3), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 4, ElapsedMilliseconds = 61, MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 4), PerfItem = "PerfLogs-GetById", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 5, ElapsedMilliseconds = 52, MachineName = "PC-B", TimeStamp = new DateTime(2020, 1, 5), PerfItem = "PerfLogs-Get", Assembly = "Hippologamus.API" });
+            arrangeContext.Add(new PerfLog() {Id = 6, ElapsedMilliseconds = 62, MachineName = "PC-C", TimeStamp = new DateTime(2020, 1, 6), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
+            arrangeContext.Add(new PerfLog() {Id = 7, ElapsedMilliseconds = 53, MachineName = "PC-A", TimeStamp = new DateTime(2020, 1, 7), PerfItem = "Beatle-Get", Assembly = "Demo.API" });
             arrangeContext.SaveChanges();
             _context = new HippologamusContext(option);
         }
