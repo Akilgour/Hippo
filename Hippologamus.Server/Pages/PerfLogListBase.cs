@@ -34,6 +34,7 @@ namespace Hippologamus.Server.Pages
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
 
             ShowPageSize = 10;
+            ShowDataAsAList = true;
         }
 
         public async Task NextPage()
