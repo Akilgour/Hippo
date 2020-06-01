@@ -5,10 +5,10 @@ namespace Hippologamus.Server.Profiles.Shared
 {
     public class ElapsedMillisecondsDisplay
     {
-        public static string Resolve(string milliseconds)
+        public static string Resolve(int milliseconds)
         {
             bool started = false;
-            var span = TimeSpan.FromMilliseconds(double.Parse(milliseconds));
+            var span = TimeSpan.FromMilliseconds(double.Parse(milliseconds.ToString()));
             var sb = new StringBuilder();
 
             if (span.Duration().Days > 0)
