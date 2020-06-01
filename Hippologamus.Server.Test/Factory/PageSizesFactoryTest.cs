@@ -4,14 +4,14 @@ using Xunit;
 
 namespace Hippologamus.Server.Test.Factory
 {
-    public class PageSizesTest
+    public class PageSizesFactoryTest
     {
         [Fact]
         public void Create_Count()
         {
             //arrange
             //act
-            var value = PageSizes.Create();
+            var value = PageSizesFactoy.Create();
             //assert
             Assert.Equal(3, value.Count);
         }
@@ -24,7 +24,7 @@ namespace Hippologamus.Server.Test.Factory
         {
             //arrange
             //act
-            var value = PageSizes.Create();
+            var value = PageSizesFactoy.Create();
             //assert
             var item = value.First(x => x.ShowPageSizeValue == showPageSizeValue);
             Assert.Equal(showPageSizeValue, item.ShowPageSizeValue);

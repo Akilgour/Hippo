@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Hippologamus.Server.Factorys
 {
-    public static class ObjectToURLString
+    public static class ObjectToURLStringFactory
     {
         //https://stackoverflow.com/questions/6848296/how-do-i-serialize-an-object-into-query-string-format
 

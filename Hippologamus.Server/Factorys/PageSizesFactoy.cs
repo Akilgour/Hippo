@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Hippologamus.Server.Factorys
 {
-    public static class PageSizes
+    public static class PageSizesFactoy
     {
         public static List<PageSize> Create()
         {

@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace Hippologamus.Server.Factorys
 {
-    public static class PaginationFromHeaders
+    public static class PaginationFromHeadersFactory
     {
         public static Pagination Get(HttpResponseMessage response)
         {

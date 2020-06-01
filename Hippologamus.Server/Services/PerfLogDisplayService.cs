@@ -24,7 +24,7 @@ namespace Hippologamus.Server.Services
 
         public async Task<PerfLogCollectionResponce> PerfLogDisplaySearch(PerfLogCollectionSearch search)
         {
-            var response = await _httpClient.GetAsync($"api/PerfLogs?{ObjectToURLString.Create(search)}");
+            var response = await _httpClient.GetAsync($"api/PerfLogs?{ObjectToURLStringFactory.Create(search)}");
             return await ConvertResponseToPerfLogCollectionResponce(response);
         }
 
@@ -32,7 +32,7 @@ namespace Hippologamus.Server.Services
         {
             var result = await JsonSerializer.DeserializeAsync<PerfLogCollectionResponce>
                             (await response.Content.ReadAsStreamAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-            result.Pagination = PaginationFromHeaders.Get(response);
+            result.Pagination = PaginationFromHeadersFactory.Get(response);
             return result;
         }
     }

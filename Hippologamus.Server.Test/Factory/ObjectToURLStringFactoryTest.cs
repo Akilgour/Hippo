@@ -4,7 +4,7 @@ using Xunit;
 
 namespace Hippologamus.Server.Test.Factory
 {
-    public class ObjectToURLStringTest
+    public class ObjectToURLStringFactoryTest
     {
         [Theory]
         [InlineData("John", "Lennon", "FirstName=John&LastName=Lennon")]
@@ -23,7 +23,7 @@ namespace Hippologamus.Server.Test.Factory
                 LastName = lastName
             };
             //act
-            var value = ObjectToURLString.Create(person);
+            var value = ObjectToURLStringFactory.Create(person);
             //assert
             Assert.Equal(expected, value);
         }
@@ -40,7 +40,7 @@ namespace Hippologamus.Server.Test.Factory
                 RightHandedDrive = true
             };
             //act
-            var value = ObjectToURLString.Create(car);
+            var value = ObjectToURLStringFactory.Create(car);
             //assert
             Assert.Equal("Make=Reliant&NumberOfWheels=3&DateOfManufacture=1973-12-24T00%3a00%3a00&RightHandedDrive=true", value);
         }
@@ -53,7 +53,7 @@ namespace Hippologamus.Server.Test.Factory
             {
             };
             //act
-            var value = ObjectToURLString.Create(car);
+            var value = ObjectToURLStringFactory.Create(car);
             //assert
             Assert.Equal("Make=&NumberOfWheels=0&DateOfManufacture=0001-01-01T00%3a00%3a00&RightHandedDrive=false", value);
         }

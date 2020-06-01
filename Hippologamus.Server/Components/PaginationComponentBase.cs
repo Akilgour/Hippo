@@ -47,7 +47,7 @@ namespace Hippologamus.Server.Components
 
         protected override void OnInitialized()
         {
-            PageSizes = Factorys.PageSizes.Create();
+            PageSizes = Factorys.PageSizesFactoy.Create();
         }
 
         public async Task PageSize_OnChange(ChangeEventArgs e)
