@@ -40,13 +40,20 @@ namespace Hippologamus.Server.Components
 
         [Parameter]
         public int ShowPageSizeValue { get; set; }
+
         [Parameter]
         public EventCallback<int> ShowPageSizeValueChanged { get; set; }
 
-
-
+        [Parameter]
+        public string OrderByValue { get; set; }
 
         public List<PageSize> PageSizes { get; set; } = new List<PageSize>();
+
+        [Parameter]
+        public EventCallback OrderBy_ClickCallback { get; set; }
+
+        [Parameter]
+        public EventCallback<string> OrderByValueChanged { get; set; }
 
         protected override void OnInitialized()
         {
@@ -58,6 +65,13 @@ namespace Hippologamus.Server.Components
             ShowPageSizeValue = int.Parse(e.Value.ToString());
             await ShowPageSizeValueChanged.InvokeAsync(ShowPageSizeValue);
             await PageSize_ChangeCallback.InvokeAsync(ShowPageSizeValue);
+        }
+
+        public async Task OrderBy_OnChange(ChangeEventArgs e)
+        {
+            OrderByValue = e.Value.ToString();
+            await OrderByValueChanged.InvokeAsync(OrderByValue);
+            await OrderBy_ClickCallback.InvokeAsync(OrderByValue);
         }
     }
 }

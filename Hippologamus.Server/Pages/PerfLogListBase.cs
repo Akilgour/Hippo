@@ -91,11 +91,25 @@ namespace Hippologamus.Server.Pages
         public int ShowPageSize { get; set; }
         public bool ShowDataAsAList { get; set; }
 
-        public Dictionary<string, string> OrderByList{ get; set; }
+        public Dictionary<string, string> OrderByList { get; set; }
 
-    public void ShowDataAs_Click()
+        public void ShowDataAs_Click()
         {
             ShowDataAsAList = !ShowDataAsAList;
         }
+
+        public async Task OrderBy_Click()
+        {
+            var search = new PerfLogCollectionSearch()
+            {
+                Assembly = Assembly,
+                RequestPath = RequestPath,
+                PageSize = ShowPageSize,
+                OrderBy = OrderBy
+            };
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
+        }
+
+        public string OrderBy { get; set; }
     }
 }
