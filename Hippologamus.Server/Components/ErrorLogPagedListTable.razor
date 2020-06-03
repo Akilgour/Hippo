@@ -7,17 +7,23 @@
             <th>TimeStamp</th>
             <th>Message</th>
             <th>Machine Name</th>
+            <th>Exception Message</th>
+            <th>Request Path</th>
+            <th>Assembly</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in ErrorLogPagedList.ErrorLogs)
         {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.TimeStamp</td>
-                <td>@item.Message</td>
-                <td>@item.MachineName</td>
-            </tr>
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.TimeStamp</td>
+            <td>@item.Message</td>
+            <td>@item.MachineName</td>
+            <td>@item.ExceptionMessage</td>
+            <td>@item.RequestPath</td>
+            <td>@item.Assembly</td>
+        </tr>
         }
     </tbody>
 </table>
