@@ -1,6 +1,8 @@
 ﻿using Hippologamus.Server.Models;
 using Microsoft.AspNetCore.Components;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Web;
+using Hippologamus.Server.Factorys;
 
 namespace Hippologamus.Server.Components
 {
@@ -41,11 +43,11 @@ namespace Hippologamus.Server.Components
             await OrderBy_ClickCallback.InvokeAsync(OrderByValue);
         }
 
-        protected DeleteDialog DeleteDialog { get; set; }
+        protected DeleteDialog DeleteItemDialog { get; set; }
 
-        public void DeletePerfLog()
+        public void DeletePerfLog(MouseEventArgs e, int itemToBeDeleted)
         {
-            DeleteDialog.Show();
+            DeleteItemDialog.Show(DeletePerfLogItemFactory.Create(itemToBeDeleted.ToString()));
         }
 
         public   void DeletePefLogDialog_OnDialogClose()

@@ -15,11 +15,11 @@ namespace Hippologamus.Server.Components
 
         protected override void OnInitialized()
         {
-            DeleteItem = new DeleteItem() { CheckValue = "42", DeleteCaption = "Do you want to delete 42, then type 42.", DialogTitle = "Delete PerfLog" };
         }
 
-        public void Show()
+        public void Show(DeleteItem  deleteItem)
         {
+            DeleteItem = deleteItem;
             ShowDialog = true;
         }
 

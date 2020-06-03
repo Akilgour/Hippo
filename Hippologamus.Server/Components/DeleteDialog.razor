@@ -19,10 +19,14 @@
                         <p>@DeleteItem.DeleteCaption</p>
                         <div class="form-group">
                             <label for="userValue">Item to be deleted: </label>
-                            <InputText id="userValue" class="form-control" @bind-Value="@DeleteItem.UserValue" placeholder="Item to be deleted"></InputText>
+                            <InputText id="userValue" 
+                                       class="form-control" 
+                                       @bind-Value="@DeleteItem.UserValue" 
+                                       placeholder="Item to be deleted">
+                            </InputText>
                             <ValidationMessage For="@(() => DeleteItem.UserValue)" />
                         </div>
-                        <button type="submit" class="btn btn-primary">Save employee</button>
+                        <button type="submit" class="btn btn-primary">Delete</button>
                         <a class="btn btn-outline-primary" @onclick="@Close">Close</a>
                     </EditForm>
                 </div>

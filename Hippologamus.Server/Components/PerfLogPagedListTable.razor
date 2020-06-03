@@ -39,7 +39,7 @@
             <td>@item.Message</td>
             <td>@item.MachineName</td>
             <td>
-                <button class="btn btn-primary" @onclick="@DeletePerfLog">
+                <button class="btn btn-primary" @onclick="@(e => DeletePerfLog(e, @item.Id))">
                     <i class="far fa-times-circle"></i>
                 </button>
             </td>
@@ -49,7 +49,7 @@
     </tbody>
 </table>
 
-<DeleteDialog @ref="DeleteDialog"
+<DeleteDialog @ref="DeleteItemDialog"
               CloseEventCallback="@DeletePefLogDialog_OnDialogClose">
 
 </DeleteDialog>
