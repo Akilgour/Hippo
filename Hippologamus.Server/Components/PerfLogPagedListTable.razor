@@ -6,23 +6,23 @@
             <th>Id</th>
             <th>
                 TimeStamp
-                <button class="btn btn-primary" @onclick="ToggleOrderTimeStamp">
+                <a class="btn" @onclick="ToggleOrderTimeStamp">
                     <i class="fas fa-sort"></i>
-                </button>
+                </a>
             </th>
             <th>PerfItem</th>
             <th>
                 Elapsed Time
-                <button class="btn btn-primary" @onclick="ToggleOrderElapsedTime">
+                <a class="btn" @onclick="ToggleOrderElapsedTime">
                     <i class="fas fa-sort"></i>
-                </button>
+                </a>
             </th>
             <th>Message</th>
             <th>
                 Machine Name
-                <button class="btn btn-primary" @onclick="ToggleOrderMachineName">
+                <a class="btn" @onclick="ToggleOrderMachineName">
                     <i class="fas fa-sort"></i>
-                </button>
+                </a>
             </th>
             <th>
             </th>
@@ -31,25 +31,23 @@
     <tbody>
         @foreach (var item in PerfLogPagedList.PerfLogs)
         {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.TimeStamp</td>
-            <td>@item.PerfItem</td>
-            <td class="text-right"> @item.ElapsedMilliseconds </td">
-            <td>@item.Message</td>
-            <td>@item.MachineName</td>
-            <td>
-                <button class="btn btn-primary" @onclick="@(e => DeletePerfLog(e, @item.Id))">
-                    <i class="far fa-times-circle"></i>
-                </button>
-            </td>
-
-        </tr>
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.TimeStamp</td>
+                <td>@item.PerfItem</td>
+                <td class="text-right"> @item.ElapsedMilliseconds </td">
+                <td>@item.Message</td>
+                <td>@item.MachineName</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="@(e => DeletePerfLog(e, @item.Id))">
+                        <i class="far fa-times-circle"></i>
+                    </button>
+                </td>
+            </tr>
         }
     </tbody>
 </table>
 
 <DeleteDialog @ref="DeleteItemDialog"
               CloseEventCallback="@DeletePefLogDialog_OnDialogClose">
-
 </DeleteDialog>
