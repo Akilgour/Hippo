@@ -1,5 +1,4 @@
 ﻿@inherits DeleteDialogBase
-<h3>DeleteDialog</h3>
 
 @if (ShowDialog)
 {
@@ -8,7 +7,11 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="titleLabel">@DeleteItem.DialogTitle</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Close">
+                    <button type="button"
+                            class="close"
+                            data-dismiss="modal"
+                            aria-label="Close"
+                            @onclick="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -19,9 +22,9 @@
                         <p>@DeleteItem.DeleteCaption</p>
                         <div class="form-group">
                             <label for="userValue">Item to be deleted: </label>
-                            <InputText id="userValue" 
-                                       class="form-control" 
-                                       @bind-Value="@DeleteItem.UserValue" 
+                            <InputText id="userValue"
+                                       class="form-control"
+                                       @bind-Value="@DeleteItem.UserValue"
                                        placeholder="Item to be deleted">
                             </InputText>
                             <ValidationMessage For="@(() => DeleteItem.UserValue)" />
