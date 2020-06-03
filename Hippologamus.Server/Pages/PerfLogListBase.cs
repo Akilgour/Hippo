@@ -73,6 +73,7 @@ namespace Hippologamus.Server.Pages
 
         public async Task PageSize_Change()
         {
+            _pageNumber = 1;
             await Refresh();
         }
 
