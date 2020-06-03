@@ -10,10 +10,8 @@ using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Pages
 {
-    public class PerfLogListBase : ComponentBase
+    public class PerfLogListBase : PageComponentBase
     {
-        private string orderBy;
-
         [Parameter]
         public string Assembly { get; set; }
 
@@ -23,25 +21,12 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IPerfLogDisplayService PerfLogDisplayService { get; set; }
 
-        [Inject]
-        public IMapper Mapper { get; set; }
-
-        private int _pageNumber;
-
-        public int ShowPageSize { get; set; }
-
         public PerfLogPagedList PerfLogPagedList { get; set; }
-
-        public bool ShowDataAsAList { get; set; }
-
-        public Dictionary<string, string> OrderByList { get; set; }
-
-        public bool OrderAscending { get; set; } = true;
 
         protected override async Task OnInitializedAsync()
         {
             ShowPageSize = 10;
-            _pageNumber = 1;
+            PageNumber = 1;
             await Refresh();
             OrderByList = PerfLogsOrderByListFactory.Create();
             ShowDataAsAList = true;
@@ -61,25 +46,20 @@ namespace Hippologamus.Server.Pages
 
         public async Task FirstPage()
         {
-            _pageNumber = 1;
+            PageNumber = 1;
             await Refresh();
         }
 
         public async Task LastPage()
         {
-            _pageNumber = PerfLogPagedList.PaginationTotalPages;
+            PageNumber = PerfLogPagedList.PaginationTotalPages;
             await Refresh();
         }
 
         public async Task PageSize_Change()
         {
-            _pageNumber = 1;
+            PageNumber = 1;
             await Refresh();
-        }
-
-        public void ShowDataAs_Click()
-        {
-            ShowDataAsAList = !ShowDataAsAList;
         }
 
         public async Task OrderBy_Click()
@@ -96,25 +76,9 @@ namespace Hippologamus.Server.Pages
                 PageSize = ShowPageSize,
                 OrderBy = OrderBy,
                 OrderAscending = OrderAscending,
-                PageNumber = _pageNumber,
+                PageNumber = PageNumber,
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
-        }
-
-        public string OrderBy
-        {
-            get
-            {
-                return orderBy;
-            }
-            set
-            {
-                if (orderBy == value)
-                {
-                    OrderAscending = !OrderAscending;
-                }
-                orderBy = value;
-            }
         }
     }
 }
