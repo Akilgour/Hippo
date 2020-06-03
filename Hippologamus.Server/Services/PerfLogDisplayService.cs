@@ -28,6 +28,11 @@ namespace Hippologamus.Server.Services
             return await ConvertResponseToPerfLogCollectionResponce(response);
         }
 
+        public  async Task DeleteById(int id)
+        {
+            var response = await _httpClient.DeleteAsync($"api/PerfLogs/{id}");
+        }
+
         private static async Task<PerfLogCollectionResponce> ConvertResponseToPerfLogCollectionResponce(HttpResponseMessage response)
         {
             var result = await JsonSerializer.DeserializeAsync<PerfLogCollectionResponce>

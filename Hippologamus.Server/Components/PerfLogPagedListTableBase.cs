@@ -1,8 +1,9 @@
-﻿using Hippologamus.Server.Models;
+﻿using Hippologamus.Server.Factorys;
+using Hippologamus.Server.Models;
+using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Web;
-using Hippologamus.Server.Factorys;
+using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Components
 {
@@ -17,9 +18,16 @@ namespace Hippologamus.Server.Components
         [Parameter]
         public EventCallback<string> OrderByValueChanged { get; set; }
 
-
         [Parameter]
         public PerfLogPagedList PerfLogPagedList { get; set; }
+
+        [Inject]
+        public IPerfLogDisplayService PerfLogDisplayService { get; set; }
+
+        private int _itemToBeDeleted;
+
+        protected DeleteDialog DeleteItemDialog { get; set; }
+      
 
         public async Task ToggleOrderTimeStamp()
         {
@@ -43,16 +51,15 @@ namespace Hippologamus.Server.Components
             await OrderBy_ClickCallback.InvokeAsync(OrderByValue);
         }
 
-        protected DeleteDialog DeleteItemDialog { get; set; }
-
         public void DeletePerfLog(MouseEventArgs e, int itemToBeDeleted)
         {
+            _itemToBeDeleted = itemToBeDeleted;
             DeleteItemDialog.Show(DeletePerfLogItemFactory.Create(itemToBeDeleted.ToString()));
         }
 
-        public   void DeletePefLogDialog_OnDialogClose()
+        public void DeletePefLogDialog_OnDialogClose()
         {
-          
+            PerfLogDisplayService.DeleteById(_itemToBeDeleted);
         }
     }
 }

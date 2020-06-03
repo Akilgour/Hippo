@@ -7,5 +7,6 @@ namespace Hippologamus.Server.Services.Interface
     {
         Task<PerfLogCollectionResponce> PerfLogDisplaySearch(PerfLogCollectionSearch search);
         Task<PerfLogCollectionResponce> GetByLink(string link);
+        Task DeleteById(int Id);
     }
 }

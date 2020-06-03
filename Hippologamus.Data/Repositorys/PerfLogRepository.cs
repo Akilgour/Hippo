@@ -110,7 +110,7 @@ namespace Hippologamus.Data.Repositorys
         {
             await _retryPolicy.ExecuteAsync(async () =>
             {
-                var item = await _context.PerfLogs.FirstOrDefaultAsync(x => x.Id == id);
+                var item = await _context.PerfLogs.FirstAsync(x => x.Id == id);
                 _context.PerfLogs.Remove(item);
                 await _context.SaveChangesAsync();
             });
