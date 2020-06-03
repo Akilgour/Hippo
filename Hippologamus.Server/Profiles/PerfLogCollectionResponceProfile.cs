@@ -25,7 +25,7 @@ namespace Hippologamus.Server.Profiles
                  .ForMember(dest => dest.TimeStamp, opt => opt.MapFrom(src => DateTimeDisplay.Resolve(src.TimeStamp)))
                  .ForMember(dest => dest.ElapsedMilliseconds, opt => opt.MapFrom(src => ElapsedMillisecondsDisplay.Resolve(src.ElapsedMilliseconds)));
 
-            CreateMap<RootLink, Links>();
+          
         }
     }
 }

@@ -46,6 +46,13 @@ namespace Hippologamus.Server
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });
 
+            services.AddHttpClient<IErrorLogService, ErrorLogService>(client =>
+            {
+                client.BaseAddress = new Uri("https://localhost:5001/");
+            });
+            
+
+
             //Adds Automapper
             services.AddAutoMapper(typeof(Startup));
         }
