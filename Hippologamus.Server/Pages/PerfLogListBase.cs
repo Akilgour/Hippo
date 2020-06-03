@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using Hippologamus.DTO.DTO;
+using Hippologamus.Server.Factorys;
 using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using Hippologamus.Server.Factorys;
 
 namespace Hippologamus.Server.Pages
 {
@@ -26,20 +26,24 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IMapper Mapper { get; set; }
 
+        private int _pageNumber;
+
+        public int ShowPageSize { get; set; }
+
         public PerfLogPagedList PerfLogPagedList { get; set; }
+
+        public bool ShowDataAsAList { get; set; }
+
+        public Dictionary<string, string> OrderByList { get; set; }
+
+        public bool OrderAscending { get; set; } = true;
 
         protected override async Task OnInitializedAsync()
         {
-            var search = new PerfLogCollectionSearch()
-            {
-                Assembly = Assembly,
-                RequestPath = RequestPath
-            };
-            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
-
-            OrderByList = PerfLogsOrderByListFactory.Create();
-
             ShowPageSize = 10;
+            _pageNumber = 1;
+            await Refresh();
+            OrderByList = PerfLogsOrderByListFactory.Create();
             ShowDataAsAList = true;
         }
 
@@ -57,43 +61,20 @@ namespace Hippologamus.Server.Pages
 
         public async Task FirstPage()
         {
-            var search = new PerfLogCollectionSearch()
-            {
-                Assembly = Assembly,
-                RequestPath = RequestPath,
-                PageSize = ShowPageSize
-            };
-            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
+            _pageNumber = 1;
+            await Refresh();
         }
 
         public async Task LastPage()
         {
-            var search = new PerfLogCollectionSearch()
-            {
-                Assembly = Assembly,
-                RequestPath = RequestPath,
-                PageNumber = PerfLogPagedList.PaginationTotalPages,
-                PageSize = ShowPageSize
-            };
-            PerfLogPagedList = Mapper.Map<PerfLogPagedList>((await PerfLogDisplayService.PerfLogDisplaySearch(search)));
+            _pageNumber = PerfLogPagedList.PaginationTotalPages;
+            await Refresh();
         }
 
         public async Task PageSize_Change()
         {
-            var search = new PerfLogCollectionSearch()
-            {
-                Assembly = Assembly,
-                RequestPath = RequestPath,
-                PageSize = ShowPageSize
-            };
-            PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
+            await Refresh();
         }
-
-
-        public int ShowPageSize { get; set; }
-        public bool ShowDataAsAList { get; set; }
-
-        public Dictionary<string, string> OrderByList { get; set; }
 
         public void ShowDataAs_Click()
         {
@@ -102,15 +83,7 @@ namespace Hippologamus.Server.Pages
 
         public async Task OrderBy_Click()
         {
-            var search = new PerfLogCollectionSearch()
-            {
-                Assembly = Assembly,
-                RequestPath = RequestPath,
-                PageSize = ShowPageSize,
-                OrderBy = OrderBy,
-                OrderAscending = OrderAscending
-            };
-            PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
+            await Refresh();
         }
 
         public async Task Refresh()
@@ -121,7 +94,8 @@ namespace Hippologamus.Server.Pages
                 RequestPath = RequestPath,
                 PageSize = ShowPageSize,
                 OrderBy = OrderBy,
-                OrderAscending = OrderAscending
+                OrderAscending = OrderAscending,
+                PageNumber = _pageNumber,
             };
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
         }
@@ -141,7 +115,5 @@ namespace Hippologamus.Server.Pages
                 orderBy = value;
             }
         }
-
-        public bool OrderAscending { get; set; } = true;
     }
 }
