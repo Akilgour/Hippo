@@ -6,7 +6,7 @@ namespace Hippologamus.Server.Pages
 {
     public class PageComponentBase : ComponentBase
     {
-        protected int _pageNumber;
+        public int PageNumber { get; set; }
 
         protected string _orderBy;
 

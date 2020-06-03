@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using Hippologamus.DTO.DTO;
+﻿using Hippologamus.DTO.DTO;
 using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
-using System.Threading.Tasks;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Pages
 {
@@ -13,31 +12,31 @@ namespace Hippologamus.Server.Pages
         [Inject]
         public IErrorLogService ErrorLogService { get; set; }
 
-  
-
         public ErrorLogPagedList ErrorLogs { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
-            await Refresh();
             ShowDataAsAList = true;
+            PageNumber = 1;
+            ShowPageSize = 10;
+            await Refresh();
         }
 
         public async Task PageSize_Change()
         {
-            _pageNumber = 1;
+            PageNumber = 1;
             await Refresh();
         }
 
         public async Task FirstPage()
         {
-            _pageNumber = 1;
+            PageNumber = 1;
             await Refresh();
         }
 
         public async Task LastPage()
         {
-            _pageNumber = ErrorLogs.PaginationTotalPages;
+            PageNumber = ErrorLogs.PaginationTotalPages;
             await Refresh();
         }
 
@@ -45,6 +44,10 @@ namespace Hippologamus.Server.Pages
         {
             var search = new ErrorLogCollectionSearch()
             {
+                PageSize = ShowPageSize,
+                OrderBy = OrderBy,
+                OrderAscending = OrderAscending,
+                PageNumber = PageNumber
             };
             ErrorLogs = Mapper.Map<ErrorLogPagedList>(await ErrorLogService.Search(search));
         }
