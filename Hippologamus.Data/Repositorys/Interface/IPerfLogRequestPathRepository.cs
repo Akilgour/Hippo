@@ -6,6 +6,6 @@ namespace Hippologamus.Data.Repositorys.Interface
 {
     public interface IPerfLogRequestPathRepository
     {
-        Task<List<PerfLogRequestPath>> GetByAssembly(string perfLogAssembly);
+        Task<List<PerfLogPerfItem>> GetByAssembly(string perfLogAssembly);
     }
 }

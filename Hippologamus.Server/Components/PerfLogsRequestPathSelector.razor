@@ -1,7 +1,7 @@
 ﻿@inherits PerfLogsRequestPathSelectorBase
 @using  Hippologamus.Server.Components
 
-@if (RequestPaths == null)
+@if (PerfItems == null)
 {
     <WaitLoading/>
 }
@@ -15,13 +15,13 @@ else
                     <th></th>
                 </tr>
 
-                @foreach (var requestPath in RequestPaths)
+                @foreach (var perfItem in PerfItems)
                 {
-                    <tr @key="requestPath">
-                        <td>@requestPath.RequestPath</td>
+                    <tr @key="perfItem">
+                        <td>@perfItem.PerfItem</td>
                         <td>
 
-                            <a href="@($"perflogList/{requestPath.Assembly}/{requestPath.RequestPathLink}")"
+                            <a href="@($"perflogList/{perfItem.Assembly}/{perfItem.PerfItem}")"
                                class="btn btn-primary table-btn">
                                 <i class="far fa-eye"></i>
                             </a>

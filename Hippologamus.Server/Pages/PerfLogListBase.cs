@@ -18,7 +18,7 @@ namespace Hippologamus.Server.Pages
         public string Assembly { get; set; }
 
         [Parameter]
-        public string RequestPath { get; set; }
+        public string PerfItem { get; set; }
 
         [Inject]
         public IPerfLogDisplayService PerfLogDisplayService { get; set; }
@@ -92,7 +92,7 @@ namespace Hippologamus.Server.Pages
             var search = new PerfLogCollectionSearch()
             {
                 Assembly = Assembly,
-                RequestPath = RequestPath,
+                 PerfItem = PerfItem,
                 PageSize = ShowPageSize,
                 OrderBy = OrderBy,
                 OrderAscending = OrderAscending,

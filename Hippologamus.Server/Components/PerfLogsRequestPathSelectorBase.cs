@@ -8,10 +8,10 @@ namespace Hippologamus.Server.Components
 {
     public class PerfLogsRequestPathSelectorBase : ComponentBase
     {
-        protected IEnumerable<PerfLogRequestPathCollection> RequestPaths { get; set; }
+        protected IEnumerable<PerfLogPerfItemCollection> PerfItems { get; set; }
 
         [Inject]
-        public IPerfLogRequestPathService PerfLogRequestPathService { get; set; }
+        public IPerfLogPerfItemService PerfLogPerfItemService { get; set; }
 
         [Parameter]
         public PerfLogAssemblyCollection PerfLogAssembly { get; set; }
@@ -21,14 +21,9 @@ namespace Hippologamus.Server.Components
 
         protected async override Task OnInitializedAsync()
         {
-            var collection = await PerfLogRequestPathService.GetPerfLogRequestPaths(PerfLogAssembly.Assembly);
+            var collection = await PerfLogPerfItemService.GetPerfLogPerfItems(PerfLogAssembly.Assembly);
 
-            //TODO take this out and replace with automapper
-            foreach (var item in collection)
-            {
-                item.RequestPathLink = string.IsNullOrEmpty(item.RequestPath) ? "":  item.RequestPath.Replace("/", "%");
-            }
-            RequestPaths = collection;
+            PerfItems = collection;
         }
     }
 }

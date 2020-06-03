@@ -16,15 +16,15 @@
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Hippologamus.API.Controllers.PerfLogPerformanceItemController.GetByAssembly(System.String)">
+        <member name="M:Hippologamus.API.Controllers.PerfLogPerfItemController.GetByAssembly(System.String)">
             <summary>
-            Gets all the perfomance logs performanceItem for a assembly 
+            Gets all the perfomance logs RequestPaths for a assembly 
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Hippologamus.API.Controllers.PerfLogRequestPathController.GetByAssembly(System.String)">
+        <member name="M:Hippologamus.API.Controllers.PerfLogPerformanceItemController.GetByAssembly(System.String)">
             <summary>
-            Gets all the perfomance logs RequestPaths for a assembly 
+            Gets all the perfomance logs performanceItem for a assembly 
             </summary>
             <returns></returns>
         </member>

@@ -12,11 +12,11 @@ namespace Hippologamus.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PerfLogRequestPathController : ControllerBase
+    public class PerfLogPerfItemController : ControllerBase
     {
-        private readonly IPerfLogRequestPathManager _perfLogRequestPathManager;
+        private readonly IPerfLogPerfItemManager _perfLogRequestPathManager;
 
-        public PerfLogRequestPathController(IPerfLogRequestPathManager  perfLogRequestPathManager)
+        public PerfLogPerfItemController(IPerfLogPerfItemManager  perfLogRequestPathManager)
         {
             _perfLogRequestPathManager = perfLogRequestPathManager ?? throw new ArgumentNullException(nameof(perfLogRequestPathManager));
         }
@@ -27,7 +27,7 @@ namespace Hippologamus.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [LogUsage("GetByAssembly")]
-        public async Task<ActionResult<IEnumerable<PerfLogRequestPathCollection>>> GetByAssembly(string perfLogAssembly)
+        public async Task<ActionResult<IEnumerable<PerfLogPerfItemCollection>>> GetByAssembly(string perfLogAssembly)
         {
             var perfLogRequestPathDisplays = await _perfLogRequestPathManager.GetByAssembly(perfLogAssembly);
             return Ok(perfLogRequestPathDisplays);

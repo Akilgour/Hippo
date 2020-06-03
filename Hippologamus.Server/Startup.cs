@@ -36,7 +36,7 @@ namespace Hippologamus.Server
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });
 
-            services.AddHttpClient<IPerfLogRequestPathService, PerfLogRequestPathService>(client =>
+            services.AddHttpClient<IPerfLogPerfItemService, PerfLogPerfItemService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });

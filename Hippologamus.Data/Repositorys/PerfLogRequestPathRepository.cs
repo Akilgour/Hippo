@@ -12,19 +12,19 @@ namespace Hippologamus.Data.Repositorys
     public class PerfLogRequestPathRepository : BaseRepository, IPerfLogRequestPathRepository
     {
         public PerfLogRequestPathRepository(HippologamusContext context, IAsyncPolicy retryPolicy)
-       : base(context, retryPolicy)
+            : base(context, retryPolicy)
         {
         }
 
-        public async Task<List<PerfLogRequestPath>> GetByAssembly(string perfLogAssembly)
+        public async Task<List<PerfLogPerfItem>> GetByAssembly(string perfLogAssembly)
         {
-            List<PerfLogRequestPath> result = null;
+            List<PerfLogPerfItem> result = null;
             await _retryPolicy.ExecuteAsync(async () =>
             {
                 result = await _context.PerfLogs
                   .Where(x => x.Assembly == perfLogAssembly)
-                  .Select(m => new PerfLogRequestPath { Assembly = m.Assembly, RequestPath = m.RequestPath }).Distinct()
-                  .OrderBy(x => x.RequestPath)
+                  .Select(x => new PerfLogPerfItem { Assembly = x.Assembly, PerfItem = x.PerfItem }).Distinct()
+                  .OrderBy(x => x.PerfItem)
                   .ToListAsync();
             });
             return result;

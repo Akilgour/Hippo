@@ -4,8 +4,8 @@ using System.Threading.Tasks;
 
 namespace Hippologamus.API.Manager.Interface
 {
-    public interface IPerfLogRequestPathManager
+    public interface IPerfLogPerfItemManager
     {
-        Task<List<PerfLogRequestPathCollection>> GetByAssembly(string perfLogAssembly);
+        Task<List<PerfLogPerfItemCollection>> GetByAssembly(string perfLogAssembly);
     }
 }

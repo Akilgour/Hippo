@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hippologamus.API.Service.Service
 {
-    public class PerfLogRequestPathService : IPerfLogRequestPathService
+    public class PerfLogRequestPathService : IPerfLogPerfItemService
     {
         private readonly IPerfLogRequestPathRepository _perfLogRequestPathRepository;
 
@@ -16,7 +16,7 @@ namespace Hippologamus.API.Service.Service
             _perfLogRequestPathRepository = perfLogRequestPathRepository ?? throw new ArgumentNullException(nameof(perfLogRequestPathRepository));
         }
 
-        public Task<List<PerfLogRequestPath>> GetByAssembly(string perfLogAssembly)
+        public Task<List<PerfLogPerfItem>> GetByAssembly(string perfLogAssembly)
         {
             return _perfLogRequestPathRepository.GetByAssembly(perfLogAssembly);
         }
