@@ -113,6 +113,19 @@ namespace Hippologamus.Server.Pages
             PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
         }
 
+        public async Task Refresh()
+        {
+            var search = new PerfLogCollectionSearch()
+            {
+                Assembly = Assembly,
+                RequestPath = RequestPath,
+                PageSize = ShowPageSize,
+                OrderBy = OrderBy,
+                OrderAscending = OrderAscending
+            };
+            PerfLogPagedList = Mapper.Map<PerfLogPagedList>(await PerfLogDisplayService.PerfLogDisplaySearch(search));
+        }
+
         public string OrderBy
         {
             get

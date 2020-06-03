@@ -21,6 +21,9 @@ namespace Hippologamus.Server.Components
         [Parameter]
         public PerfLogPagedList PerfLogPagedList { get; set; }
 
+        [Parameter]
+        public EventCallback RefreshCallback { get; set; }
+
         [Inject]
         public IPerfLogDisplayService PerfLogDisplayService { get; set; }
 
@@ -57,9 +60,10 @@ namespace Hippologamus.Server.Components
             DeleteItemDialog.Show(DeletePerfLogItemFactory.Create(itemToBeDeleted.ToString()));
         }
 
-        public void DeletePefLogDialog_OnDialogClose()
+        public async Task DeletePefLogDialog_OnDialogClose()
         {
-            PerfLogDisplayService.DeleteById(_itemToBeDeleted);
+            await PerfLogDisplayService.DeleteById(_itemToBeDeleted);
+            await RefreshCallback.InvokeAsync(true);
         }
     }
 }
