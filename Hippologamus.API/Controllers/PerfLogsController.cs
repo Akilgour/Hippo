@@ -67,6 +67,7 @@ namespace Hippologamus.API.Controllers
             {
                 links.Add(new RootLink(CreateGetLink(perfLogDisplaySearch, perfLogDisplaySearch.PageNumber - 1), "previousPage", "GET"));
             }
+ 
 
             return links;
         }
