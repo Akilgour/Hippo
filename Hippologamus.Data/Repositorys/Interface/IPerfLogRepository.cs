@@ -9,5 +9,7 @@ namespace Hippologamus.Data.Repositorys.Interface
     {
         Task<List<PerfLog>> GetAll(PerfLogCollectionSearch perfLogDisplaySearch);
         Task<PerfLog> GetById(int perfLogId);
+        Task<bool> Any(int id);
+        Task Delete(int perfLogId);
     }
 }

@@ -9,5 +9,6 @@ namespace Hippologamus.Data.Repositorys.Interface
     {
         Task<List<DetailLog>> GetAll();
         Task<List<DetailLog>> GetAllErrors(ErrorLogCollectionSearch errorLogDisplaySearch);
+      
     }
 }

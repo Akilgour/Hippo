@@ -30,5 +30,15 @@ namespace Hippologamus.API.Manager
         {
             return _mapper.Map<PerfLogDetails>(await _perfLogService.GetById(perfLogId));
         }
+                
+        public async Task<bool> Any(int perfLogId) 
+        {
+            return  await _perfLogService.Any(perfLogId);
+        }
+
+        public async Task Delete(int perfLogId)
+        {
+              await _perfLogService.Delete(perfLogId);
+        }
     }
 }

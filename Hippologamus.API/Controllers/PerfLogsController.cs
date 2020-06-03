@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace Hippologamus.API.Controllers
 {
@@ -41,7 +42,7 @@ namespace Hippologamus.API.Controllers
             };
             Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetadata));
             var links = CreateGetLinks(perfLogDisplaySearch, perfLogs.HasNext, perfLogs.HasPrevious);
-            var perfLogsToReturn =  new 
+            var perfLogsToReturn = new
             {
                 Value = perfLogs,
                 Links = links
@@ -98,6 +99,22 @@ namespace Hippologamus.API.Controllers
                 return NotFound();
             }
             return Ok(perfLog);
+        }
+
+        [HttpDelete("{perfId}")]
+        [LogUsage("Delete")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Delete(int perfId)
+        {
+
+            if (!await _perfLogManager.Any(perfId))
+            {
+                return NotFound();
+            }
+            await _perfLogManager.Delete(perfId);
+            return NoContent();
         }
     }
 }

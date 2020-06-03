@@ -4,7 +4,6 @@ using Hippologamus.Domain.Models;
 using Hippologamus.DTO.DTO;
 using Microsoft.EntityFrameworkCore;
 using Polly;
-using Polly.Retry;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,7 +43,7 @@ namespace Hippologamus.Data.Repositorys
                 query = query.Where(x => x.TimeStamp <= perfLogDisplaySearch.DateTo);
             }
 
-            if(perfLogDisplaySearch.OrderBy == "TimeStamp")
+            if (perfLogDisplaySearch.OrderBy == "TimeStamp")
             {
                 if (perfLogDisplaySearch.OrderAscending)
                 {
@@ -87,7 +86,7 @@ namespace Hippologamus.Data.Repositorys
             return result;
         }
 
-        public async  Task<PerfLog> GetById(int perfLogId)
+        public async Task<PerfLog> GetById(int perfLogId)
         {
             PerfLog result = null;
             await _retryPolicy.ExecuteAsync(async () =>
@@ -95,6 +94,26 @@ namespace Hippologamus.Data.Repositorys
                 result = await _context.PerfLogs.FirstOrDefaultAsync(x => x.Id == perfLogId);
             });
             return result;
+        }
+
+        public async Task<bool> Any(int id)
+        {
+            bool result = false;
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                result = await _context.PerfLogs.AnyAsync(x => x.Id == id);
+            });
+            return result;
+        }
+
+        public async Task Delete(int id)
+        {
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                var item = await _context.PerfLogs.FirstOrDefaultAsync(x => x.Id == id);
+                _context.PerfLogs.Remove(item);
+                await _context.SaveChangesAsync();
+            });
         }
     }
 }

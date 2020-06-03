@@ -9,5 +9,9 @@ namespace Hippologamus.API.Manager.Interface
         Task<PagedList<PerfLogCollection>> GetAll(PerfLogCollectionSearch perfLogDisplaySearch);
 
         Task<PerfLogDetails> GetById(int perfLogId);
+
+        Task<bool> Any(int perfLogId);
+
+        Task Delete(int perfLogId);
     }
 }

@@ -25,5 +25,15 @@ namespace Hippologamus.API.Service.Service
         {
             return await _perfLogRepository.GetById(perfLogId);
         }
+
+        public async Task<bool> Any(int perfLogId)
+        {
+            return await _perfLogRepository.Any(perfLogId);
+        }
+
+        public async Task Delete(int perfLogId)
+        {
+              await _perfLogRepository.Delete(perfLogId);
+        }
     }
 }
