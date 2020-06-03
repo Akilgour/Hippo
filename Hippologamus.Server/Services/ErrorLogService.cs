@@ -19,6 +19,12 @@ namespace Hippologamus.Server.Services
             var response = await _httpClient.GetAsync($"api/ErrorLog?{ObjectToURLStringFactory.Create(search)}");
             return await ConvertResponseToErrorLogCollectionResponce(response);
         }
+        public async Task<ErrorLogCollectionResponce> GetByLink(string link)
+        {
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(link);
+            return await ConvertResponseToErrorLogCollectionResponce(response);
+        }
 
         private static async Task<ErrorLogCollectionResponce> ConvertResponseToErrorLogCollectionResponce(HttpResponseMessage response)
         {
@@ -27,5 +33,6 @@ namespace Hippologamus.Server.Services
             result.Pagination = PaginationFromHeadersFactory.Get(response);
             return result;
         }
+
     }
 }

@@ -32,12 +32,15 @@
     </div>
 
     <div class="col-md-3">
-        <select @onchange=@OrderBy_OnChange>
-            @foreach (var item in OrderByList)
-            {
-                <option value=@item.Key>@item.Value</option>
-            }
-        </select>
+        @if (OrderByList != null)
+        {
+            <select @onchange=@OrderBy_OnChange>
+                @foreach (var item in OrderByList)
+                {
+                    <option value=@item.Key>@item.Value</option>
+                }
+            </select>
+        }
     </div>
 
     <div class="col-md-3">

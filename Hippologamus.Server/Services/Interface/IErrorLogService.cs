@@ -11,5 +11,6 @@ namespace Hippologamus.Server.Services.Interface
     public interface IErrorLogService
     {
         Task<ErrorLogCollectionResponce> Search(ErrorLogCollectionSearch search);
+        Task<ErrorLogCollectionResponce> GetByLink(string link);
     }
 }

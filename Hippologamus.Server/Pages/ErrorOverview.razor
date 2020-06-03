@@ -10,5 +10,26 @@
 }
 else
 {
-    <ErrorLogPagedListTable ErrorLogPagedList="ErrorLogs"/>
+    <PaginationComponent PagedList="ErrorLogs"
+                         ShowDataAsAList="ShowDataAsAList"
+                         OrderByList="OrderByList"
+                         ShowDataAsAListCallback="ShowDataAsAList"
+                         PageSize_ChangeCallback="PageSize_Change"
+                         PerviousPageCallback="PerviousPage"
+                         FirstPageCallback="FirstPage"
+                         NextPageCallback="NextPage"
+                         LastPageCallback="LastPage"
+                         ShowDataAs_ClickCallback="ShowDataAs_Click"
+                         @bind-ShowPageSizeValue=ShowPageSize
+                         OrderBy_ClickCallback="OrderBy_Click"
+                         @bind-OrderByValue=OrderBy />
+
+    @if (ShowDataAsAList)
+    {
+        <ErrorLogPagedListTable ErrorLogPagedList="ErrorLogs" />
+    }
+    else
+    {
+
+    }
 }
