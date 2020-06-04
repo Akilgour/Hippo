@@ -12,6 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Hippologamus.Server.Services.Interface;
 using Hippologamus.Server.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace Hippologamus.Server
 {
@@ -30,7 +31,10 @@ namespace Hippologamus.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-          
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie();
+
             services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
@@ -50,7 +54,6 @@ namespace Hippologamus.Server
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });
-            
 
 
             //Adds Automapper
@@ -75,6 +78,9 @@ namespace Hippologamus.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
