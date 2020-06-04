@@ -13,6 +13,7 @@ using Hippologamus.Server.Services.Interface;
 using Hippologamus.Server.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace Hippologamus.Server
 {
@@ -32,6 +33,10 @@ namespace Hippologamus.Server
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            //Make HttpContext be usable anywhere in code, this allows the getting of users details
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //Addeds cookie authentication
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie();
 
