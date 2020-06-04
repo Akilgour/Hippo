@@ -24,14 +24,14 @@
                     </button>
                 </form>*@
             <NavLink class="list-group-item list-group-item-action bg-light"
-                     href="identity/account/logout">
+                     href="Logout">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
-                (@context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
+                (@context.User.Claims.FirstOrDefault(c => c.Type == "name")?.Value)
             </NavLink>
         </Authorized>
         <NotAuthorized>
             <NavLink class="list-group-item list-group-item-action bg-light"
-                     href="/identity/account/login">
+                     href="loginIDP">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Log in
             </NavLink>
         </NotAuthorized>

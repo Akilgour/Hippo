@@ -38,8 +38,8 @@ namespace Hippologamus.IDP
                     ClientName = "Hippologamus Logger",
                     AllowedGrantTypes = GrantTypes.Hybrid, 
                     ClientSecrets = { new Secret("108B7B4F-BEFC-4DD2-82E1-7F025F0F75D0".Sha256()) },
-                    RedirectUris = { "https://localhost:44329/signin-oidc" }, 
-                    PostLogoutRedirectUris = { "https://localhost:44329/signout-callback-oidc" },
+                    RedirectUris = { "https://localhost:44336/signin-oidc" }, 
+                    PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
                     AllowOfflineAccess = true,
                     AllowedScopes = { "openid", "profile", "email", "hippologamusapi", "country" } 
                 }                 
