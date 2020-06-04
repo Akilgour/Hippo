@@ -34,6 +34,7 @@ namespace Hippologamus.Server
             services.AddServerSideBlazor();
 
             //Make HttpContext be usable anywhere in code, this allows the getting of users details
+            //Just inject IHttpContextAccessor
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             //Addeds cookie authentication
