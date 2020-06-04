@@ -14,6 +14,7 @@ using Hippologamus.Server.Services;
 using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 
 namespace Hippologamus.Server
 {
@@ -38,8 +39,28 @@ namespace Hippologamus.Server
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             //Addeds cookie authentication
-            services.AddAuthentication("Identity.Application")
-                .AddCookie();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
+            options =>
+            {
+                options.Authority = "https://localhost:44333";
+                options.ClientId = "hippologamus";
+                options.ClientSecret = "108B7B4F-BEFC-4DD2-82E1-7F025F0F75D0";
+                options.ResponseType = "code id_token";
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.Scope.Add("hippologamusapi");
+                    //options.CallbackPath = ...
+                    options.SaveTokens = true;
+                options.GetClaimsFromUserInfoEndpoint = true;
+
+            });
 
             services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
             {
