@@ -17,19 +17,25 @@
                 <i class="fas fa-exclamation"></i> Errors
             </NavLink>
 
-            <NavLink class="list-group-item list-group-item-action bg-light" href="Logout">
+            @*<form method="post" action="/identity/account/logout">
+                    <button class="list-group-item list-group-item-action bg-light">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
+                        (@context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
+                    </button>
+                </form>*@
+            <NavLink class="list-group-item list-group-item-action bg-light"
+                     href="identity/account/logout">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
                 (@context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
             </NavLink>
         </Authorized>
         <NotAuthorized>
             <NavLink class="list-group-item list-group-item-action bg-light"
-                     href="Login">
+                     href="/identity/account/login">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Log in
             </NavLink>
         </NotAuthorized>
     </AuthorizeView>
-
 </div>
 
 @code {

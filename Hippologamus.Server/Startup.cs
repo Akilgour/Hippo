@@ -38,7 +38,7 @@ namespace Hippologamus.Server
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
             //Addeds cookie authentication
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            services.AddAuthentication("Identity.Application")
                 .AddCookie();
 
             services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
