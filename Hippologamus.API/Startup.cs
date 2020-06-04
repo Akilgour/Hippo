@@ -3,10 +3,13 @@ using AutoMapper.Contrib.Autofac.DependencyInjection;
 using Hippo.Serilog.Filters;
 using Hippo.Serilog.Middleware;
 using Hippologamus.Data.Context;
+using IdentityServer4.AccessTokenValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -31,7 +34,25 @@ namespace Hippologamus.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+
+            //This makes sure all users are authorised when calling controllers
+            var requireAuthenticatedUserPolicy = new AuthorizationPolicyBuilder()
+                 .RequireAuthenticatedUser()
+                 .Build();
+
+            services.AddControllers(configure =>
+            {
+                configure.Filters.Add(new AuthorizeFilter(requireAuthenticatedUserPolicy));
+            });
+
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+              .AddIdentityServerAuthentication(options =>
+              {
+                  options.Authority = "https://localhost:44333/";
+                  options.ApiName = "hippologamusapi";
+              });
+
+
             services.AddDbContext<HippologamusContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("HippologamusContext"))
            .EnableSensitiveDataLogging());
@@ -86,6 +107,7 @@ namespace Hippologamus.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
