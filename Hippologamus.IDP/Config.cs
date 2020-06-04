@@ -41,6 +41,7 @@ namespace Hippologamus.IDP
                     RedirectUris = { "https://localhost:44336/signin-oidc" }, 
                     PostLogoutRedirectUris = { "https://localhost:44336/signout-callback-oidc" },
                     AllowOfflineAccess = true,
+                    RequireConsent = false, // This stops the blazor app asking if the user want to use the API, becasue the answer is yes.
                     AllowedScopes = { "openid", "profile", "email", "hippologamusapi", "country" } 
                 }                 
             };
