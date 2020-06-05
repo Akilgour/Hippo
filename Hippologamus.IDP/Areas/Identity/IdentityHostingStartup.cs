@@ -4,6 +4,7 @@ using Hippologamus.IDP.Context;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -23,9 +24,11 @@ namespace Hippologamus.IDP.Areas.Identity
                 //services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 //    .AddEntityFrameworkStores<UserDbContext>();
 
-                services.AddIdentity<ApplicationUser, IdentityRole>()
+                services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                     .AddEntityFrameworkStores<UserDbContext>()
                     .AddDefaultTokenProviders();
+
+                services.AddTransient<IEmailSender, DummyEmailSender>();
             });
         }
     }

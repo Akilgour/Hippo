@@ -26,7 +26,8 @@ namespace Hippologamus.IDP
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            // This lets us use the custom login pages
+            services.AddMvc();
 
             // configures IIS out-of-proc settings (see https://github.com/aspnet/AspNetCore/issues/14882)
             services.Configure<IISOptions>(iis =>
@@ -75,7 +76,9 @@ namespace Hippologamus.IDP
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapDefaultControllerRoute();
+                endpoints.MapRazorPages();
             });
         }
     }
