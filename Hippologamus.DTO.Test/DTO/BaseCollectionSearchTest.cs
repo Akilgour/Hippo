@@ -1,4 +1,4 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 using Xunit;
 
 namespace Hippologamus.DTO.Test.DTO

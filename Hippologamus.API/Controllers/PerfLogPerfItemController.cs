@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Hippo.Serilog.Attributes;
 using Hippologamus.API.Manager.Interface;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

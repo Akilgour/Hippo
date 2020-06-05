@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit;
 using Hippologamus.Data.Repositorys;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 
 namespace Hippologamus.Data.Test.Repositorys
 {

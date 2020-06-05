@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 using Hippologamus.Server.Factorys;
 using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;

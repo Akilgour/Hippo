@@ -37,7 +37,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.API.Service.Te
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hippologamus", "Hippologamus", "{3DE237A1-9CD0-47C2-9D73-ECC120F43EBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.DTO", "Hippologamus.DTO\Hippologamus.DTO.csproj", "{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Shared", "Hippologamus.DTO\Hippologamus.Shared.csproj", "{3FE28C3A-33C4-48E5-83DF-A3066A6889A2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Demo.MVCSignalR", "Demo.MVCSignalR\Demo.MVCSignalR.csproj", "{E2F95C35-1B64-4020-A403-DEA1E8CFDA6E}"
 EndProject
@@ -45,7 +45,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Server", "Hipp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Server.Test", "Hippologamus.Server.Test\Hippologamus.Server.Test.csproj", "{E5FD20E1-39FC-428F-B718-9D19190AC246}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.DTO.Test", "Hippologamus.DTO.Test\Hippologamus.DTO.Test.csproj", "{BCA565C1-77CC-4C91-9A74-AE81A8F63CA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.Shared.Test", "Hippologamus.DTO.Test\Hippologamus.Shared.Test.csproj", "{BCA565C1-77CC-4C91-9A74-AE81A8F63CA2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hippologamus.IDP", "Hippologamus.IDP\Hippologamus.IDP.csproj", "{80354C03-816D-4C73-89DA-DDBFC7CF7634}"
 EndProject

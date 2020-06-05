@@ -1,8 +1,11 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 
-public class PerfLogCollectionResponce
+namespace Hippologamus.Shared.DTO
 {
-    public PerfLogCollection[] Value { get; set; }
-    public RootLink[] Links { get; set; }
-    public Pagination Pagination { get; set; }
+    public class PerfLogCollectionResponce
+    {
+        public PerfLogCollection[] Value { get; set; }
+        public RootLink[] Links { get; set; }
+        public Pagination Pagination { get; set; }
+    }
 }

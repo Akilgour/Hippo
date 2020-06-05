@@ -1,4 +1,4 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 using Hippologamus.Server.Factorys;
 using Hippologamus.Server.Services.Interface;
 using System.Net.Http;

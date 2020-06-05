@@ -1,4 +1,4 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 
 namespace Hippologamus.Server.Profiles.PerfLogCollectionResponceProfileMapper
 {

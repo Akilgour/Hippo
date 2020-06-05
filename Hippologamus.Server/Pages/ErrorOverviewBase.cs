@@ -1,10 +1,10 @@
-﻿using Hippologamus.DTO.DTO;
-using Hippologamus.Server.Models;
+﻿using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components.Authorization;
+using Hippologamus.Shared.DTO;
 
 namespace Hippologamus.Server.Pages
 {

@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hippologamus.Domain\Hippologamus.Domain.csproj" />
-    <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.DTO.csproj" />
+    <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.Shared.csproj" />
   </ItemGroup>
 
 </Project>

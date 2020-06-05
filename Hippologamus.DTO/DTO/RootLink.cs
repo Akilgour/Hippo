@@ -1,4 +1,4 @@
-﻿namespace Hippologamus.DTO.DTO
+﻿namespace Hippologamus.Shared.DTO
 {
     public class RootLink
     {

@@ -1,7 +1,7 @@
 ﻿using Hippologamus.API.Service.Service.Interface;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
