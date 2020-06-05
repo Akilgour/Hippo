@@ -15,6 +15,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Hippologamus.Server
 {
@@ -56,11 +57,21 @@ namespace Hippologamus.Server
                 options.Scope.Add("profile");
                 options.Scope.Add("email");
                 options.Scope.Add("hippologamusapi");
-                    //options.CallbackPath = ...
-                    options.SaveTokens = true;
+                options.Scope.Add("country");
+                options.ClaimActions.MapUniqueJsonKey("country", "country");
+                //options.CallbackPath = ...
+                options.SaveTokens = true;
                 options.GetClaimsFromUserInfoEndpoint = true;
 
             });
+
+            services.AddAuthorization(authorizationOptions =>
+            {
+                authorizationOptions.AddPolicy(
+                    Hippologamus.DTO.Policies.CanViewErrorLogs,
+                    Hippologamus.DTO.Policies.CanViewErrorLogsPolicy());
+            });
+
 
             services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
             {

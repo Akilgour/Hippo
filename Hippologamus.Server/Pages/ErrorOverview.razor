@@ -1,7 +1,7 @@
 ﻿@page "/erroroverview"
 @inherits ErrorOverviewBase
 @using Hippologamus.Server.Components
-@attribute [Authorize]
+@attribute [Authorize(Policy = Hippologamus.DTO.Policies.CanViewErrorLogs)]
 
 <h3>Error Overview</h3>
 

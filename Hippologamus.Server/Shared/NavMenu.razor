@@ -12,23 +12,24 @@
             <NavLink class="list-group-item list-group-item-action bg-light" href="/perflogoverview">
                 <i class="fas fa-tachometer-alt"></i>  Performance
             </NavLink>
+        </Authorized>
+    </AuthorizeView>
 
-            <NavLink class="list-group-item list-group-item-action bg-light" href="/erroroverview">
-                <i class="fas fa-exclamation"></i> Errors
-            </NavLink>
-
-            @*<form method="post" action="/identity/account/logout">
-                    <button class="list-group-item list-group-item-action bg-light">
-                        <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
-                        (@context.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name")?.Value)
-                    </button>
-                </form>*@
+    <AuthorizeView Policy="@Hippologamus.DTO.Policies.CanViewErrorLogs">
+        <NavLink class="list-group-item list-group-item-action bg-light" href="/erroroverview">
+            <i class="fas fa-exclamation"></i> Errors
+        </NavLink>
+    </AuthorizeView>
+ 
+    <AuthorizeView>
+        <Authorized>
             <NavLink class="list-group-item list-group-item-action bg-light"
                      href="LogOutIDP">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
                 (@context.User.Claims.FirstOrDefault(c => c.Type == "name")?.Value)
             </NavLink>
         </Authorized>
+
         <NotAuthorized>
             <NavLink class="list-group-item list-group-item-action bg-light"
                      href="loginIDP">
@@ -40,6 +41,7 @@
             </NavLink>
         </NotAuthorized>
     </AuthorizeView>
+
 </div>
 
 @code {
