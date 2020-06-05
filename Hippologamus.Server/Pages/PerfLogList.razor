@@ -1,13 +1,13 @@
 ﻿@using Hippologamus.Server.Components
 @page "/perflogList/{Assembly}/{PerfItem}"
 @inherits PerfLogListBase
-
+@attribute [Authorize]
 
 <h3>PerfLogList</h3>
 
 @if (PerfLogPagedList == null)
 {
-    <WaitLoading/>
+    <WaitLoading />
 }
 else
 {
@@ -60,7 +60,7 @@ else
         <PerfLogPagedListTable PerfLogPagedList="PerfLogPagedList"
                                OrderBy_ClickCallback="OrderBy_Click"
                                RefreshCallback="Refresh"
-                               @bind-OrderByValue=OrderBy/>
+                               @bind-OrderByValue=OrderBy />
     }
     else
     {

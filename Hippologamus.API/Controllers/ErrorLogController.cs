@@ -1,6 +1,7 @@
 ﻿using Hippo.Serilog.Attributes;
 using Hippologamus.API.Manager.Interface;
 using Hippologamus.DTO.DTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,7 @@ namespace Hippologamus.API.Controllers
 
         [HttpGet(Name = "GetErrorLogs")]
         [LogUsage("Get")]
+        [Authorize(Policy = Hippologamus.DTO.Policies.CanViewErrorLogs)]
         public async Task<IActionResult> Get([FromQuery]  ErrorLogCollectionSearch errorLogDisplaySearch)
         {
             var perfLogs = await _errorLogManager.GetAllError(errorLogDisplaySearch);

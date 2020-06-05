@@ -1,6 +1,7 @@
 ﻿@page "/erroroverview"
 @inherits ErrorOverviewBase
 @using Hippologamus.Server.Components
+@attribute [Authorize(Policy = Hippologamus.DTO.Policies.CanViewErrorLogs)]
 
 <h3>Error Overview</h3>
 
@@ -20,9 +21,9 @@ else
                          NextPageCallback="NextPage"
                          LastPageCallback="LastPage"
                          ShowDataAs_ClickCallback="ShowDataAs_Click"
-                         @bind-ShowPageSizeValue=ShowPageSize
+                         @bind-ShowPageSizeValue="ShowPageSize"
                          OrderBy_ClickCallback="OrderBy_Click"
-                         @bind-OrderByValue=OrderBy />
+                         @bind-OrderByValue="OrderBy" />
 
     @if (ShowDataAsAList)
     {

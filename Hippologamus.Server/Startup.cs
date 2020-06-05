@@ -12,6 +12,10 @@ using Microsoft.Extensions.Hosting;
 using Hippologamus.Server.Services.Interface;
 using Hippologamus.Server.Services;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Hippologamus.Server
 {
@@ -30,7 +34,45 @@ namespace Hippologamus.Server
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-          
+
+            //Make HttpContext be usable anywhere in code, this allows the getting of users details
+            //Just inject IHttpContextAccessor
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+            //Addeds cookie authentication
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = OpenIdConnectDefaults.AuthenticationScheme;
+            })
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddOpenIdConnect(OpenIdConnectDefaults.AuthenticationScheme,
+            options =>
+            {
+                options.Authority = "https://localhost:44333";
+                options.ClientId = "hippologamus";
+                options.ClientSecret = "108B7B4F-BEFC-4DD2-82E1-7F025F0F75D0";
+                options.ResponseType = "code id_token";
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+                options.Scope.Add("hippologamusapi");
+                options.Scope.Add("country");
+                options.ClaimActions.MapUniqueJsonKey("country", "country");
+                //options.CallbackPath = ...
+                options.SaveTokens = true;
+                options.GetClaimsFromUserInfoEndpoint = true;
+
+            });
+
+            services.AddAuthorization(authorizationOptions =>
+            {
+                authorizationOptions.AddPolicy(
+                    Hippologamus.DTO.Policies.CanViewErrorLogs,
+                    Hippologamus.DTO.Policies.CanViewErrorLogsPolicy());
+            });
+
+
             services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
@@ -50,7 +92,6 @@ namespace Hippologamus.Server
             {
                 client.BaseAddress = new Uri("https://localhost:5001/");
             });
-            
 
 
             //Adds Automapper
@@ -75,6 +116,9 @@ namespace Hippologamus.Server
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

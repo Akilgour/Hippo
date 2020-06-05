@@ -1,6 +1,8 @@
 ﻿using Hippologamus.DTO.DTO;
 using Hippologamus.Server.Factorys;
 using Hippologamus.Server.Services.Interface;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Http;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -9,13 +11,17 @@ namespace Hippologamus.Server.Services
 {
     public class ErrorLogService : BaseService, IErrorLogService
     {
-        public ErrorLogService(HttpClient httpClient)
-            : base(httpClient)
+      
+
+        public ErrorLogService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+            : base(httpClient, httpContextAccessor)
         {
         }
 
         public async Task<ErrorLogCollectionResponce> Search(ErrorLogCollectionSearch search)
         {
+          
+
             var response = await _httpClient.GetAsync($"api/ErrorLog?{ObjectToURLStringFactory.Create(search)}");
             return await ConvertResponseToErrorLogCollectionResponce(response);
         }

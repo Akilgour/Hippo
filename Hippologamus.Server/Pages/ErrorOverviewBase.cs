@@ -4,11 +4,15 @@ using Hippologamus.Server.Services.Interface;
 using Microsoft.AspNetCore.Components;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Hippologamus.Server.Pages
 {
     public class ErrorOverviewBase : PageComponentBase
     {
+        [CascadingParameter]
+        Task<AuthenticationState> AuthenticationStateTask { get; set; }
+
         [Inject]
         public IErrorLogService ErrorLogService { get; set; }
 
@@ -36,8 +40,12 @@ namespace Hippologamus.Server.Pages
 
         public async Task LastPage()
         {
-            PageNumber = ErrorLogs.PaginationTotalPages;
-            await Refresh();
+            var authenticationState = await AuthenticationStateTask;
+            if (authenticationState.User.Identity.Name == "Kevin")
+            {
+                PageNumber = ErrorLogs.PaginationTotalPages;
+                await Refresh();
+            }
         }
 
         public async Task Refresh()

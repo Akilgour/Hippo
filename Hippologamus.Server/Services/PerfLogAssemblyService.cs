@@ -1,5 +1,6 @@
 ﻿using Hippologamus.DTO.DTO;
 using Hippologamus.Server.Services.Interface;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text.Json;
@@ -9,8 +10,8 @@ namespace Hippologamus.Server.Services
 {
     public class PerfLogAssemblyService : BaseService, IPerfLogAssemblyService
     {
-        public PerfLogAssemblyService(HttpClient httpClient)
-            : base(httpClient)
+        public PerfLogAssemblyService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+            : base(httpClient, httpContextAccessor)
         {
         }
 

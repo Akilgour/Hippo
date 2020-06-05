@@ -7,16 +7,40 @@
 
 <div class="menu list-group list-group-flush">
 
-    <NavLink class="list-group-item list-group-item-action" href="/perflogoverview">
-        <i class="fas fa-tachometer-alt"></i>  Performance
-    </NavLink>
+    <AuthorizeView>
+        <Authorized>
+            <NavLink class="list-group-item list-group-item-action bg-light" href="/perflogoverview">
+                <i class="fas fa-tachometer-alt"></i>  Performance
+            </NavLink>
+        </Authorized>
+    </AuthorizeView>
 
-    <NavLink class="list-group-item list-group-item-action" href="/erroroverview">
-        <i class="fas fa-exclamation"></i> Errors
-    </NavLink>
+    <AuthorizeView Policy="@Hippologamus.DTO.Policies.CanViewErrorLogs">
+        <NavLink class="list-group-item list-group-item-action bg-light" href="/erroroverview">
+            <i class="fas fa-exclamation"></i> Errors
+        </NavLink>
+    </AuthorizeView>
+ 
+    <AuthorizeView>
+        <Authorized>
+            <NavLink class="list-group-item list-group-item-action bg-light"
+                     href="LogOutIDP">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Log out
+                (@context.User.Claims.FirstOrDefault(c => c.Type == "name")?.Value)
+            </NavLink>
+        </Authorized>
 
-   
-
+        <NotAuthorized>
+            <NavLink class="list-group-item list-group-item-action bg-light"
+                     href="loginIDP">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Log in
+            </NavLink>
+            <NavLink class="list-group-item list-group-item-action bg-light"
+                     href="https://localhost:44333/Identity/Account/Register">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Register
+            </NavLink>
+        </NotAuthorized>
+    </AuthorizeView>
 
 </div>
 

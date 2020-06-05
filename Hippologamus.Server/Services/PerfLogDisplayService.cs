@@ -2,6 +2,7 @@
 using Hippologamus.Server.Factorys;
 using Hippologamus.Server.Models;
 using Hippologamus.Server.Services.Interface;
+using Microsoft.AspNetCore.Http;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -10,8 +11,8 @@ namespace Hippologamus.Server.Services
 {
     public class PerfLogDisplayService : BaseService, IPerfLogDisplayService
     {
-        public PerfLogDisplayService(HttpClient httpClient)
-            : base(httpClient)
+        public PerfLogDisplayService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor)
+            : base(httpClient, httpContextAccessor)
         {
         }
 
