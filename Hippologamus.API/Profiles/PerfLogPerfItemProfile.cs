@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Hippologamus.Domain.Models;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 
 namespace Hippologamus.API.Profiles
 {

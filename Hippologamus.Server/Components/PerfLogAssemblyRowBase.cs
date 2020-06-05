@@ -1,4 +1,4 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 using Microsoft.AspNetCore.Components;
 
 namespace Hippologamus.Server.Components

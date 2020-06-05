@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Hippologamus.Data\Hippologamus.Data.csproj" />
-    <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.DTO.csproj" />
+    <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.Shared.csproj" />
   </ItemGroup>
 
 </Project>

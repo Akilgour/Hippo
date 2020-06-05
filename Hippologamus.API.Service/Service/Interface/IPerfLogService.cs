@@ -1,5 +1,5 @@
 ﻿using Hippologamus.Domain.Models;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

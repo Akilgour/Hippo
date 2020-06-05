@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Hippologamus.API.Manager.Interface;
 using Hippologamus.API.Service.Service.Interface;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 using Hippologamus.DTO.Helpers;
 using System.Collections.Generic;
 using System.Threading.Tasks;

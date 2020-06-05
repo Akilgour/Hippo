@@ -1,7 +1,7 @@
 ﻿using Hippologamus.Data.Context;
 using Hippologamus.Data.Repositorys;
 using Hippologamus.Domain.Models;
-using Hippologamus.DTO.DTO;
+using Hippologamus.Shared.DTO;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

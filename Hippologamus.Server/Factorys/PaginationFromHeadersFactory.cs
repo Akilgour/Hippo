@@ -1,4 +1,4 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;

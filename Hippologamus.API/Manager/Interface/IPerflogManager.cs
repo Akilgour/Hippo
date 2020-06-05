@@ -1,4 +1,4 @@
-﻿using Hippologamus.DTO.DTO;
+﻿using Hippologamus.Shared.DTO;
 using Hippologamus.DTO.Helpers;
 using System.Threading.Tasks;
 
