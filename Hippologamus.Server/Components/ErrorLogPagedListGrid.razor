@@ -1,0 +1,14 @@
+﻿@inherits ErrorLogPagedListGridBase
+
+<h3>ErrorLogPagedListGrid</h3>
+
+@foreach (var item in ErrorLogPagedList.ErrorLogs)
+{
+    <div class="col-md-4 btn btn-primary">
+        <div class="text-left">Id : @item.Id</div>
+        <div class="text-left">Time Stamp : @item.TimeStamp</div>
+        <div class="text-left">Message : @item.Message</div>
+        <div class="text-left">Request Path : @item.RequestPath</div>
+        <div class="text-left">Assembly : @item.Assembly</div>
+    </div>
+}
