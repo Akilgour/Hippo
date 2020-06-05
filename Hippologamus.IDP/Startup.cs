@@ -2,6 +2,7 @@
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 
+using Hippologamus.IDP.Areas.Identity.Data;
 using IdentityServer4;
 using IdentityServer4.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
@@ -47,8 +48,7 @@ namespace Hippologamus.IDP
                 options.Events.RaiseInformationEvents = true;
                 options.Events.RaiseFailureEvents = true;
                 options.Events.RaiseSuccessEvents = true;
-            })
-                .AddTestUsers(TestUsers.Users);
+            }).AddAspNetIdentity<ApplicationUser>();
 
             // in-memory, code config
             builder.AddInMemoryIdentityResources(Config.Ids);
