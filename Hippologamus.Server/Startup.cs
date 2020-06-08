@@ -72,27 +72,22 @@ namespace Hippologamus.Server
                     Hippologamus.DTO.Policies.CanViewErrorLogsPolicy());
             });
 
+            //Register 
+            var hippologamusAPI = new Uri("https://localhost:5001/");
 
-            services.AddHttpClient<IPerfLogAssemblyService, PerfLogAssemblyService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
+            void RegisterTypedClient<TClient, TImplementation>(Uri apiBaseUri)
+                where TClient : class where TImplementation  : class, TClient
+                {
+                services.AddHttpClient <  TClient,TImplementation > (client =>
+                {
+                    client.BaseAddress = apiBaseUri;
+                });
+            }
 
-            services.AddHttpClient<IPerfLogPerfItemService, PerfLogPerfItemService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
-
-            services.AddHttpClient<IPerfLogDisplayService, PerfLogDisplayService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
-
-            services.AddHttpClient<IErrorLogService, ErrorLogService>(client =>
-            {
-                client.BaseAddress = new Uri("https://localhost:5001/");
-            });
-
+            RegisterTypedClient<IPerfLogAssemblyService, PerfLogAssemblyService>(hippologamusAPI);
+            RegisterTypedClient<IPerfLogPerfItemService, PerfLogPerfItemService>(hippologamusAPI);
+            RegisterTypedClient<IPerfLogDisplayService, PerfLogDisplayService>(hippologamusAPI);
+            RegisterTypedClient<IErrorLogService, ErrorLogService>(hippologamusAPI);
 
             //Adds Automapper
             services.AddAutoMapper(typeof(Startup));
