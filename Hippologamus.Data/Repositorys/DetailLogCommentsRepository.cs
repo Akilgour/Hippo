@@ -13,7 +13,7 @@ namespace Hippologamus.Data.Repositorys
         {
         }
 
-        public async Task CreateDetailLog(DetailLogComment detailLogComment)
+        public async Task CreateDetailLogComent(DetailLogComment detailLogComment)
         {
             await _retryPolicy.ExecuteAsync(async () =>
             {

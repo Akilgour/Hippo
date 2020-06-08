@@ -5,6 +5,6 @@ namespace Hippologamus.API.Service.Service.Interface
 {
     public interface IDetailLogCommentService
     {
-        Task CreateDetailLog(DetailLogComment detailLogComment);
+        Task CreateDetailLogComent(DetailLogComment detailLogComment);
     }
 }

@@ -26,7 +26,7 @@ namespace Hippologamus.Data.Test.Repositorys
             var detailLogComment = new DetailLogComment();
 
             //act
-            await detailLogCommentsRepository.CreateDetailLog(detailLogComment);
+            await detailLogCommentsRepository.CreateDetailLogComent(detailLogComment);
             //assert
             Assert.Equal(1, _context.DetailLogComments.Count());
         }

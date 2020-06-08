@@ -14,9 +14,9 @@ namespace Hippologamus.API.Service.Service
             _detailLogCommentsRepository = detailLogCommentsRepository;
         }
 
-        public async Task CreateDetailLog(DetailLogComment detailLogComment)
+        public async Task CreateDetailLogComent(DetailLogComment detailLogComment)
         {
-            await _detailLogCommentsRepository.CreateDetailLog(detailLogComment);
+            await _detailLogCommentsRepository.CreateDetailLogComent(detailLogComment);
         }
     }
 }

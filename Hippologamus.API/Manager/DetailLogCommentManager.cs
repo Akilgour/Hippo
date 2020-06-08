@@ -20,7 +20,7 @@ namespace Hippologamus.API.Manager
 
         public async Task CreateDetailLogComent(DetailLogCommentCreate detailLogCommentCreate, int detailLogId)
         {
-            await _detailLogCommentService.CreateDetailLog(DetailLogCommentCreateFactory.Create(_mapper.Map<DetailLogComment>(detailLogCommentCreate), detailLogId));
+            await _detailLogCommentService.CreateDetailLogComent(DetailLogCommentCreateFactory.Create(_mapper.Map<DetailLogComment>(detailLogCommentCreate), detailLogId));
         }
     }
 }

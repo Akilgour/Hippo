@@ -34,30 +34,30 @@ namespace Hippologamus.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddAuthorization(authorizationOptions =>
-            {
-                authorizationOptions.AddPolicy(
-                    Hippologamus.DTO.Policies.CanViewErrorLogs,
-                    Hippologamus.DTO.Policies.CanViewErrorLogsPolicy());
-            });
+            //services.AddAuthorization(authorizationOptions =>
+            //{
+            //    authorizationOptions.AddPolicy(
+            //        Hippologamus.DTO.Policies.CanViewErrorLogs,
+            //        Hippologamus.DTO.Policies.CanViewErrorLogsPolicy());
+            //});
 
 
-            //This makes sure all users are authorised when calling controllers
-            var requireAuthenticatedUserPolicy = new AuthorizationPolicyBuilder()
-                 .RequireAuthenticatedUser()
-                 .Build();
+            ////This makes sure all users are authorised when calling controllers
+            //var requireAuthenticatedUserPolicy = new AuthorizationPolicyBuilder()
+            //     .RequireAuthenticatedUser()
+            //     .Build();
 
-            services.AddControllers(configure =>
-            {
-                configure.Filters.Add(new AuthorizeFilter(requireAuthenticatedUserPolicy));
-            });
+            //services.AddControllers(configure =>
+            //{
+            //    configure.Filters.Add(new AuthorizeFilter(requireAuthenticatedUserPolicy));
+            //});
 
-            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-              .AddIdentityServerAuthentication(options =>
-              {
-                  options.Authority = "https://localhost:44333/";
-                  options.ApiName = "hippologamusapi";
-              });
+            //services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+            //  .AddIdentityServerAuthentication(options =>
+            //  {
+            //      options.Authority = "https://localhost:44333/";
+            //      options.ApiName = "hippologamusapi";
+            //  });
 
 
             services.AddDbContext<HippologamusContext>(opt =>

@@ -5,6 +5,6 @@ namespace Hippologamus.Data.Repositorys.Interface
 {
     public interface IDetailLogCommentsRepository
     {
-        Task CreateDetailLog(DetailLogComment detailLogComment);
+        Task CreateDetailLogComent(DetailLogComment detailLogComment);
     }
 }
