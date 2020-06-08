@@ -25,5 +25,10 @@ namespace Hippologamus.API.Service.Service
         {
             return await _detailLogRepository.GetAllErrors(errorLogDisplaySearch);
         }
+
+        public async Task<bool> Any(int id)
+        {
+            return await _detailLogRepository.Any(id);
+        }
     }
 }

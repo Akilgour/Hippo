@@ -9,5 +9,6 @@ namespace Hippologamus.API.Service.Service.Interface
     {
         Task<List<DetailLog>> GetAll();
         Task<List<DetailLog>> GetAllErrors(ErrorLogCollectionSearch errorLogDisplaySearch);
+        Task<bool> Any(int id);
     }
 }

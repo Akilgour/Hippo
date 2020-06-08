@@ -55,5 +55,15 @@ namespace Hippologamus.Data.Repositorys
             });
             return result;
         }
+
+        public async Task<bool> Any(int id)
+        {
+            bool result = false;
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                result = await _context.DetailLogs.AnyAsync(x => x.Id == id);
+            });
+            return result;
+        }
     }
 }

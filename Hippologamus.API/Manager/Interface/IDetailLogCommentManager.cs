@@ -6,5 +6,6 @@ namespace Hippologamus.API.Manager.Interface
     public interface IDetailLogCommentManager
     {
         Task CreateDetailLogComent(DetailLogCommentCreate detailLogCommentCreate, int detailLogId);
+        Task<bool> AnyDetailLog(int detailLogId);
     }
 }

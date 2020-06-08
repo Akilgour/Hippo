@@ -11,16 +11,24 @@ namespace Hippologamus.API.Manager
     public class DetailLogCommentManager : BaseManager, IDetailLogCommentManager
     {
         private readonly IDetailLogCommentService _detailLogCommentService;
+        private readonly IDetailLogService _detailLogService;
 
-        public DetailLogCommentManager(IDetailLogCommentService detailLogCommentService, IMapper mapper)
+        public DetailLogCommentManager(IDetailLogCommentService detailLogCommentService, IDetailLogService detailLogService, IMapper mapper)
             : base(mapper)
         {
             _detailLogCommentService = detailLogCommentService;
+            _detailLogService = detailLogService;
         }
 
         public async Task CreateDetailLogComent(DetailLogCommentCreate detailLogCommentCreate, int detailLogId)
         {
             await _detailLogCommentService.CreateDetailLogComent(DetailLogCommentCreateFactory.Create(_mapper.Map<DetailLogComment>(detailLogCommentCreate), detailLogId));
+        }
+
+
+        public async Task<bool> AnyDetailLog(int detailLogId)
+        {
+         return   await _detailLogService.Any(detailLogId);
         }
     }
 }
