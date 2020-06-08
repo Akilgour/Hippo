@@ -1,17 +1,11 @@
-﻿using Hippologamus.Domain.Models;
-using Hippologamus.Server.Models;
+﻿using Hippologamus.Server.Models;
 using Microsoft.AspNetCore.Components;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Pages
 {
     public class EditDetailLogCommentsBase : PageComponentBase
     {
-        
         [Parameter]
         public int DetailLogId { get; set; }
 
@@ -22,5 +16,14 @@ namespace Hippologamus.Server.Pages
             DetailLogComment = new DetailLogCommentEdit();
         }
 
+        protected async Task HandleValidSubmit()
+        {
+            await Task.Delay(100);
+        }
+
+        protected void HandleInvalidSubmit()
+        {
+
+        }
     }
 }

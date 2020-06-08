@@ -6,9 +6,25 @@
 
 @if (DetailLogComment == null)
 {
-    <WaitLoading />
+<WaitLoading />
 }
 else
 {
-    <h3>Loaded</h3>
+<EditForm Model="@DetailLogComment" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group row">
+        <label for="lastName" class="col-sm-3">Comment: </label>
+        <InputText id="Comment" class="form-control col-sm-8" @bind-Value="@DetailLogComment.Comment" placeholder="Enter comment" />
+        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => DetailLogComment.Comment)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary edit-btn">
+        Save
+        <i class="fas fa-save"></i>
+    </button>
+</EditForm>
+
 }
