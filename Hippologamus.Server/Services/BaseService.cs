@@ -16,15 +16,15 @@ namespace Hippologamus.Server.Services
 
             _httpContextAccessor = httpContextAccessor;
 
-            Task.Run(() => this.SetAccessToken()).Wait();
+            Task.Run(() => this.SetAccessToken(_httpClient)).Wait();
         }
 
-        private async Task SetAccessToken()
+        protected async Task SetAccessToken(HttpClient httpClient )
         {
             var accessToken = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
             if (accessToken != null)
             {
-                _httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
+                httpClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + accessToken);
             }
             //To look it the accessToken go to https://jwt.io/ and paste it into there.
         }

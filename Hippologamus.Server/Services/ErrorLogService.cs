@@ -28,6 +28,7 @@ namespace Hippologamus.Server.Services
         public async Task<ErrorLogCollectionResponce> GetByLink(string link)
         {
             var httpClient = new HttpClient();
+            await SetAccessToken(httpClient);
             var response = await httpClient.GetAsync(link);
             return await ConvertResponseToErrorLogCollectionResponce(response);
         }
