@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Hippologamus.Domain\Hippologamus.Domain.csproj" />
     <ProjectReference Include="..\Hippologamus.DTO\Hippologamus.Shared.csproj" />
   </ItemGroup>
 

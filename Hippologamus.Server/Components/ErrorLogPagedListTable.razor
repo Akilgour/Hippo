@@ -10,6 +10,7 @@
             <th>Exception Message</th>
             <th>Request Path</th>
             <th>Assembly</th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +24,11 @@
             <td>@item.ExceptionMessage</td>
             <td>@item.RequestPath</td>
             <td>@item.Assembly</td>
+            <td>
+                <a href="@($"EditDetailLogComments/{item.Id}")">
+                    <i class="fas fa-comment-alt"></i>
+                </a>
+            </td>
         </tr>
         }
     </tbody>

@@ -1,0 +1,14 @@
+﻿@inherits EditDetailLogCommentsBase
+@page "/EditDetailLogComments/{DetailLogId:int}"
+@using Hippologamus.Server.Components
+
+<h3>EditDetailLogComments</h3>
+
+@if (DetailLogComment == null)
+{
+    <WaitLoading />
+}
+else
+{
+    <h3>Loaded</h3>
+}
