@@ -18,5 +18,11 @@ namespace Hippologamus.API.Service.Service
         {
             await _detailLogCommentsRepository.CreateDetailLogComent(detailLogComment);
         }
+
+
+        public async Task<List<DetailLogComment>> GetByDetailLogId(int detailLogId)
+        {
+            await _detailLogCommentsRepository.GetByDetailLogId(detailLogId);
+        }
     }
 }
