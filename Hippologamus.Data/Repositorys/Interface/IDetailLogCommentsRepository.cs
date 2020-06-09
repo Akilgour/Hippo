@@ -8,5 +8,6 @@ namespace Hippologamus.Data.Repositorys.Interface
     {
         Task CreateDetailLogComent(DetailLogComment detailLogComment);
         Task<List<DetailLogComment>> GetByDetailLogId(int detailLogId);
+        Task<DetailLogComment> GetByDetailLogCommentsId(int detailLogCommentsId);
     }
 }

@@ -25,6 +25,16 @@ namespace Hippologamus.Data.Repositorys
             });
         }
 
+        public async Task<DetailLogComment> GetByDetailLogCommentsId(int detailLogCommentsId)
+        {
+            DetailLogComment result = null;
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                result = await _context.DetailLogComments.FirstAsync(x => x.Id == detailLogCommentsId);
+            });
+            return result;
+        }
+
         public async Task<List<DetailLogComment>> GetByDetailLogId(int detailLogId)
         {
             List<DetailLogComment> result = null;

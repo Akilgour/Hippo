@@ -19,7 +19,7 @@ namespace Hippologamus.API.Controllers
             _detailLogCommentManager = detailLogCommentManager ?? throw new ArgumentNullException(nameof(detailLogCommentManager));
         }
 
-        [HttpGet]
+        [HttpGet("Get")]
         [LogUsage("Get")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -31,6 +31,21 @@ namespace Hippologamus.API.Controllers
                 return NotFound();
             }
             var result = await _detailLogCommentManager.GetByDetailLogId(detailLogId);
+            return Ok(result);
+        }
+
+        [HttpGet("GetByDetailLogCommentsId")]
+        [LogUsage("Get")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> GetByDetailLogCommentsId(int detailLogId, int detailLogCommentsId)
+        {
+            if (!await _detailLogCommentManager.AnyDetailLog(detailLogId))
+            {
+                return NotFound();
+            }
+            var result = await _detailLogCommentManager.GetByDetailLogCommentsId(detailLogCommentsId);
             return Ok(result);
         }
 

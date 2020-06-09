@@ -9,5 +9,6 @@ namespace Hippologamus.API.Manager.Interface
         Task CreateDetailLogComent(DetailLogCommentCreate detailLogCommentCreate, int detailLogId);
         Task<bool> AnyDetailLog(int detailLogId);
         Task<List<DetailLogCommentCollection>> GetByDetailLogId(int detailLogId);
+        Task<DetailLogCommentDetails> GetByDetailLogCommentsId(int detailLogCommentsId);
     }
 }

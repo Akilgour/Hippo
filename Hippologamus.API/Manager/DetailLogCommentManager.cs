@@ -25,17 +25,20 @@ namespace Hippologamus.API.Manager
         {
             await _detailLogCommentService.CreateDetailLogComent(DetailLogCommentCreateFactory.Create(_mapper.Map<DetailLogComment>(detailLogCommentCreate), detailLogId));
         }
-
-
         public async Task<bool> AnyDetailLog(int detailLogId)
         {
-         return   await _detailLogService.Any(detailLogId);
+            return await _detailLogService.Any(detailLogId);
         }
 
         public async Task<List<DetailLogCommentCollection>> GetByDetailLogId(int detailLogId)
         {
-            return  _mapper.Map<List<DetailLogCommentCollection>>(await _detailLogCommentService.GetByDetailLogId(detailLogId));   
+            return _mapper.Map<List<DetailLogCommentCollection>>(await _detailLogCommentService.GetByDetailLogId(detailLogId));
 
+        }
+
+        public async Task<DetailLogCommentDetails> GetByDetailLogCommentsId(int detailLogCommentsId)
+        {
+            return _mapper.Map<DetailLogCommentDetails>(await _detailLogCommentService.GetByDetailLogCommentsId(detailLogCommentsId));
         }
     }
 }
