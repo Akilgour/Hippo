@@ -21,12 +21,11 @@ namespace Hippologamus.Server.Pages
 
         protected override void OnInitialized()
         {
-            DetailLogComment = new DetailLogCommentEdit();
+            DetailLogComment = new DetailLogCommentEdit() { LinkedToDevOps = false };
         }
 
         protected async Task HandleValidSubmit()
         {
-            
             StatusClass = "alert-success";
             Message = "Comment successfully.";
             Saved = true;
