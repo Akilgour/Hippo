@@ -16,20 +16,7 @@
     <tbody>
         @foreach (var item in ErrorLogPagedList.ErrorLogs)
         {
-        <tr>
-            <td>@item.Id</td>
-            <td>@item.TimeStamp</td>
-            <td>@item.Message</td>
-            <td>@item.MachineName</td>
-            <td>@item.ExceptionMessage</td>
-            <td>@item.RequestPath</td>
-            <td>@item.Assembly</td>
-            <td>
-                <a href="@($"EditDetailLogComments/{item.Id}")">
-                    <i class="fas fa-comment-alt"></i>
-                </a>
-            </td>
-        </tr>
+            <ErrorLogPagedListTableRow @key="item" ErrorLog="item" />
         }
     </tbody>
 </table>

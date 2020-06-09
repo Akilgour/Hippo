@@ -12,5 +12,13 @@ namespace Hippologamus.Server.Components
     {
         [Parameter]
         public ErrorLogPagedList ErrorLogPagedList { get; set; }
+
+        public bool ShowComments { get; set; }
+
+        public void ToggleShowComments()
+        {
+            ShowComments = !ShowComments;
+        }
+
     }
 }

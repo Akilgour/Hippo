@@ -1,0 +1,27 @@
+﻿@inherits ErrorLogPagedListTableRowBase
+
+<tr>
+    <td>@ErrorLog.Id</td>
+    <td>@ErrorLog.TimeStamp</td>
+    <td>@ErrorLog.Message</td>
+    <td>@ErrorLog.MachineName</td>
+    <td>@ErrorLog.ExceptionMessage</td>
+    <td>@ErrorLog.RequestPath</td>
+    <td>@ErrorLog.Assembly</td>
+    <td>
+        <a href="@($"EditDetailLogComments/{ErrorLog.Id}")">
+            <i class="fas fa-comment-alt"></i>
+        </a>
+
+        <a @onclick="ToggleShowComments">
+            <i class="far fa-arrow-alt-circle-down"></i>
+        </a>
+    </td>
+</tr>
+
+@if (ShowComments)
+{
+    <td colspan="7">
+        @*<PerfLogsRequestPathSelector PerfLogAssembly="PerfLogAssembly" OnRequestPathToggle="RequestPathToggle"></PerfLogsRequestPathSelector>*@
+    </td>
+}
