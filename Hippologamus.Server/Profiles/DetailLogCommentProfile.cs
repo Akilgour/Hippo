@@ -9,6 +9,7 @@ namespace Hippologamus.Server.Profiles
         public DetailLogCommentProfile()
         {
             CreateMap<DetailLogCommentEdit, DetailLogCommentCreate>();
+            CreateMap< DetailLogCommentCollection, DetailLogCommentList>();
         }
     }
 }

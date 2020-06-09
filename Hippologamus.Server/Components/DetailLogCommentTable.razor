@@ -1,0 +1,44 @@
+﻿@inherits DetailLogCommentTableBase
+<h3>DetailLogCommentTable</h3>
+
+@if (DetailLogComments == null)
+{
+    <WaitLoading />
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-sm">
+                <tr>
+                    <th> Id</th>
+                    <th> Comment</th>
+                    <th> DetailLogId</th>
+                    <th> CreateOn</th>
+                    <th> CreateadBy</th>
+                    <th> OpenState</th>
+                    <th> UpdatedOn</th>
+                    <th> DevOpsId</th>
+                    <th> LinkedToDevOps</th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in DetailLogComments)
+                {
+                    <tr @key="item">
+                        <td>@item.Id</td>
+                        <td>@item.Comment</td>
+                        <td>@item.DetailLogId</td>
+                        <td>@item.CreateOn</td>
+                        <td>@item.CreateadBy</td>
+                        <td>@item.OpenState</td>
+                        <td>@item.UpdatedOn</td>
+                        <td>@item.DevOpsId</td>
+                        <td>@item.LinkedToDevOps</td>
+                        <td></td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+}
