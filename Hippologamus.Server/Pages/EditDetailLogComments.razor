@@ -10,21 +10,44 @@
 }
 else
 {
+<div class="alert @StatusClass">@Message</div>
+@if (!Saved)
+{
 <EditForm Model="@DetailLogComment" OnValidSubmit="@HandleValidSubmit" OnInvalidSubmit="@HandleInvalidSubmit">
 
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div class="form-group row">
-        <label for="lastName" class="col-sm-3">Comment: </label>
-        <InputText id="Comment" class="form-control col-sm-8" @bind-Value="@DetailLogComment.Comment" placeholder="Enter comment" />
+        <label for="comment" class="col-sm-3">Comment: </label>
+        <InputText id="comment" class="form-control col-sm-8" @bind-Value="@DetailLogComment.Comment" placeholder="Enter comment" />
         <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => DetailLogComment.Comment)" />
     </div>
 
-    <button type="submit" class="btn btn-primary edit-btn">
-        Save
-        <i class="fas fa-save"></i>
-    </button>
-</EditForm>
+    <div class="form-group row">
+        <label for="linkedToDevOps" class=" offset-sm-3">
+            <InputCheckbox id="linkedToDevOps" @bind-Value="@DetailLogComment.LinkedToDevOps"></InputCheckbox>
+            &nbsp;Linked To DevOps
+        </label>
+    </div>
 
+    <div class="form-group row">
+        <label for="devOpsId" class="col-sm-3">Dev Ops Id: </label>
+        <InputText id="devOpsId" class="form-control col-sm-8" @bind-Value="@DetailLogComment.DevOpsId" placeholder="Enter comment" />
+        <ValidationMessage class="offset-sm-3 col-sm-8" For="@(() => DetailLogComment.DevOpsId)" />
+    </div>
+
+    <div class="float-right">
+        <button type="submit" class="btn btn-primary edit-btn">
+            Save
+            <i class="fas fa-save"></i>
+        </button>
+        <a class="btn btn-outline-primary" @onclick="@NavigateBack">Cancel</a>
+    </div>
+</EditForm>
+}
+@if ( Saved)
+{
+<a class="btn btn-outline-primary" @onclick="@NavigateBack">Back to error</a>
+}
 }
