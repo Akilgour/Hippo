@@ -4,6 +4,7 @@ using Hippologamus.API.Manager.Interface;
 using Hippologamus.API.Service.Service.Interface;
 using Hippologamus.Domain.Models;
 using Hippologamus.Shared.DTO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hippologamus.API.Manager
@@ -29,6 +30,12 @@ namespace Hippologamus.API.Manager
         public async Task<bool> AnyDetailLog(int detailLogId)
         {
          return   await _detailLogService.Any(detailLogId);
+        }
+
+        public async Task<List<DetailLogCommentCollection>> GetByDetailLogId(int detailLogId)
+        {
+            return  _mapper.Map<List<DetailLogCommentCollection>>(await _detailLogCommentService.GetByDetailLogId(detailLogId));   
+
         }
     }
 }

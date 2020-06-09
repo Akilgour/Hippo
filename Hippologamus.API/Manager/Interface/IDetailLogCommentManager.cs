@@ -1,4 +1,5 @@
 ﻿using Hippologamus.Shared.DTO;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hippologamus.API.Manager.Interface
@@ -7,5 +8,6 @@ namespace Hippologamus.API.Manager.Interface
     {
         Task CreateDetailLogComent(DetailLogCommentCreate detailLogCommentCreate, int detailLogId);
         Task<bool> AnyDetailLog(int detailLogId);
+        Task<List<DetailLogCommentCollection>> GetByDetailLogId(int detailLogId);
     }
 }

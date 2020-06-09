@@ -1,6 +1,7 @@
 ﻿using Hippologamus.API.Service.Service.Interface;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Hippologamus.API.Service.Service
@@ -22,7 +23,7 @@ namespace Hippologamus.API.Service.Service
 
         public async Task<List<DetailLogComment>> GetByDetailLogId(int detailLogId)
         {
-            await _detailLogCommentsRepository.GetByDetailLogId(detailLogId);
+            return await _detailLogCommentsRepository.GetByDetailLogId(detailLogId);
         }
     }
 }

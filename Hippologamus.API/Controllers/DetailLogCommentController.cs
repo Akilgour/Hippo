@@ -19,6 +19,21 @@ namespace Hippologamus.API.Controllers
             _detailLogCommentManager = detailLogCommentManager ?? throw new ArgumentNullException(nameof(detailLogCommentManager));
         }
 
+        [HttpGet]
+        [LogUsage("Get")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Get(int detailLogId)
+        {
+            if (!await _detailLogCommentManager.AnyDetailLog(detailLogId))
+            {
+                return NotFound();
+            }
+            var result = await _detailLogCommentManager.GetByDetailLogId(detailLogId);
+            return Ok(result);
+        }
+
         [HttpPost]
         [LogUsage("Post")]
         [ProducesResponseType(StatusCodes.Status200OK)]
