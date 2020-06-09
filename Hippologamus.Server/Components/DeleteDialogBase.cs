@@ -13,10 +13,6 @@ namespace Hippologamus.Server.Components
 
         protected DeleteItem DeleteItem { get; set; }
 
-        protected override void OnInitialized()
-        {
-        }
-
         public void Show(DeleteItem  deleteItem)
         {
             DeleteItem = deleteItem;
