@@ -88,6 +88,7 @@ namespace Hippologamus.Server
             RegisterTypedClient<IPerfLogPerfItemService, PerfLogPerfItemService>(hippologamusAPI);
             RegisterTypedClient<IPerfLogDisplayService, PerfLogDisplayService>(hippologamusAPI);
             RegisterTypedClient<IErrorLogService, ErrorLogService>(hippologamusAPI);
+            RegisterTypedClient<IDetailLogCommentService, DetailLogCommentService>(hippologamusAPI);
 
             //Adds Automapper
             services.AddAutoMapper(typeof(Startup));

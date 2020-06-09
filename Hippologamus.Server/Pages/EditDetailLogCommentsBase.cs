@@ -1,16 +1,30 @@
-﻿using Hippologamus.Server.Models;
+﻿using AutoMapper;
+using Hippologamus.Server.Models;
+using Hippologamus.Server.Services.Interface;
+using Hippologamus.Shared.DTO;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Pages
 {
-    public class EditDetailLogCommentsBase : PageComponentBase
+    public class EditDetailLogCommentsBase :ComponentBase
     {
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
+        [Inject]
+        public IMapper Mapper { get; set; }
+
+        [Inject]
+        public IDetailLogCommentService  DetailLogCommentService { get; set; }
+
         [Parameter]
         public int DetailLogId { get; set; }
+
+        [CascadingParameter]
+        Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
         public DetailLogCommentEdit DetailLogComment { get; set; }
 
@@ -19,18 +33,33 @@ namespace Hippologamus.Server.Pages
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
-        protected override void OnInitialized()
+        protected override async Task OnInitializedAsync()
         {
-            DetailLogComment = new DetailLogCommentEdit() { LinkedToDevOps = false };
+            var authenticationState = await AuthenticationStateTask;
+            var claimsName = authenticationState.User.Claims.First(x => x.Type == "name").Value;
+
+            DetailLogComment = new DetailLogCommentEdit()
+            {
+                CreateadBy = claimsName,
+                LinkedToDevOps = false
+            };
         }
 
         protected async Task HandleValidSubmit()
         {
-            StatusClass = "alert-success";
-            Message = "Comment successfully.";
-            Saved = true;
+            try
+            {
+                await DetailLogCommentService.Add(Mapper.Map<DetailLogCommentCreate>(DetailLogComment), DetailLogId);
 
-            await Task.Delay(100);
+                StatusClass = "alert-success";
+                Message = "Comment successfully.";
+                Saved = true;
+            }
+            catch (System.Exception ex)
+            {
+
+                  throw ex;
+            }
         }
 
         protected void HandleInvalidSubmit()
