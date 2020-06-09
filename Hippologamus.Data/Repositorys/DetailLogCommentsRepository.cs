@@ -1,7 +1,10 @@
 ﻿using Hippologamus.Data.Context;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
+using Microsoft.EntityFrameworkCore;
 using Polly;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Hippologamus.Data.Repositorys
@@ -20,6 +23,16 @@ namespace Hippologamus.Data.Repositorys
                 var addedEntity = _context.Add(detailLogComment);
                 await _context.SaveChangesAsync();
             });
+        }
+
+        public async Task<List<DetailLogComment>> GetByDetailLogId(int detailLogId)
+        {
+            List<DetailLogComment> result = null;
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                result = await _context.DetailLogComments.Where(x => x.DetailLogId == detailLogId).ToListAsync();
+            });
+            return result;
         }
     }
 }
