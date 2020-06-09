@@ -8,9 +8,9 @@ namespace Hippologamus.Server.Models
         public string Comment { get; set; }
         public bool LinkedToDevOps { get; set; }
         public string DevOpsId { get; set; }
-        public bool OpenState { get; set; }
+        public string OpenStateDisplay { get; set; }
         public string CreateadBy { get; set; }
-        public DateTime CreateOn { get; set; }
-        public DateTime UpdatedOn { get; set; }
+        public string CreatedOn { get; set; }
+        public string UpdatedOn { get; set; }
     }
 }
