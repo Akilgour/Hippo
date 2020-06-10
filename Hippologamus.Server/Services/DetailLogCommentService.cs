@@ -29,5 +29,10 @@ namespace Hippologamus.Server.Services
         {
             return await _httpClient.GetJsonAsync<DetailLogCommentDetails>($"api/DetailLogComment/{detailLogId}/GetByDetailLogCommentsId?detailLogCommentsId={detailLogCommentId}");
         }
+
+        public async Task Update(DetailLogCommentCreate detailLogCommentCreate, int detailLogId)
+        {
+            await _httpClient.PutJsonAsync($"api/DetailLogComment/{detailLogId}", detailLogCommentCreate);
+        }
     }
 }

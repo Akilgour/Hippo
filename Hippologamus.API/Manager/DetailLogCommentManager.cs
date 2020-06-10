@@ -46,8 +46,9 @@ namespace Hippologamus.API.Manager
             return await _detailLogCommentService.Any(id);
         }
 
-        public async Task Update(DetailLogCommentUpdate detailLogCommentUpdate)
+        public async Task Update(DetailLogCommentUpdate detailLogCommentUpdate, int detailLogId)
         {
+            detailLogCommentUpdate.DetailLogId = detailLogId;
             var detailLogCommentFromRepo = await _detailLogCommentService.GetByDetailLogCommentsId(detailLogCommentUpdate.Id);
             _mapper.Map(detailLogCommentUpdate, detailLogCommentFromRepo);
             await _detailLogCommentService.Update(detailLogCommentFromRepo);

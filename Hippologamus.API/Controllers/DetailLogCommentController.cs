@@ -79,7 +79,7 @@ namespace Hippologamus.API.Controllers
             {
                 return NotFound();
             }
-            await _detailLogCommentManager.Update(detailLogCommentUpdate);
+            await _detailLogCommentManager.Update(detailLogCommentUpdate, detailLogId);
             return Ok();
         }
     }

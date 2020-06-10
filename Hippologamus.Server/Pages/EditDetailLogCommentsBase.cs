@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Hippologamus.Server.Pages
 {
-    public class EditDetailLogCommentsBase :ComponentBase
+    public class EditDetailLogCommentsBase : ComponentBase
     {
         [Inject]
         public NavigationManager NavigationManager { get; set; }
@@ -18,7 +18,7 @@ namespace Hippologamus.Server.Pages
         public IMapper Mapper { get; set; }
 
         [Inject]
-        public IDetailLogCommentService  DetailLogCommentService { get; set; }
+        public IDetailLogCommentService DetailLogCommentService { get; set; }
 
         [Parameter]
         public int DetailLogId { get; set; }
@@ -27,12 +27,13 @@ namespace Hippologamus.Server.Pages
         public int DetailLogCommentId { get; set; }
 
         [CascadingParameter]
-        Task<AuthenticationState> AuthenticationStateTask { get; set; }
+        private Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
         public DetailLogCommentEdit DetailLogComment { get; set; }
 
         //used to store state of screen
         protected string Message = string.Empty;
+
         protected string StatusClass = string.Empty;
         protected bool Saved;
 
@@ -57,19 +58,18 @@ namespace Hippologamus.Server.Pages
 
         protected async Task HandleValidSubmit()
         {
-            try
+            if (DetailLogCommentId != 0)
+            {
+                await DetailLogCommentService.Update(Mapper.Map<DetailLogCommentCreate>(DetailLogComment), DetailLogId);
+                StatusClass = "alert-success";
+            }
+            else
             {
                 await DetailLogCommentService.Add(Mapper.Map<DetailLogCommentCreate>(DetailLogComment), DetailLogId);
-
                 StatusClass = "alert-success";
-                Message = "Comment successfully.";
-                Saved = true;
             }
-            catch (System.Exception ex)
-            {
-
-                  throw ex;
-            }
+            Message = "Comment successfully.";
+            Saved = true;
         }
 
         protected void HandleInvalidSubmit()
