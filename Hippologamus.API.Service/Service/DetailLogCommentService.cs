@@ -29,5 +29,16 @@ namespace Hippologamus.API.Service.Service
         {
             return await _detailLogCommentsRepository.GetByDetailLogId(detailLogId);
         }
+
+        public async Task Update(DetailLogComment detailLogComment)
+        {
+
+            await _detailLogCommentsRepository.Update(detailLogComment);
+        }
+
+        public async Task<bool> Any(int id)
+        {
+            return await _detailLogCommentsRepository.Any(id);
+        }
     }
 }

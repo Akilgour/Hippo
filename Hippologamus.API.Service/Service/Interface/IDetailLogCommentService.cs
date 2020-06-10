@@ -9,5 +9,7 @@ namespace Hippologamus.API.Service.Service.Interface
         Task CreateDetailLogComent(DetailLogComment detailLogComment);
         Task<List<DetailLogComment>> GetByDetailLogId(int detailLogId);
         Task<DetailLogComment> GetByDetailLogCommentsId(int detailLogCommentsId);
+        Task Update(DetailLogComment detailLogComment);
+        Task<bool> Any(int id);
     }
 }

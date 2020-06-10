@@ -44,5 +44,24 @@ namespace Hippologamus.Data.Repositorys
             });
             return result;
         }
+
+        public async Task Update(DetailLogComment detailLogComment)
+        {
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                _context.DetailLogComments.Update(detailLogComment);
+                await _context.SaveChangesAsync();
+            });
+        }
+
+        public async Task<bool> Any(int id)
+        {
+            bool result = false;
+            await _retryPolicy.ExecuteAsync(async () =>
+            {
+                result = await _context.DetailLogComments.AnyAsync(x => x.Id == id);
+            });
+            return result;
+        }
     }
 }

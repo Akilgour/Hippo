@@ -9,6 +9,8 @@ namespace Hippologamus.API.Profiles
         public DetailLogCommentProfile()
         {
             CreateMap<DetailLogCommentCreate, DetailLogComment>();
+            CreateMap<DetailLogCommentUpdate, DetailLogComment>();
+
             CreateMap<DetailLogComment, DetailLogCommentCollection>();
             CreateMap<DetailLogComment, DetailLogCommentDetails>();
         }

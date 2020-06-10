@@ -63,5 +63,24 @@ namespace Hippologamus.API.Controllers
             await _detailLogCommentManager.CreateDetailLogComent(detailLogCommentCreate, detailLogId);
             return Ok();
         }
+
+        [HttpPut]
+        [LogUsage("Put")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesDefaultResponseType]
+        public async Task<ActionResult> Put(int detailLogId, DetailLogCommentUpdate detailLogCommentUpdate)
+        {
+            if (!await _detailLogCommentManager.AnyDetailLog(detailLogId))
+            {
+                return NotFound();
+            }
+            if (!await _detailLogCommentManager.Any(detailLogCommentUpdate.Id))
+            {
+                return NotFound();
+            }
+            await _detailLogCommentManager.Update(detailLogCommentUpdate);
+            return Ok();
+        }
     }
 }
