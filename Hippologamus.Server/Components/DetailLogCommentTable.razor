@@ -30,7 +30,11 @@ else
                         <td>@item.CreateadBy</td>
                         <td>@item.CreatedOn</td>
                         <td>@item.UpdatedOn</td>
-                        <td></td>
+                        <td>
+                            <a href="@($"EditDetailLogComments/{item.DetailLogId}/{item.Id}")">
+                                <i class="fas fa-pencil-alt"></i>
+                            </a>
+                        </td>
                     </tr>
                 }
             </table>

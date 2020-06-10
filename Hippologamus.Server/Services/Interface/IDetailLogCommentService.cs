@@ -9,5 +9,6 @@ namespace Hippologamus.Server.Services.Interface
         Task Add(DetailLogCommentCreate detailLogCommentCreate, int detailLogId);
 
         Task<IEnumerable<DetailLogCommentCollection>> Get(int detailLogId);
+        Task<DetailLogCommentDetails> Get(int detailLogId, int detailLogCommentId);
     }
 }

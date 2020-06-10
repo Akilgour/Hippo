@@ -15,6 +15,7 @@ namespace Hippologamus.Server.Profiles
                 .ForMember(dest => dest.CreatedOn, opt => opt.MapFrom(src => DateTimeDisplay.Resolve(src.CreateOn)))
                 .ForMember(dest => dest.UpdatedOn, opt => opt.MapFrom(src => DateTimeDisplay.Resolve(src.UpdatedOn)))
                 .ForMember(dest => dest.OpenStateDisplay, opt => opt.MapFrom(src => OpenStateDisplay.Resolve(src.OpenState)));
+            CreateMap<DetailLogCommentDetails, DetailLogCommentEdit>();
         }
     }
 }

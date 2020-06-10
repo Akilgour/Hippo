@@ -23,6 +23,9 @@ namespace Hippologamus.Server.Pages
         [Parameter]
         public int DetailLogId { get; set; }
 
+        [Parameter]
+        public int DetailLogCommentId { get; set; }
+
         [CascadingParameter]
         Task<AuthenticationState> AuthenticationStateTask { get; set; }
 
@@ -35,14 +38,21 @@ namespace Hippologamus.Server.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            var authenticationState = await AuthenticationStateTask;
-            var claimsName = authenticationState.User.Claims.First(x => x.Type == "name").Value;
-
-            DetailLogComment = new DetailLogCommentEdit()
+            if (DetailLogCommentId != 0)
             {
-                CreateadBy = claimsName,
-                LinkedToDevOps = false
-            };
+                DetailLogComment = Mapper.Map<DetailLogCommentEdit>(await DetailLogCommentService.Get(DetailLogId, DetailLogCommentId));
+            }
+            else
+            {
+                var authenticationState = await AuthenticationStateTask;
+                var claimsName = authenticationState.User.Claims.First(x => x.Type == "name").Value;
+
+                DetailLogComment = new DetailLogCommentEdit()
+                {
+                    CreateadBy = claimsName,
+                    LinkedToDevOps = false
+                };
+            }
         }
 
         protected async Task HandleValidSubmit()

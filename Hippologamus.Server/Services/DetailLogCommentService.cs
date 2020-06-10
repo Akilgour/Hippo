@@ -22,7 +22,12 @@ namespace Hippologamus.Server.Services
 
         public async Task<IEnumerable<DetailLogCommentCollection>> Get(int detailLogId)
         {
-            return await _httpClient.GetJsonAsync<IEnumerable<DetailLogCommentCollection>>($"api/DetailLogComment/{detailLogId}");
+            return await _httpClient.GetJsonAsync<IEnumerable<DetailLogCommentCollection>>($"api/DetailLogComment/{detailLogId}/Get");
+        }
+
+        public async Task<DetailLogCommentDetails> Get(int detailLogId, int detailLogCommentId)
+        {
+            return await _httpClient.GetJsonAsync<DetailLogCommentDetails>($"api/DetailLogComment/{detailLogId}/GetByDetailLogCommentsId?detailLogCommentsId={detailLogCommentId}");
         }
     }
 }

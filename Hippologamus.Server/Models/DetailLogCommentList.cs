@@ -12,5 +12,6 @@ namespace Hippologamus.Server.Models
         public string CreateadBy { get; set; }
         public string CreatedOn { get; set; }
         public string UpdatedOn { get; set; }
+        public int DetailLogId { get; set; }
     }
 }
