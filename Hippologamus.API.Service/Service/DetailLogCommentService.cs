@@ -1,4 +1,5 @@
-﻿using Hippologamus.API.Service.Service.Interface;
+﻿using Hippologamus.API.Service.Helpers;
+using Hippologamus.API.Service.Service.Interface;
 using Hippologamus.Data.Repositorys.Interface;
 using Hippologamus.Domain.Models;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace Hippologamus.API.Service.Service
 
         public async Task Update(DetailLogComment detailLogComment)
         {
-
+            DetailLogCommentUpdateHelpers.Update(detailLogComment);
             await _detailLogCommentsRepository.Update(detailLogComment);
         }
 
